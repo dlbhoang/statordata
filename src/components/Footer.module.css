@@ -1,0 +1,51 @@
+.footer { background:var(--navy); color:rgba(255,255,255,.7); margin-top:0; }
+.inner {
+  padding:36px 24px 24px;
+  display:grid; grid-template-columns:1fr 180px; gap:40px;
+}
+.main {}
+.brand { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.mark {
+  width:40px; height:40px; border-radius:10px;
+  background:var(--grad);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:#fff; font-size:8px; font-weight:700;
+  box-shadow:0 4px 14px rgba(18,73,160,.4);
+}
+.mark span { font-size:16px; line-height:1.1; }
+.name { font-family:'Montserrat',sans-serif; font-size:20px; font-weight:700; color:#fff; }
+.name em { color:var(--cyan); font-style:normal; }
+.desc { font-size:12px; line-height:1.8; color:rgba(255,255,255,.5); max-width:600px; margin-bottom:16px; }
+.h {
+  font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
+  color:var(--gold); text-transform:uppercase; letter-spacing:1px;
+  margin-bottom:10px; padding-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.contacts { list-style:none; }
+.contacts li { font-size:12px; color:rgba(255,255,255,.6); padding:4px 0; display:flex; align-items:flex-start; gap:8px; }
+.contacts li span { color:var(--cyan); flex-shrink:0; }
+.links {
+  display:flex; flex-wrap:wrap; gap:16px;
+  margin-top:16px; padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.links a { font-size:12px; color:rgba(255,255,255,.5); transition:.2s; }
+.links a:hover { color:var(--cyan); }
+.person { text-align:center; }
+.photo {
+  width:90px; height:90px; border-radius:12px;
+  background:rgba(255,255,255,.08);
+  border:2px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  font-size:36px; margin:0 auto 8px;
+  box-shadow:0 4px 20px rgba(240,165,0,.2);
+}
+.pname { font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; color:var(--gold2); }
+.pyear { font-size:11px; color:rgba(255,255,255,.35); }
+.psub  { margin-top:8px; font-size:10.5px; color:rgba(255,255,255,.35); line-height:1.6; }
+.bottom {
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:14px 0; font-size:11.5px; color:rgba(255,255,255,.3);
+}
+@media(max-width:720px) { .inner { grid-template-columns:1fr; } .person { text-align:left; } }

@@ -1,0 +1,9 @@
+.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-bottom:24px; }
+.diagCard { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:.25s; }
+.diagCard:hover { box-shadow:var(--shadow2); transform:translateY(-2px); }
+.diagHead { padding:16px; border-bottom:1px solid var(--border); }
+.diagHead h4 { font-family:'Montserrat',sans-serif; font-size:15px; font-weight:700; color:var(--navy); }
+.diagViz { padding:16px; display:flex; justify-content:center; background:#fafbfd; border-bottom:1px solid var(--border); }
+.diagFoot { padding:16px; }
+.legend { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow); }
+@media(max-width:720px) { .grid { grid-template-columns:1fr; } }

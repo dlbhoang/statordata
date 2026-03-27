@@ -1,0 +1,70 @@
+.header {
+  background: #fff;
+  border-bottom: 3px solid var(--blue2);
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+  height: 64px;
+  box-shadow: 0 2px 12px rgba(10,22,60,.08);
+  position: sticky; top: 32px; z-index: 150;
+}
+.logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.mark {
+  width:48px; height:48px; border-radius:12px;
+  background: var(--grad);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  color:#fff; font-size:9px; font-weight:700; letter-spacing:.5px;
+  box-shadow:0 4px 14px rgba(18,73,160,.4);
+}
+.mark span { font-size:18px; line-height:1.1; }
+.name {
+  font-family:'Montserrat',sans-serif; font-size:24px; font-weight:700;
+  color:var(--navy); letter-spacing:1px;
+}
+.name em { color:var(--blue2); font-style:normal; }
+.center { display:flex; align-items:center; gap:10px; justify-content:center; }
+.group {
+  background:linear-gradient(90deg,#e3fcf2,#d0f0ff);
+  color:#0a7a50; border:1px solid #a8e6cf;
+  padding:6px 14px; border-radius:7px;
+  font-size:12px; font-weight:600;
+  display:flex; align-items:center; gap:6px; white-space:nowrap;
+}
+.dot {
+  width:7px; height:7px; border-radius:50%;
+  background:#00c853; box-shadow:0 0 6px #00c853;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.search {
+  display:flex; align-items:center;
+  background:#f0f4fb; border:1.5px solid var(--border);
+  border-radius:8px; overflow:hidden; transition:.2s;
+}
+.search:focus-within { border-color:var(--blue2); box-shadow:0 0 0 3px rgba(26,92,216,.12); }
+.sinput {
+  border:none; background:transparent;
+  padding:7px 12px; font-size:12.5px; width:200px; outline:none;
+  font-family:'Noto Sans',sans-serif; color:var(--text);
+}
+.sbtn {
+  background:var(--blue2); border:none; color:#fff;
+  padding:0 14px; height:36px; cursor:pointer; transition:.2s;
+}
+.sbtn:hover { background:var(--blue); }
+.right { display:flex; align-items:center; gap:10px; }
+.loginBtn {
+  background:var(--navy); color:#fff;
+  border:none; padding:7px 16px; border-radius:7px;
+  font-size:12.5px; font-weight:600; cursor:pointer; transition:.2s;
+  display:flex; align-items:center; gap:6px; white-space:nowrap;
+  text-decoration:none;
+}
+.loginBtn:hover { background:var(--blue2); transform:translateY(-1px); }
+
+@media(max-width:860px) {
+  .header { grid-template-columns:auto auto; }
+  .center { display:none; }
+}
