@@ -11,14 +11,13 @@
   position: sticky; top: 32px; z-index: 150;
 }
 .logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
-.mark {
-  width:48px; height:48px; border-radius:12px;
-  background: var(--grad);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  color:#fff; font-size:9px; font-weight:700; letter-spacing:.5px;
+.logoImg {
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  border-radius:12px;
   box-shadow:0 4px 14px rgba(18,73,160,.4);
 }
-.mark span { font-size:18px; line-height:1.1; }
 .name {
   font-family:'Montserrat',sans-serif; font-size:24px; font-weight:700;
   color:var(--navy); letter-spacing:1px;

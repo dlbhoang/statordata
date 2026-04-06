@@ -27,9 +27,7 @@ export default function App() {
           <Route path="/"                          element={<Home />} />
           <Route path="/ky-thuat"                  element={<KyThuat />} />
           <Route path="/dieu-khoan"                element={<DieuKhoan />} />
-          <Route path="/hoc-tap/:loai"             element={<HocTap />} />
-          <Route path="/tinh-toan/3pha-1tocdo"     element={<TinhToan3Pha1Toc />} />
-          <Route path="/tinh-toan/3pha-2tocdo"     element={<TinhToan3Pha2Toc />} />
+          <Route path="/hoc-tap/:loai"             element={<HocTap />} />          <Route path="/tinh-toan/3pha-2tocdo"     element={<TinhToan3Pha2Toc />} />
           <Route path="/tinh-toan/1pha"            element={<TinhToan1Pha />} />
           <Route path="/so-do-mach"                element={<SoDo />} />
           <Route path="/huong-dan"                 element={<HuongDan />} />

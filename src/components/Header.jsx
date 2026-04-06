@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
+import AuthModal from './AuthModal';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [q, setQ] = useState('');
+  const [authOpen, setAuthOpen] = useState(false);
+
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.logo}>
-        <div className={styles.mark}>
-          <span>⚙</span>
-          <small>STATOR</small>
-        </div>
+        <img src={logo} alt="StatorData logo" className={styles.logoImg} />
         <div className={styles.name}>Stator<em>data</em>.com</div>
       </Link>
 
@@ -27,8 +28,11 @@ export default function Header() {
       </div>
 
       <div className={styles.right}>
-        <Link to="/dang-nhap" className={styles.loginBtn}>⚙ Đăng nhập</Link>
+        <button type="button" className={styles.loginBtn} onClick={() => setAuthOpen(true)}>
+          ⚙ Đăng nhập
+        </button>
       </div>
+      <AuthModal open={authOpen} onClose={() => setAuthOpen(false)} />
     </header>
   );
 }

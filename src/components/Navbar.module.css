@@ -1,11 +1,26 @@
 .nav {
   background: var(--navy2);
-  display: flex; align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-bottom: 2px solid var(--blue2);
-  overflow-x: auto; position: sticky; top: 96px; z-index: 140;
+  overflow-x: auto;
+  position: sticky;
+  top: 96px;
+  z-index: 140;
 }
 .nav::-webkit-scrollbar { height: 2px; }
 .nav::-webkit-scrollbar-thumb { background: var(--blue2); }
+
+.navInner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .item {
   color: rgba(255,255,255,.7);
   font-size: 12px; font-weight: 500;

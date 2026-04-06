@@ -10,51 +10,63 @@ export const NAV_ITEMS = [
 
 export const SUBNAV_ITEMS = [
   { label: 'Bắt đầu tính toán', path: '/' },
-  { label: '3 pha, 1 tốc độ', path: '/tinh-toan/3pha-1tocdo' },
-  { label: '3 pha, 2 tốc độ (1/2)', path: '/tinh-toan/3pha-2tocdo' },
-  { label: '1 pha', path: '/tinh-toan/1pha' },
+  { label: '3 pha, 1 tốc độ', path: '#' },
+  { label: '3 pha, 2 tốc độ (1/2)', path: '#' },
+  { label: '1 pha', path: '#' },
   { label: 'Hướng dẫn kỹ thuật', path: '/huong-dan' },
 ];
 
 export const HERO_FEATURES = [
-  'Vô vô hoá thiết kế và tính toán dữ liệu dây quấn động cơ Cảm ứng',
-  'Hỗ trợ kỹ thuật thiết kế và tính toán dữ liệu dây quấn động cơ cảm ứng',
-  'Tính toán số liệu dây quấn stator Motor 1 tốc độ và 2 tốc độ',
-  'Tính toán số vòng dây, đường kính dây, công suất định mức động cơ',
-  'Ứng dụng cho động cơ 1 pha và 3 pha với đầy đủ sơ đồ mạch nhánh',
+  'Phần mềm Statordata.com tối ưu hoá, thiết kế - tính toán dữ liệu dây quấn động cơ Cảm ứng.',
+  'Hổ trợ kỹ thuật trong quá trình thiết kế và tính toán dữ liệu dây quấn stator động cơ cảm ứng',
+  'Thiết kế - Tính toán dữ liệu dây quấn stator hoặc Rotor dây quấn 1 lớp hay 2 lớp.',
+  'Tính toán dữ liệu số vòng mỗi pha dây quấn hay số vòng mỗi bối dây quấn động cơ.',
+  'Tính toán đường kính dây đồng có tiết diện tròn không có lớp cách điện.',
+  'Tính toán công suất định mức động cơ và tính toán dòng điện định mức động cơ.',
+  'Ứng dụng cho động cơ không đồng bộ hoặc động cơ đồng bộ, loại stator hoặc rotor dây quấn, 1 pha và 3 pha.'
 ];
 
 export const ANALYSIS_RESULTS = [
-  { title: 'Kiểm tra cực tốt nhất', desc: 'có thể thực hiện cho động cơ cảm ứng.' },
-  { title: 'Thống số sơ đồ khai triển', desc: 'dây quấn stator động cơ theo tiêu chuẩn IEC.' },
-  { title: 'Góc lệch vị trí', desc: 'không gian giữa hai pha liên tiếp trong stator.' },
-  { title: 'Quan hệ từ thông cực đại', desc: 'trên mỗi cực từ tại khe hở không khí.' },
-  { title: 'Số vòng dây quấn', desc: 'cho mỗi pha dây quấn stator động cơ.' },
-  { title: 'Số vòng mỗi bối dây', desc: 'và chọn tải số vòng tối ưu nhất.' },
-  { title: 'Đường kính dây đồng', desc: 'tốt nhất không có lớp men cách điện d.' },
-  { title: 'Các thông số định mức', desc: 'toàn diện của động cơ theo chuẩn IEC 60034.' },
+  '01: Kiểm tra cực tốt nhất có thể thực hiện cho động cơ.',
+  '02: Thông số xây dựng sơ đồ khai triển dây quấn stator động cơ.',
+  '03: Góc lệch vị trí không gian giữa hai pha liên tiếp.',
+  '04: Quan hệ từ thông cực đại trên mỗi cực từ với tử cảm cực đại tại khe hở không khí.',
+  '05: Số vòng dây quấn cho mỗi pha dây quấn stator động cơ.',
+  '06: Số vòng dây quấn cho mỗi bối dây và chọn lại số vòng dây quấn cho mỗi bối dây.',
+  '07: Đường kính dây đồng có tiết diện tròn không có lớp men cách điện d.',
+  '08: Các thông số định mức động cơ.',
 ];
 
 export const WHY_ITEMS = [
   {
-    num: '01', title: 'Làm việc dựa trên phần mềm Statordata.com',
-    desc: 'Làm việc trực tiếp với các thông số đầu vào của stator do người dùng cung cấp, đáp ứng các thao tác tính toán và cho các kết quả chính xác, trình thiết kế dây quấn stator chuyên nghiệp.',
+    num: '01',
+    title: 'Làm việc dựa trên phần mềm Statordata.com',
+    desc: 'Làm việc trực tiếp với các thông số đầu vào của stator do người dùng cung cấp, đảm bảo tính linh hoạt và chính xác trong quá trình thiết kế và tính toán dữ liệu dây quấn stator.',
   },
   {
-    num: '02', title: 'Hỗ trợ tính toán thống số từ vòng dây',
-    desc: 'Hỗ trợ bổ sung và tính toán dữ liệu sau khi lựa chọn thông số từ vòng dây quấn stator theo chế độ 3 pha Diện/Cylinder đầy đủ.',
+    num: '02',
+    title: 'Hỗ trợ nhiều loại động cơ',
+    desc: 'Hỗ trợ thiết kế và tính toán dữ liệu cho nhiều loại động cơ, bao gồm động cơ 1 pha, động cơ 3 pha 1 tốc độ và động cơ 3 pha hai tốc độ (đổi cực Dahlander).',
   },
   {
-    num: '03', title: 'Phân tích và xây dựng sơ đồ khai triển',
-    desc: 'Phân tích thông số kỹ thuật và xây dựng sơ đồ khai triển dây quấn stator Motor hoặc rotor, kết cấu đồng thanh chuyên nghiệp.',
+    num: '03',
+    title: 'Phân tích và xây dựng sơ đồ khai triển',
+    desc: 'Phân tích thông số xây dựng sơ đồ khai triển dây quấn stator hoặc rotor động cơ cảm ứng.',
   },
   {
-    num: '04', title: 'Kiểm tra và đánh giá đầu ra',
-    desc: 'Kiểm tra đánh giá đầu ra các thông số kỹ thuật số mô tả thống số cực đại tại mức từ động cơ, đảm bảo độ chính xác cao nhất.',
+    num: '04',
+    title: 'Kiểm tra và đánh giá đầu ra',
+    desc: 'Kiểm tra đánh giá quan hệ các thông số mật độ từ thông cực đại tại mỗi vị trí trên stator hoặc rotor dây quấn.',
   },
   {
-    num: '05', title: 'Tính toán và chuẩn hoá toàn diện',
-    desc: 'Tính toán và chuẩn hoá các thông số động cơ dựa trên những tham số đầu vào, chuẩn hóa theo tiêu chuẩn IEC quốc tế.',
+    num: '05',
+    title: 'Tính toán và chuẩn hoá toàn diện',
+    desc: 'Tính toán và chuẩn hóa các thông số định mức nhằm đảm bảo động cơ làm việc ổn định và hiệu quả.',
+  },
+  {
+    num: '06',
+    title: 'Tiết kiệm thời gian tính toán',
+    desc: 'Tiết kiệm đến 70% thời gian tính toán, giảm sai sót khi thiết kế - tính toán dữ liệu thủ công.',
   },
 ];
 
