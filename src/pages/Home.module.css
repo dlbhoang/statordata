@@ -16,7 +16,9 @@
   gap:28px; align-items:flex-start; position:relative; z-index:1;
 }
 .heroCard {
-  background:rgba(255,255,255,.08); backdrop-filter:blur(12px);
+  background:rgba(255,255,255,.08);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,.14); border-radius:14px; overflow:hidden;
   box-shadow:0 8px 32px rgba(0,0,0,.28);
 }
@@ -33,7 +35,7 @@
   font-size:10.5px; font-weight:700; padding:3px 10px; border-radius:20px;
   border:1px solid rgba(0,200,224,.3); letter-spacing:.8px; margin-bottom:8px; text-transform:uppercase;
 }
-.heroContent {}
+
 .heroBadge {
   display:inline-flex; align-items:center; gap:8px;
   background:rgba(240,165,0,.15); color:var(--gold2);
@@ -89,7 +91,9 @@
 .magTitleLink:hover h4 { color:#fff; }
 .magGrid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
 .magCard {
-  background:rgba(255,255,255,.06); backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.06);
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
   border:1px solid rgba(255,255,255,.09); border-radius:10px; padding:18px;
 }
 .magCard h4 {
@@ -447,6 +451,98 @@
   border-radius: 5px;
 }
 
+/* CHECK BANNER */
+.checkBannerSection { padding: 32px 24px; background: linear-gradient(135deg, rgba(0,200,224,.08) 0%, rgba(242,165,0,.06) 100%); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.checkBanner { display: flex; align-items: center; justify-content: space-between; gap: 32px; background: rgba(255,255,255,.95); border: 1.5px solid var(--cyan); border-radius: 14px; padding: 28px 32px; box-shadow: 0 8px 32px rgba(0,200,224,.15); }
+.checkBanner h2 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.2; }
+.checkBanner h2 em { font-style: normal; color: var(--blue2); }
+.checkBanner p { font-size: 14px; color: var(--text2); line-height: 1.6; margin: 0; }
+.checkBanner .btn { margin: 0; white-space: nowrap; }
+
+/* TAB 01 pixel-like layout */
+.quickWireCard {
+  background: #fff;
+  border: 1px solid #e3e7ef;
+  border-radius: 10px;
+  padding: 18px 18px 14px;
+  box-shadow: var(--shadow);
+}
+.quickWireTitle {
+  font-size: 31px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+  color: #1f3da1;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.quickWireHeading {
+  margin: 0 0 16px;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #d61f26;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.quickWireGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.05fr;
+  gap: 22px;
+}
+.quickWireSub {
+  margin: 0 0 8px;
+  color: #153a95;
+  font-size: 13px;
+  font-weight: 700;
+}
+.quickWireRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.quickWireRow label {
+  font-size: 12.5px;
+  color: #202a3c;
+  line-height: 1.2;
+}
+.quickWireInput {
+  width: 82px;
+  height: 22px;
+  border: 1px solid #e6b4b6;
+  border-radius: 0;
+  background: #fff;
+  color: #1c2742;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+.quickWireInput:focus { outline: none; border-color: #d48a8c; }
+.quickWireResultWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.quickWireResultWrap span {
+  color: #153a95;
+  font-size: 12px;
+  font-weight: 700;
+}
+.quickWireTotal {
+  margin-top: 10px;
+  padding-top: 6px;
+  border-top: 1px dashed #d3d9e7;
+  font-size: 13px;
+  color: #163a95;
+  line-height: 1.4;
+}
+.quickWireTotal strong { color: #153a95; }
+.quickWireTotal em {
+  font-style: normal;
+  color: #d61f26;
+  font-weight: 800;
+}
+
 /* CALCULATION LINKS */
 .calcSection { background: #f8f9fc; padding: 32px 24px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .calcGrid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 16px; }
@@ -465,6 +561,13 @@
   .whyItemsGrid,
   .whyBottomGrid,
   .checkTabBar,
-  .checkPanelGrid { grid-template-columns: 1fr; }
-  .checkBanner { flex-direction: column; align-items: flex-start; }
+  .checkPanelGrid,
+  .checkBanner { 
+    grid-template-columns: 1fr; 
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+  .quickWireGrid { grid-template-columns: 1fr; }
+  .quickWireTitle { font-size: 20px; }
+  .quickWireHeading { font-size: 14px; }
 }

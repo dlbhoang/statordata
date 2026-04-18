@@ -45,7 +45,7 @@ export default function SoDo() {
 
         <div className={styles.grid}>
           {DIAGRAMS.map(d => (
-            <div className="card" key={d.id}>
+            <div className="card" key={d.title}>
               <div className="card-header">
                 <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
                 <h4>{d.title}</h4>

@@ -10,8 +10,13 @@ import HocTap           from './pages/HocTap';
 import TinhToan3Pha1Toc from './pages/TinhToan3Pha1Toc';
 import TinhToan3Pha2Toc from './pages/TinhToan3Pha2Toc';
 import TinhToan1Pha      from './pages/TinhToan1Pha';
+import TinhToan3Pha1Toc1Lop from './pages/TinhToan3Pha1Toc1Lop';
+import TinhToan3Pha1Toc2Lop from './pages/TinhToan3Pha1Toc2Lop';
+import TinhToan1PhaSin from './pages/TinhToan1PhaSin';
 import SoDo             from './pages/SoDo';
 import HuongDan         from './pages/HuongDan';
+import PdfContentPage   from './pages/PdfContentPage';
+import ThuocTinhNhanhHeThong from './pages/ThuocTinhNhanhHeThong';
 import LienHe           from './pages/LienHe';
 import Group            from './pages/Group';
 import NotFound         from './pages/NotFound';
@@ -27,10 +32,19 @@ export default function App() {
           <Route path="/"                          element={<Home />} />
           <Route path="/ky-thuat"                  element={<KyThuat />} />
           <Route path="/dieu-khoan"                element={<DieuKhoan />} />
-          <Route path="/hoc-tap/:loai"             element={<HocTap />} />          <Route path="/tinh-toan/3pha-2tocdo"     element={<TinhToan3Pha2Toc />} />
+          <Route path="/hoc-tap/:loai"             element={<HocTap />} />
+          <Route path="/hoc-tap/*"                 element={<PdfContentPage />} />
+          <Route path="/tinh-toan/3pha-1tocdo"     element={<TinhToan3Pha1Toc />} />
+          <Route path="/tinh-toan/3pha-1tocdo/1lop" element={<TinhToan3Pha1Toc1Lop />} />
+          <Route path="/tinh-toan/3pha-1tocdo/2lop" element={<TinhToan3Pha1Toc2Lop />} />
+          <Route path="/tinh-toan/3pha-2tocdo"     element={<TinhToan3Pha2Toc />} />
           <Route path="/tinh-toan/1pha"            element={<TinhToan1Pha />} />
+          <Route path="/tinh-toan/1pha/sin"        element={<TinhToan1PhaSin />} />
           <Route path="/so-do-mach"                element={<SoDo />} />
           <Route path="/huong-dan"                 element={<HuongDan />} />
+          <Route path="/huong-dan/thuoc-tinh-nhanh-he-thong" element={<ThuocTinhNhanhHeThong />} />
+          <Route path="/huong-dan/*"               element={<PdfContentPage />} />
+          <Route path="/so-do-mach/*"              element={<PdfContentPage />} />
           <Route path="/lien-he"                   element={<LienHe />} />
           <Route path="/group"                     element={<Group />} />
           <Route path="*"                          element={<NotFound />} />

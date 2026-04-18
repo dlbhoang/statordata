@@ -31,7 +31,11 @@ export default function Home() {
   const tauNum3 = p3z / g3tau, tauDen3 = p3p / g3tau;
   const g3q    = gcd(p3z, p3p * 3);
   const qNum3  = p3z / g3q, qDen3 = (p3p * 3) / g3q;
-  const isInt3 = Number.isInteger(q3);
+  const qInt3 = Math.round(q3);
+  const isEvenQ = qInt3 % 2 === 0;
+  const d1_3 = tauInt3;
+  const d2_3 = tauInt3 - Math.round(q3);
+  const d3_3 = tauInt3 - 2 * Math.round(q3);
 
   /* ── Tab 04: 1 pha ── */
   const [p4z, setP4z] = useState(36);
@@ -39,28 +43,42 @@ export default function Home() {
   const [p4f, setP4f] = useState(50);
   const ndb4   = Math.round((120 * p4f) / p4p);
   const tau4   = Math.round(p4z / p4p);
-  const qo4    = Math.round((tau4 * 2) / 3);
-  const qp4    = tau4 - qo4;
+  const d1_4 = tau4;
+  const d2_4 = Math.round(tau4 / 2);
 
-  /* ── Tab 01: quy đổi dây dẫn ── */
-  const [p1s, setP1s] = useState('1.500');
-  const [p1d, setP1d] = useState('1.38');
-  const handleS = (v) => {
-    setP1s(v);
-    const s = parseFloat(v) || 0;
-    setP1d(Math.sqrt((4 * s) / Math.PI).toFixed(2));
-  };
-  const handleD = (v) => {
-    setP1d(v);
-    const d = parseFloat(v) || 0;
-    setP1s(((Math.PI * d * d) / 4).toFixed(3));
+  /* ── Tab 01: quy đổi dây dẫn theo PDF ── */
+  const [wireSet, setWireSet] = useState([
+    { d: '1', n: '1' },
+    { d: '1.05', n: '2' },
+    { d: '1.1', n: '2' },
+    { d: '0', n: '0' },
+    { d: '0', n: '0' },
+    { d: '0', n: '0' },
+    { d: '0', n: '0' },
+  ]);
+  const dt = Math.sqrt(
+    wireSet.reduce((sum, item) => {
+      const d = parseFloat(item.d) || 0;
+      const n = parseFloat(item.n) || 0;
+      return sum + (d * d * n);
+    }, 0),
+  );
+
+  const equivalentDs = wireSet.map((item) => {
+    const d = parseFloat(item.d) || 0;
+    const n = parseFloat(item.n) || 0;
+    return d * Math.sqrt(n);
+  });
+
+  const updateWire = (idx, key, value) => {
+    setWireSet((prev) => prev.map((item, i) => (i === idx ? { ...item, [key]: value } : item)));
   };
 
   /* ── Active tab ── */
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
-    { num: '01', title: 'Quy đổi đường tròn dây dẫn tiết diện tròn, dẹt' },
+    { num: '01', title: 'Qui đổi đường kính dây đồng tiết diện tròn: dₙ (mm).' },
     { num: '02', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },
     { num: '03', title: 'Kiểm tra phân loại động cơ 3 pha 1 tốc độ' },
     { num: '04', title: 'Kiểm tra phân loại động cơ 1 pha' },
@@ -92,12 +110,23 @@ export default function Home() {
             <ul className={styles.heroList}>
               {HERO_FEATURES.map((f, i) => <li key={i}>{f}</li>)}
             </ul>
-            <div className={styles.heroActions} />
-            <div className={styles.heroNote}>→ Thuộc tính bảo vệ nội dung. Gửi file PDF qua email để nhận hỗ trợ kỹ thuật.</div>
-          </div>
+            <div className={styles.heroActions} />          </div>
         </div>
       </section>
       <Subnav />
+
+      {/* ── CHECK BANNER ── */}
+      <section className={styles.checkBannerSection}>
+        <div className="page-wrap">
+          <div className={styles.checkBanner}>
+            <div>
+              <h2>Dành cho bạn: <em>Kiểm tra nhanh</em> thiết kế động cơ</h2>
+              <p>Nhập thông số định danh để kiểm tra nhanh phân loại và cấu hình dây quấn</p>
+            </div>
+            <Link to="/tinh-toan/3pha-1tocdo" className="btn btn-gold">🚀 Dùng thử ngay</Link>
+          </div>
+        </div>
+      </section>
 
       {/* ── CALCULATION LINKS ── */}
       <section className={styles.calcSection}>
@@ -108,17 +137,17 @@ export default function Home() {
               <h4>Bắt đầu tính toán</h4>
               <p>Khởi động công cụ tính toán chuyên nghiệp</p>
             </Link>
-            <Link to="#" className={styles.calcItem}>
+            <Link to="/tinh-toan/3pha-1tocdo" className={styles.calcItem}>
               <div className={styles.calcIcon}>⚡</div>
               <h4>3 pha, 1 tốc độ</h4>
               <p>Tính toán động cơ 3 pha tốc độ đơn</p>
             </Link>
-            <Link to="#" className={styles.calcItem}>
+            <Link to="/tinh-toan/3pha-2tocdo" className={styles.calcItem}>
               <div className={styles.calcIcon}>🔄</div>
               <h4>3 pha, 2 tốc độ (1/2)</h4>
               <p>Tính toán động cơ 3 pha tốc độ kép</p>
             </Link>
-            <Link to="#" className={styles.calcItem}>
+            <Link to="/tinh-toan/1pha" className={styles.calcItem}>
               <div className={styles.calcIcon}>🔌</div>
               <h4>1 pha</h4>
               <p>Tính toán động cơ 1 pha</p>
@@ -159,9 +188,7 @@ export default function Home() {
                 <span className="tag green" style={{marginLeft:'auto'}}>HD</span>
               </div>
               <div className="card-body">
-                <div className="video-block">
-                  <img src={appGif} alt="Video demo ứng dụng" className={styles.videoGif} />
-                </div>
+                <div className="video-block" style={{display:'flex', justifyContent:'center', alignItems:'center'}}>                </div>
               </div>
             </div>
           </div>
@@ -259,7 +286,7 @@ export default function Home() {
         <div className={styles.checkBanner}>
           <div>
             <h2>Dành cho bạn: <em>Kiểm tra nhanh</em> thiết kế động cơ</h2>
-            <p>Nhập thông số định danh để kiểm tra nhanh phân loại và cấu hình dây quấn</p>
+            <p>Trong quá trình làm tên và đơn vị viết đúng theo như trên: không thay đổi hay chế chào gì thêm.</p>
           </div>
           <Link to="/tinh-toan/3pha-1tocdo" className="btn btn-gold">🚀 Dùng thử ngay</Link>
         </div>
@@ -281,36 +308,57 @@ export default function Home() {
 
           {/* TAB 01 — Quy đổi dây dẫn */}
           {activeTab === 0 && (
-            <div className={styles.checkPanelGrid}>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>01</span>
-                  <h5>Quy đổi đường kính dây dẫn</h5>
+            <div className={styles.quickWireCard}>
+              <h4 className={styles.quickWireHeading}>
+                01: QUI ĐỔI NHIỀU ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN, VỀ TỔNG ĐƯỜNG KÍNH DÂY ĐỒNG CÓ TIẾT DIỆN LỚN NHẤT (KHÔNG TÍNH LỚP MEN CÁCH ĐIỆN).
+              </h4>
+              <div className={styles.quickWireGrid}>
+                <div>
+                  <p className={styles.quickWireSub}>Nhập: Đường kính dây đồng tiết diện tròn thành phần tương đương.</p>
+                  {wireSet.map((item, idx) => (
+                    <div key={`wire-d-${idx}`} className={styles.quickWireRow}>
+                      <label>Đường kính dây đồng tròn: d{idx + 1} (mm)</label>
+                      <input
+                        className={styles.quickWireInput}
+                        type="number"
+                        step="0.01"
+                        value={item.d}
+                        onChange={(e) => updateWire(idx, 'd', e.target.value)}
+                      />
+                    </div>
+                  ))}
                 </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Tiết diện dây dẫn <strong>S (mm²)</strong></span>
-                    <input className={styles.inp} type="number" step="0.01" value={p1s} onChange={e => handleS(e.target.value)} />
-                  </div>
-                  <div className={styles.divider} />
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Đường kính dây <strong>d (mm)</strong></span>
-                    <input className={styles.inp} type="number" step="0.01" value={p1d} onChange={e => handleD(e.target.value)} />
-                  </div>
-                  <div className={styles.resultBox}>
-                    <span className={styles.resultLabel}>✓ Kết quả</span>
-                    <span className={styles.resultVal}>d = {parseFloat(p1d).toFixed(2)} mm &nbsp;|&nbsp; S = {parseFloat(p1s).toFixed(3)} mm²</span>
-                  </div>
+
+                <div>
+                  <p className={styles.quickWireSub}>Nhập: Số sợi chập có tiết diện bằng nhau</p>
+                  {wireSet.map((item, idx) => (
+                    <div key={`wire-n-${idx}`} className={styles.quickWireRow}>
+                      <label>Số sợi chập tương đương nhau: N{idx + 1}</label>
+                      <input
+                        className={styles.quickWireInput}
+                        type="number"
+                        step="1"
+                        value={item.n}
+                        onChange={(e) => updateWire(idx, 'n', e.target.value)}
+                      />
+                    </div>
+                  ))}
                 </div>
-              </div>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>01</span>
-                  <h5>Hướng dẫn</h5>
-                </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.infoBox}>Nhập <strong>tiết diện S</strong> để tính đường kính dây dẫn tương đương, hoặc nhập <strong>đường kính d</strong> để tính tiết diện.</div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>Áp dụng cho dây dẫn tiết diện tròn. Với dây dẹt, sử dụng tiết diện thực của dây.</div>
+
+                <div>
+                  <p className={styles.quickWireSub}>Kết quả: Một dây đồng lớn có tiết diện tương đương.</p>
+                  {equivalentDs.map((val, idx) => (
+                    <div key={`wire-r-${idx}`} className={styles.quickWireRow}>
+                      <label>Một đường kính dây đồng tròn: d{idx + 1}</label>
+                      <div className={styles.quickWireResultWrap}>
+                        <input className={styles.quickWireInput} type="text" readOnly value={val.toFixed(4)} />
+                        <span>(mm)</span>
+                      </div>
+                    </div>
+                  ))}
+                  <div className={styles.quickWireTotal}>
+                    <strong>Kết quả:</strong> Tổng đường kính dây đồng lớn nhất có tiết diện tương đương: d = <em>{dt.toFixed(4)}</em> (mm)
+                  </div>
                 </div>
               </div>
             </div>
@@ -322,7 +370,7 @@ export default function Home() {
               <div className={styles.checkCard}>
                 <div className={styles.checkHead}>
                   <span className={styles.checkNum}>02</span>
-                  <h5>Kiểm tra số cực: 2p (Poles)</h5>
+                  <h5>Kiểm tra nhanh số cực: 2p (Poles)</h5>
                 </div>
                 <div className={styles.checkBody}>
                   <div className={styles.inpGroup}>
@@ -336,8 +384,9 @@ export default function Home() {
                   </div>
                   <div className={styles.resultBox}>
                     <span className={styles.resultLabel}>✓ Kết quả</span>
-                    <span className={styles.resultVal}>Số cực: {poles2}P</span>
+                    <span className={styles.resultVal}>Tính toán số cực: 2P = {poles2} (cực)</span>
                   </div>
+                  <div className={styles.infoBox} style={{marginTop:8}}>Kết quả:</div>
                 </div>
               </div>
               <div className={styles.checkCard}>
@@ -346,8 +395,9 @@ export default function Home() {
                   <h5>Hướng dẫn</h5>
                 </div>
                 <div className={styles.checkBody}>
-                  <div className={styles.infoBox}>Tốc độ đồng bộ <strong>N<sub>db</sub></strong> là tốc độ của từ trường quay trong stator, phụ thuộc vào tần số nguồn điện và số cực của động cơ.</div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>Kết quả <strong>2P</strong> phải là số chẵn. Nếu kết quả lẻ, kiểm tra lại thông số đầu vào.</div>
+                  <div className={styles.infoBox}>Nhập thông định danh: Tốc độ đồng bộ Ndb và Tần số vận hành f (Hz).</div>
+                  <div className={styles.infoBox} style={{marginTop:8}}>Công thức tính như sau: 2P = (120.f) / Ndb.</div>
+                  <div className={styles.infoBox} style={{marginTop:8}}>Tính toán Số cực: 2p (Poles).</div>
                   <div className={styles.tagRow}>
                     <span className={styles.tagBlue}>2P = 2 → 3000 RPM</span>
                     <span className={styles.tagBlue}>2P = 4 → 1500 RPM</span>
@@ -365,9 +415,12 @@ export default function Home() {
               <div className={styles.checkCard}>
                 <div className={styles.checkHead}>
                   <span className={styles.checkNum}>03</span>
-                  <h5>Phân loại động cơ 3 pha 1 tốc độ</h5>
+                  <h5>Kiểm tra phân loại động cơ 3 pha 1 tốc độ</h5>
                 </div>
                 <div className={styles.checkBody}>
+                  <div className={styles.infoBox} style={{marginBottom:8}}>
+                    Nhập thông định danh: Số rãnh stator Z, Số cực 2p (Poles), Tần số vận hành F (Hz).
+                  </div>
                   <div className={styles.inpGroup}>
                     <span className={styles.inpLabel}>Số rãnh Stator <strong>Z</strong></span>
                     <input className={styles.inp} type="number" value={p3z} onChange={e => setP3z(+e.target.value)} />
@@ -386,38 +439,40 @@ export default function Home() {
                   </div>
                   <div className={styles.resultBox} style={{marginTop:6}}>
                     <span className={styles.resultLabel}>Bước cực từ τ</span>
-                    <span className={styles.resultVal}>{tauDen3 === 1 ? tauNum3 : `${tauNum3}/${tauDen3}`} rãnh/pha/cực</span>
+                    <span className={styles.resultVal}>{tauDen3 === 1 ? tauNum3 : `${tauNum3}/${tauDen3}`} (rãnh/1 pha/cực)</span>
                   </div>
                   <div className={styles.resultBox} style={{marginTop:6}}>
                     <span className={styles.resultLabel}>Số rãnh/pha/cực q</span>
-                    <span className={styles.resultVal}>{qDen3 === 1 ? qNum3 : `${qNum3}/${qDen3}`} rãnh/pha/cực</span>
+                    <span className={styles.resultVal}>{qDen3 === 1 ? qNum3 : `${qNum3}/${qDen3}`} (rãnh/pha/cực)</span>
                   </div>
-                  <div className={isInt3 ? styles.classifyInteger : styles.classifyFraction}>
-                    ✓ Phân loại: {isInt3 ? 'Số Nguyên' : 'Phân số tối giản'}
+                  <div className={isEvenQ ? styles.classifyInteger : styles.classifyFraction}>
+                    Vậy kết luận như sau: {isEvenQ ? 'Thuộc loại dây quấn (số nguyên).' : 'Thuộc loại dây quấn (phân số tối giản).'}
+                  </div>
+                  <div className={styles.resultBox} style={{marginTop:6}}>
+                    <span className={styles.resultLabel}>Bước dây d₁</span>
+                    <span className={styles.resultVal}>{d1_3} rãnh</span>
+                  </div>
+                  <div className={styles.resultBox} style={{marginTop:6}}>
+                    <span className={styles.resultLabel}>Bước dây d₂</span>
+                    <span className={styles.resultVal}>{d2_3} rãnh</span>
+                  </div>
+                  <div className={styles.resultBox} style={{marginTop:6}}>
+                    <span className={styles.resultLabel}>Bước dây d₃</span>
+                    <span className={styles.resultVal}>{d3_3} rãnh</span>
                   </div>
                 </div>
               </div>
               <div className={styles.checkCard}>
                 <div className={styles.checkHead}>
                   <span className={styles.checkNum}>03</span>
-                  <h5>Phân bố dây quấn</h5>
+                  <h5>Kết luận</h5>
                 </div>
                 <div className={styles.checkBody}>
-                  <div className={styles.infoBox} style={{marginBottom:10}}>
-                    Xét giá trị τ chia hết cho cái nào thì thuộc loại dây quấn đó.{' '}
-                    <strong style={{color:'#c0392b'}}>Có 3 giá trị là: 2, 3 và 4.</strong>
-                  </div>
-                  <div className={styles.distList}>
-                    <div className={tauInt3 % 2 === 0 ? styles.distActive : styles.distInactive}>
-                      Phân bố Q<sub>A</sub> = Q<sub>B</sub> được sử dụng khi bước cực từ là bội số của <strong>2</strong>
-                    </div>
-                    <div className={tauInt3 % 3 === 0 ? styles.distActive : styles.distInactive}>
-                      Phân bố Q<sub>A</sub> = 2.Q<sub>B</sub> được sử dụng khi bước cực từ là bội số của <strong>3</strong>
-                    </div>
-                    <div className={tauInt3 % 4 === 0 ? styles.distActive : styles.distInactive}>
-                      Phân bố Q<sub>A</sub> = 3.Q<sub>B</sub> được sử dụng khi bước cực từ là bội số của <strong>4</strong>
-                    </div>
-                  </div>
+                  <div className={styles.infoBox}>Kết quả:</div>
+                  <div className={styles.infoBox}>Công thức tính như sau: (tính toán ẩn hết công thức).</div>
+                  <div className={styles.infoBox}>Nếu giá trị q là số chẵn thì thuộc loại dây quấn (số nguyên).</div>
+                  <div className={styles.infoBox} style={{marginTop:8}}>Nếu giá trị q là số lẻ thì thuộc loại dây quấn (phân số tối giản).</div>
+                  <div className={styles.infoBox} style={{marginTop:8}}>Thuộc loại nào thì hiện tên loại đó lên là được.</div>
                 </div>
               </div>
             </div>
@@ -429,9 +484,12 @@ export default function Home() {
               <div className={styles.checkCard}>
                 <div className={styles.checkHead}>
                   <span className={styles.checkNum}>04</span>
-                  <h5>Kiểm tra phân loại động cơ 1 pha</h5>
+                  <h5>Kiểm tra phân loại động cơ 1 pha.</h5>
                 </div>
                 <div className={styles.checkBody}>
+                  <div className={styles.infoBox} style={{marginBottom:8}}>
+                    Nhập thông định danh: Số rãnh stator Z, Số cực 2p (Poles), Tần số vận hành F (Hz).
+                  </div>
                   <div className={styles.inpGroup}>
                     <span className={styles.inpLabel}>Số rãnh Stator <strong>Z</strong></span>
                     <input className={styles.inp} type="number" value={p4z} onChange={e => setP4z(+e.target.value)} />
@@ -450,33 +508,45 @@ export default function Home() {
                   </div>
                   <div className={styles.resultBox} style={{marginTop:6}}>
                     <span className={styles.resultLabel}>Bước cực từ τ</span>
-                    <span className={styles.resultVal}>{tau4} rãnh/cực</span>
+                    <span className={styles.resultVal}>{tau4} (rãnh/1 pha/cực)</span>
                   </div>
                   <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>✓ Phân bổ dây quấn</span>
-                    <span className={styles.resultVal}>Q<sub>o</sub> = 2·Q<sub>p</sub></span>
+                    <span className={styles.resultLabel}>✓ Quy tắc phân bố</span>
+                    <span className={styles.resultVal}>Xét giá trị τ chia hết cho 2, 3 hoặc 4</span>
+                  </div>
+                  <div className={styles.resultBox} style={{marginTop:6}}>
+                    <span className={styles.resultLabel}>Bước dây d₁</span>
+                    <span className={styles.resultVal}>{d1_4} rãnh</span>
+                  </div>
+                  <div className={styles.resultBox} style={{marginTop:6}}>
+                    <span className={styles.resultLabel}>Bước dây d₂</span>
+                    <span className={styles.resultVal}>{d2_4} rãnh</span>
                   </div>
                 </div>
               </div>
               <div className={styles.checkCard}>
                 <div className={styles.checkHead}>
                   <span className={styles.checkNum}>04</span>
-                  <h5>Loại phân bổ dây quấn</h5>
+                  <h5>Kết luận phân bố QA và QB</h5>
                 </div>
                 <div className={styles.checkBody}>
-                  <div className={styles.infoBox}>
-                    Động cơ 1 pha có cuộn <strong>chính (main)</strong> và cuộn <strong>phụ (auxiliary)</strong>. Tỉ lệ phân bổ rãnh được xác định theo bước cực từ τ.
+                  <div className={styles.infoBox} style={{marginBottom:8}}>
+                    Khi tính song giá trị τ. Xét giá trị τ chia hết cho cái nào thì thuộc loại dây quấn loại đó.
                   </div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>
-                    <strong>Bước cực từ τ = {tau4}</strong><br />
-                    → Q<sub>o</sub> (cuộn chính) ≈ {qo4} rãnh<br />
-                    → Q<sub>p</sub> (cuộn phụ) ≈ {qp4} rãnh<br />
-                    → Tổng: {qo4} + {qp4} = {qo4 + qp4}{qo4 + qp4 === tau4 ? ' = τ ✓' : ' (kiểm tra lại)'}
+                  <div className={styles.infoBox} style={{marginBottom:10}}>
+                    Xét giá trị τ chia hết cho cái nào thì thuộc loại dây quấn đó.{' '}
+                    <strong style={{color:'#c0392b'}}>Có 3 giá trị là: 2, 3 và 4.</strong>
                   </div>
-                  <div className={styles.tagRow} style={{marginTop:10}}>
-                    <span className={styles.tagBlue}>1 pha tụ khởi động</span>
-                    <span className={styles.tagBlue}>1 pha tụ thường trực</span>
-                    <span className={styles.tagGreen}>Điện trở phụ</span>
+                  <div className={styles.distList}>
+                    <div className={tau4 % 2 === 0 ? styles.distActive : styles.distInactive}>
+                      Phân bố QA = QB được sử dụng khi bước cực từ τ là bội số của <strong>2</strong>
+                    </div>
+                    <div className={tau4 % 3 === 0 ? styles.distActive : styles.distInactive}>
+                      Phân bố QA = 2.QB được sử dụng khi bước cực từ τ là bội số của <strong>3</strong>
+                    </div>
+                    <div className={tau4 % 4 === 0 ? styles.distActive : styles.distInactive}>
+                      Phân bố QA = 3.QB được sử dụng khi bước cực từ τ là bội số của <strong>4</strong>
+                    </div>
                   </div>
                 </div>
               </div>

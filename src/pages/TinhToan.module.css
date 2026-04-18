@@ -9,4 +9,7 @@
 .resRow { display:flex; align-items:center; justify-content:space-between; padding:6px 0; border-bottom:1px solid #f8f9fc; font-size:12.5px; }
 .resRow:last-child { border-bottom:none; }
 .resLabel { color:var(--text2); font-weight:500; }
+.guide { font-size:12px; line-height:1.5; color:var(--text2); }
+.guide p { margin:4px 0; }
+.guide strong { color:var(--navy); }
 @media(max-width:720px) { .layout { grid-template-columns:1fr; } }
