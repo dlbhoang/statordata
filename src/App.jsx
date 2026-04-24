@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Topbar from './components/Topbar';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
@@ -21,9 +21,11 @@ import LienHe           from './pages/LienHe';
 import Group            from './pages/Group';
 import NotFound         from './pages/NotFound';
 
-export default function App() {
+function AppContent() {
+  const { pathname } = useLocation();
+
   return (
-    <BrowserRouter>
+    <>
       <Topbar />
       <Header />
       <Navbar />
@@ -51,6 +53,39 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      {pathname === '/' && (
+        <div className="locationMapSection">
+          <div className="page-wrap">
+            <div className="locationMapCard">
+              <div className="locationMapHeader">
+                <div className="locationMapIcon">📍</div>
+                <div>
+                  <strong>Vị trí hiện tại của công ty</strong>
+                  <p>Giới thiệu trụ sở và địa điểm tư vấn kỹ thuật tại Đắk Lắk, Việt Nam.</p>
+                </div>
+              </div>
+              <div className="locationMapFrame">
+                <iframe
+                  title="Bản đồ vị trí công ty"
+                  src="https://maps.google.com/maps?q=T%C3%A2n%20Ti%E1%BA%BFn%2C%20%C4%90%C3%A1k%20L%C4%83k%2C%20Vietnam&t=&z=12&ie=UTF8&iwloc=&output=embed"
+                  frameBorder="0"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }

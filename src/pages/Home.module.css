@@ -470,6 +470,24 @@
 .quickSystemImage { width: 100%; height: 100%; object-fit: contain; display: block; }
 .quickSystemCaption { margin: 0 0 12px; color: var(--text2); font-size: 13px; line-height: 1.55; text-align: left; }
 .quickSystemCard h4 { margin: 0; font-size: 15px; color: var(--navy); }
+.locationCard {
+  display: grid;
+  gap: 12px;
+  background: #eef7ff;
+  border-radius: 16px;
+  padding: 20px;
+  min-height: 200px;
+}
+.locationIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(9, 100, 235, 0.12);
+  color: #0950c0;
+  font-size: 22px;
+}
 
 /* TAB 01 pixel-like layout */
 .quickWireCard {
