@@ -7,6 +7,10 @@ import fluxImage from '../assets/LYTHUYETMACHTUTRONGMAYDIEN.png';
 import statorPhoto from '../assets/HINHTHONGSODINHMUC.jpg';
 import appGif from '../assets/app.gif';
 import fluxDensityImage from '../assets/PHANBOMATDOTUTHONG.jpg';
+import dienAphinhy from '../assets/DIENAPHINHY.jpg';
+import dienAptamgiac from '../assets/DIENAPTAMGIAC.jpg';
+import dienApday2tcodo from '../assets/DIENAPDAY2TCODO.jpg';
+import dienAp1pha from '../assets/DIENAP1PHA.jpg';
 import { HERO_FEATURES, ANALYSIS_RESULTS, WHY_ITEMS } from '../data/content';
 import styles from './Home.module.css';
 
@@ -31,8 +35,7 @@ export default function Home() {
   const tauNum3 = p3z / g3tau, tauDen3 = p3p / g3tau;
   const g3q    = gcd(p3z, p3p * 3);
   const qNum3  = p3z / g3q, qDen3 = (p3p * 3) / g3q;
-  const qInt3 = Math.round(q3);
-  const isEvenQ = qInt3 % 2 === 0;
+  const isIntegerQ = qDen3 === 1;
   const d1_3 = tauInt3;
   const d2_3 = tauInt3 - Math.round(q3);
   const d3_3 = tauInt3 - 2 * Math.round(q3);
@@ -73,6 +76,35 @@ export default function Home() {
   const updateWire = (idx, key, value) => {
     setWireSet((prev) => prev.map((item, i) => (i === idx ? { ...item, [key]: value } : item)));
   };
+
+  /* ── Tab 01 mục 02: dt lớn nhất → tách nhiều d nhỏ ── */
+  const [dt02, setDt02] = useState('2.5739');
+  const [wireSet02, setWireSet02] = useState([
+    { d: '1.15', n: '2' },
+    { d: '1.35', n: '1' },
+    { d: '0', n: '0' },
+    { d: '0', n: '0' },
+    { d: '0', n: '0' },
+    { d: '0', n: '0' },
+    { d: '0', n: '0' },
+  ]);
+  const updateWire02 = (idx, key, value) => {
+    setWireSet02((prev) => prev.map((item, i) => (i === idx ? { ...item, [key]: value } : item)));
+  };
+  const dt02val = parseFloat(dt02) || 0;
+  const sumKnown02 = wireSet02.reduce((sum, item) => {
+    const d = parseFloat(item.d) || 0;
+    const n = parseFloat(item.n) || 0;
+    return sum + d * d * n;
+  }, 0);
+  const dRemain02 = dt02val * dt02val - sumKnown02 > 0
+    ? Math.sqrt(dt02val * dt02val - sumKnown02)
+    : 0;
+
+  /* ── Tab 01 mục 03: dây dẹt (chữ nhật) → đường kính tròn ── */
+  const [flatA, setFlatA] = useState('3');
+  const [flatB, setFlatB] = useState('2');
+  const dtFlat = 1.128 * Math.sqrt((parseFloat(flatA) || 0) * (parseFloat(flatB) || 0));
 
   /* ── Active tab ── */
   const [activeTab, setActiveTab] = useState(0);
@@ -124,6 +156,44 @@ export default function Home() {
               <p>Nhập thông số định danh để kiểm tra nhanh phân loại và cấu hình dây quấn</p>
             </div>
             <Link to="/tinh-toan/3pha-1tocdo" className="btn btn-gold">🚀 Dùng thử ngay</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── QUICK SYSTEM ATTRIBUTES ── */}
+      <section className={styles.quickSystemSection}>
+        <div className="page-wrap">
+          <div className={styles.quickSystemHeader}>
+            <h1>Thuộc tính nhanh hệ thống</h1>          </div>
+          <div className={styles.quickSystemGrid}>
+            <div className={styles.quickSystemCard}>
+              <p className={styles.quickSystemCaption}>Xác định điện áp pha, dây quấn stator liên kết hình sao.</p>
+              <div className={styles.quickSystemImageWrap}>
+                <img src={dienAphinhy} alt="Xác định điện áp pha Vpha khi liên kết hình sao Y" className={styles.quickSystemImage} />
+              </div>
+              <h4>Hình 1: Xác định điện áp pha (V<sub>pha</sub>) khi liên kết hình sao (Y), 3 pha 1 tốc độ.</h4>
+            </div>
+            <div className={styles.quickSystemCard}>
+              <p className={styles.quickSystemCaption}>Xác định điện áp pha, dây quấn stator liên kết hình tam giác.</p>
+              <div className={styles.quickSystemImageWrap}>
+                <img src={dienAptamgiac} alt="Xác định điện áp pha Vpha khi liên kết hình tam giác ∆" className={styles.quickSystemImage} />
+              </div>
+              <h4>Hình 2: Xác định điện áp pha (V<sub>pha</sub>) khi liên kết hình tam giác (∆), 3 pha 1 tốc độ.</h4>
+            </div>
+            <div className={styles.quickSystemCard}>
+              <p className={styles.quickSystemCaption}>Xác định điện áp dây, dây quấn stator liên kết động cơ 3 pha 2 tốc độ.</p>
+              <div className={styles.quickSystemImageWrap}>
+                <img src={dienApday2tcodo} alt="Xác định điện áp dây V dây khi liên kết động cơ 3 pha 2 tốc độ" className={styles.quickSystemImage} />
+              </div>
+              <h4>Hình 3: Xác định điện áp dây (V<sub>dây</sub>) khi liên kết động cơ 3 pha 2 tốc độ. Theo (Robert Dahlander).</h4>
+            </div>
+            <div className={styles.quickSystemCard}>
+              <p className={styles.quickSystemCaption}>Xác định điện áp pha, dây quấn stator liên kết nguồn áp 1 pha.</p>
+              <div className={styles.quickSystemImageWrap}>
+                <img src={dienAp1pha} alt="Xác định điện áp pha Vpha khi liên kết động cơ 1 pha hay 2 pha" className={styles.quickSystemImage} />
+              </div>
+              <h4>Hình 4: Xác định điện áp pha (V<sub>pha</sub>) khi liên kết động cơ 1 pha hay 2 pha.</h4>
+            </div>
           </div>
         </div>
       </section>
@@ -357,7 +427,111 @@ export default function Home() {
                     </div>
                   ))}
                   <div className={styles.quickWireTotal}>
-                    <strong>Kết quả:</strong> Tổng đường kính dây đồng lớn nhất có tiết diện tương đương: d = <em>{dt.toFixed(4)}</em> (mm)
+                    <strong>Kết quả:</strong> Tổng đường kính dây đồng lớn nhất có tiết diện tương đương: d<sub>t</sub> = <em>{dt.toFixed(4)}</em> (mm)
+                  </div>
+                </div>
+              </div>
+
+              {/* ── MỤC 02 ── */}
+              <h4 className={styles.quickWireHeading} style={{marginTop:28}}>
+                02: QUI ĐỔI MỘT ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN LỚN NHẤT, THÀNH NHIỀU ĐƯỜNG KÍNH DÂY ĐỒNG TRÒN TIẾT DIỆN NHỎ THAY THẾ (KHÔNG TÍNH LỚP MEN CÁCH ĐIỆN).
+              </h4>
+              <div className={styles.quickWireGrid}>
+                <div>
+                  <p className={styles.quickWireSub}>Nhập: Đường kính dây đồng tiết diện tròn lớn nhất. d<sub>t</sub> (mm)</p>
+                  <div className={styles.quickWireRow}>
+                    <label>Đường kính dây đồng lớn nhất d<sub>t</sub> (mm)</label>
+                    <input
+                      className={styles.quickWireInput}
+                      type="number"
+                      step="0.0001"
+                      value={dt02}
+                      onChange={e => setDt02(e.target.value)}
+                    />
+                  </div>
+                  <p className={styles.quickWireSub} style={{marginTop:12}}>Nhập: Đường kính dây đồng tiết diện tròn trên thực tế cần thi công.</p>
+                  {wireSet02.map((item, idx) => (
+                    <div key={`w02-d-${idx}`} className={styles.quickWireRow}>
+                      <label>Đường kính dây đồng tròn: d{idx + 1} (mm)</label>
+                      <input
+                        className={styles.quickWireInput}
+                        type="number"
+                        step="0.01"
+                        value={item.d}
+                        onChange={e => updateWire02(idx, 'd', e.target.value)}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <p className={styles.quickWireSub}>Nhập: Số sợi chập có tiết diện bằng nhau</p>
+                  {wireSet02.map((item, idx) => (
+                    <div key={`w02-n-${idx}`} className={styles.quickWireRow}>
+                      <label>Số sợi chập tương đương nhau: N{idx + 1}</label>
+                      <input
+                        className={styles.quickWireInput}
+                        type="number"
+                        step="1"
+                        value={item.n}
+                        onChange={e => updateWire02(idx, 'n', e.target.value)}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div>
+                  <p className={styles.quickWireSub}>Kết quả: Đường kính dây đồng tiết diện tròn cuối: d</p>
+                  <div className={styles.quickWireRow}>
+                    <label>Đường kính dây đồng tròn cuối: d (mm)</label>
+                    <div className={styles.quickWireResultWrap}>
+                      <input className={styles.quickWireInput} type="text" readOnly value={dRemain02.toFixed(4)} />
+                      <span>(mm)</span>
+                    </div>
+                  </div>
+                  <div className={styles.quickWireTotal} style={{marginTop:12}}>
+                    <strong>Kết quả:</strong> Số sợi chập: n = 1
+                  </div>
+                </div>
+              </div>
+
+              {/* ── MỤC 03 ── */}
+              <h4 className={styles.quickWireHeading} style={{marginTop:28}}>
+                03: QUI ĐỔI DÂY ĐỒNG CHỮ NHẬT (DÂY DẸT) VỀ TỔNG ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN (TÍNH LỚP MEN CÁCH ĐIỆN).
+              </h4>
+              <div className={styles.quickWireGrid}>
+                <div>
+                  <p className={styles.quickWireSub}>Nhập: Dây đồng chữ nhật (dây dẹt).</p>
+                  <div className={styles.quickWireRow}>
+                    <label>Chiều rộng b (mm)</label>
+                    <input
+                      className={styles.quickWireInput}
+                      type="number"
+                      step="0.01"
+                      value={flatB}
+                      onChange={e => setFlatB(e.target.value)}
+                    />
+                  </div>
+                  <div className={styles.quickWireRow}>
+                    <label>Chiều dày a (mm)</label>
+                    <input
+                      className={styles.quickWireInput}
+                      type="number"
+                      step="0.01"
+                      value={flatA}
+                      onChange={e => setFlatA(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <p className={styles.quickWireSub}>Công thức tính: d<sub>t</sub> = 1,128 × √(a × b)</p>
+                </div>
+                <div>
+                  <p className={styles.quickWireSub}>Kết quả: Đường kính dây đồng lớn có tiết diện tròn.</p>
+                  <div className={styles.quickWireRow}>
+                    <label>Đường kính dây đồng tiết diện tròn: d<sub>t</sub></label>
+                    <div className={styles.quickWireResultWrap}>
+                      <input className={styles.quickWireInput} type="text" readOnly value={dtFlat.toFixed(4)} />
+                      <span>(mm)</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -386,7 +560,6 @@ export default function Home() {
                     <span className={styles.resultLabel}>✓ Kết quả</span>
                     <span className={styles.resultVal}>Tính toán số cực: 2P = {poles2} (cực)</span>
                   </div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>Kết quả:</div>
                 </div>
               </div>
               <div className={styles.checkCard}>
@@ -445,8 +618,8 @@ export default function Home() {
                     <span className={styles.resultLabel}>Số rãnh/pha/cực q</span>
                     <span className={styles.resultVal}>{qDen3 === 1 ? qNum3 : `${qNum3}/${qDen3}`} (rãnh/pha/cực)</span>
                   </div>
-                  <div className={isEvenQ ? styles.classifyInteger : styles.classifyFraction}>
-                    Vậy kết luận như sau: {isEvenQ ? 'Thuộc loại dây quấn (số nguyên).' : 'Thuộc loại dây quấn (phân số tối giản).'}
+                  <div className={isIntegerQ ? styles.classifyInteger : styles.classifyFraction}>
+                    Vậy kết luận như sau: {isIntegerQ ? 'Thuộc loại dây quấn (số nguyên).' : 'Thuộc loại dây quấn (phân số tối giản).'}
                   </div>
                   <div className={styles.resultBox} style={{marginTop:6}}>
                     <span className={styles.resultLabel}>Bước dây d₁</span>
@@ -468,11 +641,18 @@ export default function Home() {
                   <h5>Kết luận</h5>
                 </div>
                 <div className={styles.checkBody}>
-                  <div className={styles.infoBox}>Kết quả:</div>
-                  <div className={styles.infoBox}>Công thức tính như sau: (tính toán ẩn hết công thức).</div>
-                  <div className={styles.infoBox}>Nếu giá trị q là số chẵn thì thuộc loại dây quấn (số nguyên).</div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>Nếu giá trị q là số lẻ thì thuộc loại dây quấn (phân số tối giản).</div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>Thuộc loại nào thì hiện tên loại đó lên là được.</div>
+                  <div className={styles.infoBox}>
+                    Công thức tính: τ = Z / 2p &nbsp;|&nbsp; q = Z / (2p × 3)
+                  </div>
+                  <div className={styles.infoBox} style={{marginTop:8}}>
+                    Nếu giá trị q là <strong>số nguyên</strong> (mẫu số = 1) thì thuộc loại dây quấn <strong>số nguyên</strong>.
+                  </div>
+                  <div className={styles.infoBox} style={{marginTop:8}}>
+                    Nếu giá trị q là <strong>phân số tối giản</strong> (mẫu số &gt; 1) thì thuộc loại dây quấn <strong>phân số tối giản</strong>.
+                  </div>
+                  <div className={isIntegerQ ? styles.classifyInteger : styles.classifyFraction} style={{marginTop:12}}>
+                    Kết luận: {isIntegerQ ? 'Dây quấn số nguyên — q = ' + qNum3 : `Dây quấn phân số tối giản — q = ${qNum3}/${qDen3}`}
+                  </div>
                 </div>
               </div>
             </div>

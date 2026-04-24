@@ -1,23 +1,20 @@
 import { useState } from 'react';
 import Subnav from '../components/Subnav';
+import styles from './ThuocTinhNhanhHeThong.module.css';
+
+// ✅ IMPORT ẢNH TỪ ASSETS
+import imgKichThuoc from '../assets/logo.png';
+import imgBoiSin from '../assets/THONGSOKICHTHUOCRANH.jpg';
+import imgDayDong from '../assets/DAYQUANSINMUONRANH.jpg';
 
 const TABS = [
-  { key: 'dien-ap', title: 'Điện áp' },
   { key: 'kich-thuoc', title: 'Thông số kích thước' },
   { key: 'buoc-boi-sin', title: 'Bước bối dây quấn sin' },
   { key: 'quy-doi-day', title: 'Qui đổi dây đồng tiết diện tròn' },
 ];
 
+// ✅ CONTENT GIỮ NGUYÊN
 const CONTENT = {
-  'dien-ap': [
-    'ĐỘNG CƠ 3 PHA 1 TỐC ĐỘ.',
-    'Hình 1: Điện áp pha (Vpha) khi liên kết hình sao (Y).',
-    'Hình 2: Điện áp pha (Vpha) khi liên kết hình tam giác (∆).',
-    'ĐỘNG CƠ 3 PHA 2 TỐC ĐỘ.',
-    'Hình 3: Điện áp dây (Vdây), theo (Robert Dahlander).',
-    'ĐỘNG CƠ 1 PHA HAY 2 PHA.',
-    'Hình 4: Điện áp pha (Vpha).',
-  ],
   'kich-thuoc': [
     'THÔNG SỐ KÍCH THƯỚC CƠ BẢN DÙNG TRONG THIẾT KẾ TÍNH TOÁN DỮ LIỆU.',
     'XÁC ĐỊNH THÔNG SỐ KÍCH THƯỚC KỸ THUẬT STATOR:',
@@ -32,6 +29,7 @@ const CONTENT = {
     '3: Chiều cao rãnh: h (mm).',
     '4: Chiều cao răng rãnh: Hr (Cm).',
   ],
+
   'buoc-boi-sin': [
     'CÁCH XÁC ĐỊNH BƯỚC BỐI DÂY QUẤN SIN, PHA LÀM VIỆC VÀ PHA KHỞI ĐỘNG.',
     'Ví dụ 1: Z = 36 rãnh; 2p = 4 (cực), loại có mượn rãnh.',
@@ -41,6 +39,7 @@ const CONTENT = {
     'Các bước bối dây được xác định trên sơ đồ khai triển theo đúng nhóm bối dây thực tế.',
     'Giả sử một nhóm bối dây có 4 bối/nhóm: N1c, N2c, N3c, N4c (pha làm việc) và N1p, N2p, N3p, N4p (pha khởi động).',
   ],
+
   'quy-doi-day': [
     'QUI ĐỔI NHIỀU ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN, VỀ TỔNG ĐƯỜNG KÍNH DÂY ĐỒNG CÓ TIẾT DIỆN LỚN NHẤT.',
     'Mẫu 1: d1 = 1 (mm), n1 = 1; d2 = 1,05 (mm), n2 = 2; d3 = 1,1 (mm), n3 = 2.',
@@ -49,8 +48,15 @@ const CONTENT = {
     'Ví dụ thay thế: d1 = 1,15 (mm), n1 = 2; d2 = 1,35 (mm), n2 = 1; phần còn lại d = 1,4688 (mm).',
     'Công thức tổng hợp: dt² = d1² + d2² + d3² + d4² + d5² + d6² + d7².',
     'Qui đổi ngược: d = sqrt(dt² - N1.d1² - N2.d2² - ... - N7.d7²).',
-    'QUI ĐỔI DÂY ĐỒNG CHỮ NHẬT (DÂY DẸT) VỀ TỔNG ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN (TÍNH LỚP MEN CÁCH ĐIỆN): dt = 1,128.a.b.',
+    'QUI ĐỔI DÂY ĐỒNG CHỮ NHẬT: dt = 1,128.a.b.',
   ],
+};
+
+// ✅ MAP 1 ẢNH / TAB
+const TAB_IMAGES = {
+  'kich-thuoc': imgKichThuoc,
+  'buoc-boi-sin': imgBoiSin,
+  'quy-doi-day': imgDayDong,
 };
 
 export default function ThuocTinhNhanhHeThong() {
@@ -59,20 +65,30 @@ export default function ThuocTinhNhanhHeThong() {
   return (
     <>
       <Subnav />
-      <div className="page-wrap" style={{ paddingTop: 28, paddingBottom: 36 }}>
-        <span className="sec-label">Thuộc tính nhanh hệ thống</span>
-        <h2 className="sec-title">
-          <span className="accent">Nội dung chuẩn theo PDF 2</span>
-        </h2>
-        <p className="sec-desc">
-          Bổ sung đầy đủ các tab: Điện áp, Kích thước, Bước bối dây quấn sin, Qui đổi dây đồng tiết diện tròn.
-        </p>
 
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}>
+      <div className={`page-wrap ${styles.page}`}>
+        {/* HEADER */}
+        <div className={styles.header}>
+          <div className={styles.headerTop}>
+            <span className="sec-label">Thuộc tính nhanh hệ thống</span>
+            <h2 className="sec-title">
+              <span className="accent">Nội dung chuẩn theo PDF 2</span>
+            </h2>
+          </div>
+
+          <p className={styles.pageDesc}>
+            Bổ sung đầy đủ các tab: Kích thước, Bước bối dây quấn sin, Qui đổi dây đồng.
+          </p>
+        </div>
+
+        {/* TABS */}
+        <div className={styles.tabList}>
           {TABS.map((tab) => (
             <button
               key={tab.key}
-              className={`btn ${active === tab.key ? 'btn-primary' : 'btn-outline'}`}
+              className={`${styles.tabButton} ${
+                active === tab.key ? styles.tabButtonActive : ''
+              }`}
               onClick={() => setActive(tab.key)}
             >
               {tab.title}
@@ -80,16 +96,32 @@ export default function ThuocTinhNhanhHeThong() {
           ))}
         </div>
 
-        <div className="card">
-          <div className="card-header">
-            <div style={{ width: 10, height: 10, borderRadius: '50%', background: 'var(--green)' }} />
-            <h4>{TABS.find((t) => t.key === active)?.title}</h4>
+        {/* CARD */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <div className={styles.cardHeaderDot} />
+            <h4 className={styles.cardHeaderTitle}>
+              {TABS.find((t) => t.key === active)?.title}
+            </h4>
           </div>
-          <div className="card-body">
-            <ul style={{ listStyle: 'none', display: 'grid', gap: 10 }}>
+
+          <div className={styles.cardBody}>
+            {/* IMAGE */}
+            {TAB_IMAGES[active] && (
+              <div className={styles.imageFrame}>
+                <img
+                  src={TAB_IMAGES[active]}
+                  alt="minh họa"
+                  className={styles.image}
+                />
+              </div>
+            )}
+
+            {/* CONTENT */}
+            <ul className={styles.contentList}>
               {CONTENT[active].map((line) => (
-                <li key={line} style={{ color: 'var(--text2)', fontSize: 13, lineHeight: 1.65 }}>
-                  - {line}
+                <li key={line} className={styles.contentItem}>
+                  {line}
                 </li>
               ))}
             </ul>
