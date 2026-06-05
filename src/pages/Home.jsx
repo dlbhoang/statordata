@@ -13,6 +13,7 @@ import dienApday2tcodo from '../assets/DIENAPDAY2TCODO.jpg';
 import dienAp1pha from '../assets/DIENAP1PHA.jpg';
 import { HERO_FEATURES, ANALYSIS_RESULTS, WHY_ITEMS } from '../data/content';
 import styles from './Home.module.css';
+import MapModal from '../components/MapModal';
 
 function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
 
@@ -164,36 +165,73 @@ export default function Home() {
       <section className={styles.quickSystemSection}>
         <div className="page-wrap">
           <div className={styles.quickSystemHeader}>
-            <h1>Thuộc tính nhanh hệ thống</h1>          </div>
-          <div className={styles.quickSystemGrid}>
-            <div className={styles.quickSystemCard}>
-              <p className={styles.quickSystemCaption}>Xác định điện áp pha, dây quấn stator liên kết hình sao.</p>
-              <div className={styles.quickSystemImageWrap}>
-                <img src={dienAphinhy} alt="Xác định điện áp pha Vpha khi liên kết hình sao Y" className={styles.quickSystemImage} />
+            <span className={styles.quickSystemBadge}>Tham khảo nhanh</span>
+            <h2>Thuộc tính nhanh hệ thống</h2>
+            <p>Xác định điện áp pha và điện áp dây theo kiểu liên kết cuộn dây stator động cơ. Nhấn vào để tính toán chi tiết.</p>
+          </div>
+
+          <div className={styles.qsGrid}>
+
+            <Link to="/tinh-toan/3pha-1tocdo" className={styles.qsCard}>
+              <div className={styles.qsCardImgWrap}>
+                <img src={dienAphinhy} alt="Liên kết hình sao Y" className={styles.qsImage} />
               </div>
-              <h4>Hình 1: Xác định điện áp pha (V<sub>pha</sub>) khi liên kết hình sao (Y), 3 pha 1 tốc độ.</h4>
-            </div>
-            <div className={styles.quickSystemCard}>
-              <p className={styles.quickSystemCaption}>Xác định điện áp pha, dây quấn stator liên kết hình tam giác.</p>
-              <div className={styles.quickSystemImageWrap}>
-                <img src={dienAptamgiac} alt="Xác định điện áp pha Vpha khi liên kết hình tam giác ∆" className={styles.quickSystemImage} />
+              <div className={styles.qsCardContent}>
+                <div className={styles.qsCardTop}>
+                  <span className={styles.qsNum}>01</span>
+                  <span className={styles.qsTag}>3 pha · 1 tốc độ</span>
+                </div>
+                <h5 className={styles.qsTitle}>Liên kết hình sao (Y)</h5>
+                <p className={styles.qsDesc}>Xác định điện áp pha V<sub>pha</sub> khi dây quấn stator liên kết hình sao.</p>
+                <span className={styles.qsLink}>Tính toán →</span>
               </div>
-              <h4>Hình 2: Xác định điện áp pha (V<sub>pha</sub>) khi liên kết hình tam giác (∆), 3 pha 1 tốc độ.</h4>
-            </div>
-            <div className={styles.quickSystemCard}>
-              <p className={styles.quickSystemCaption}>Xác định điện áp dây, dây quấn stator liên kết động cơ 3 pha 2 tốc độ.</p>
-              <div className={styles.quickSystemImageWrap}>
-                <img src={dienApday2tcodo} alt="Xác định điện áp dây V dây khi liên kết động cơ 3 pha 2 tốc độ" className={styles.quickSystemImage} />
+            </Link>
+
+            <Link to="/tinh-toan/3pha-1tocdo" className={styles.qsCard}>
+              <div className={styles.qsCardImgWrap}>
+                <img src={dienAptamgiac} alt="Liên kết hình tam giác" className={styles.qsImage} />
               </div>
-              <h4>Hình 3: Xác định điện áp dây (V<sub>dây</sub>) khi liên kết động cơ 3 pha 2 tốc độ. Theo (Robert Dahlander).</h4>
-            </div>
-            <div className={styles.quickSystemCard}>
-              <p className={styles.quickSystemCaption}>Xác định điện áp pha, dây quấn stator liên kết nguồn áp 1 pha.</p>
-              <div className={styles.quickSystemImageWrap}>
-                <img src={dienAp1pha} alt="Xác định điện áp pha Vpha khi liên kết động cơ 1 pha hay 2 pha" className={styles.quickSystemImage} />
+              <div className={styles.qsCardContent}>
+                <div className={styles.qsCardTop}>
+                  <span className={styles.qsNum}>02</span>
+                  <span className={styles.qsTag}>3 pha · 1 tốc độ</span>
+                </div>
+                <h5 className={styles.qsTitle}>Liên kết hình tam giác (∆)</h5>
+                <p className={styles.qsDesc}>Xác định điện áp pha V<sub>pha</sub> khi dây quấn stator liên kết hình tam giác.</p>
+                <span className={styles.qsLink}>Tính toán →</span>
               </div>
-              <h4>Hình 4: Xác định điện áp pha (V<sub>pha</sub>) khi liên kết động cơ 1 pha hay 2 pha.</h4>
-            </div>
+            </Link>
+
+            <Link to="/tinh-toan/3pha-2tocdo" className={styles.qsCard}>
+              <div className={styles.qsCardImgWrap}>
+                <img src={dienApday2tcodo} alt="Dahlander 2 tốc độ" className={styles.qsImage} />
+              </div>
+              <div className={styles.qsCardContent}>
+                <div className={styles.qsCardTop}>
+                  <span className={styles.qsNum}>03</span>
+                  <span className={styles.qsTag}>3 pha · 2 tốc độ</span>
+                </div>
+                <h5 className={styles.qsTitle}>Dahlander — 2 tốc độ</h5>
+                <p className={styles.qsDesc}>Xác định điện áp dây V<sub>dây</sub> theo sơ đồ Robert Dahlander.</p>
+                <span className={styles.qsLink}>Tính toán →</span>
+              </div>
+            </Link>
+
+            <Link to="/tinh-toan/1pha" className={styles.qsCard}>
+              <div className={styles.qsCardImgWrap}>
+                <img src={dienAp1pha} alt="Nguồn áp 1 pha" className={styles.qsImage} />
+              </div>
+              <div className={styles.qsCardContent}>
+                <div className={styles.qsCardTop}>
+                  <span className={styles.qsNum}>04</span>
+                  <span className={styles.qsTag}>1 pha / 2 pha</span>
+                </div>
+                <h5 className={styles.qsTitle}>Liên kết nguồn áp 1 pha</h5>
+                <p className={styles.qsDesc}>Xác định điện áp pha V<sub>pha</sub> khi liên kết với nguồn áp 1 pha hoặc 2 pha.</p>
+                <span className={styles.qsLink}>Tính toán →</span>
+              </div>
+            </Link>
+
           </div>
         </div>
       </section>
@@ -376,282 +414,358 @@ export default function Home() {
             ))}
           </div>
 
-          {/* TAB 01 — Quy đổi dây dẫn */}
+          {/* TAB 01 — Quy doi day dan */}
           {activeTab === 0 && (
-            <div className={styles.quickWireCard}>
-              <h4 className={styles.quickWireHeading}>
-                01: QUI ĐỔI NHIỀU ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN, VỀ TỔNG ĐƯỜNG KÍNH DÂY ĐỒNG CÓ TIẾT DIỆN LỚN NHẤT (KHÔNG TÍNH LỚP MEN CÁCH ĐIỆN).
-              </h4>
-              <div className={styles.quickWireGrid}>
-                <div>
-                  <p className={styles.quickWireSub}>Nhập: Đường kính dây đồng tiết diện tròn thành phần tương đương.</p>
-                  {wireSet.map((item, idx) => (
-                    <div key={`wire-d-${idx}`} className={styles.quickWireRow}>
-                      <label>Đường kính dây đồng tròn: d{idx + 1} (mm)</label>
-                      <input
-                        className={styles.quickWireInput}
-                        type="number"
-                        step="0.01"
-                        value={item.d}
-                        onChange={(e) => updateWire(idx, 'd', e.target.value)}
-                      />
-                    </div>
-                  ))}
-                </div>
+            <div className={styles.wireTabWrap}>
 
-                <div>
-                  <p className={styles.quickWireSub}>Nhập: Số sợi chập có tiết diện bằng nhau</p>
-                  {wireSet.map((item, idx) => (
-                    <div key={`wire-n-${idx}`} className={styles.quickWireRow}>
-                      <label>Số sợi chập tương đương nhau: N{idx + 1}</label>
-                      <input
-                        className={styles.quickWireInput}
-                        type="number"
-                        step="1"
-                        value={item.n}
-                        onChange={(e) => updateWire(idx, 'n', e.target.value)}
-                      />
+              {/* MUC 01 */}
+              <div className={styles.wireSubTitle}>
+                <span className={styles.wireSubNum}>01</span>
+                <span>Tổng đường kính tương đương — Gộp nhiều sợi chập</span>
+              </div>
+              <div className={styles.layout}>
+                <div className={styles.inputPanel}>
+                  <div className="card">
+                    <div className="card-header">
+                      <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                      <h4>Nhập đường kính dây &amp; số sợi chập</h4>
+                      <span className="tag blue" style={{marginLeft:'auto'}}>Mục 01</span>
                     </div>
-                  ))}
-                </div>
-
-                <div>
-                  <p className={styles.quickWireSub}>Kết quả: Một dây đồng lớn có tiết diện tương đương.</p>
-                  {equivalentDs.map((val, idx) => (
-                    <div key={`wire-r-${idx}`} className={styles.quickWireRow}>
-                      <label>Một đường kính dây đồng tròn: d{idx + 1}</label>
-                      <div className={styles.quickWireResultWrap}>
-                        <input className={styles.quickWireInput} type="text" readOnly value={val.toFixed(4)} />
-                        <span>(mm)</span>
+                    <div className="card-body">
+                      <p style={{fontSize:12,color:'var(--text2)',marginBottom:12}}>
+                        Nhập đường kính dây tròn d<sub>i</sub> (mm) và số sợi chập N<sub>i</sub> cho từng nhóm dây.
+                      </p>
+                      <div className={styles.wire01Table}>
+                        <div className={styles.wire01TableHead}>
+                          <span>Sợi</span>
+                          <span>Đường kính dᵢ (mm)</span>
+                          <span>Số sợi chập Nᵢ</span>
+                          <span>Kết quả (mm)</span>
+                        </div>
+                        {wireSet.map((item, idx) => {
+                          const d = parseFloat(item.d) || 0;
+                          const n = parseFloat(item.n) || 0;
+                          const eq = d * Math.sqrt(n);
+                          const active = d > 0 && n > 0;
+                          return (
+                            <div key={`wire01-row-${idx}`} className={`${styles.wire01TableRow} ${active ? styles.wire01RowActive : ''}`}>
+                              <span className={styles.wire01RowIdx}>{idx + 1}</span>
+                              <input className={styles.wire01Input} type="number" step="0.01" value={item.d} onChange={(e) => updateWire(idx, 'd', e.target.value)} />
+                              <input className={styles.wire01Input} type="number" step="1" value={item.n} onChange={(e) => updateWire(idx, 'n', e.target.value)} />
+                              <span className={`${styles.wire01EqVal} ${active ? styles.wire01EqValActive : ''}`}>{active ? eq.toFixed(4) : '—'}</span>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
-                  ))}
-                  <div className={styles.quickWireTotal}>
-                    <strong>Kết quả:</strong> Tổng đường kính dây đồng lớn nhất có tiết diện tương đương: d<sub>t</sub> = <em>{dt.toFixed(4)}</em> (mm)
+                  </div>
+                </div>
+                <div>
+                  <div className="card">
+                    <div className="card-header">
+                      <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                      <h4>Kết quả &amp; Hướng dẫn</h4>
+                      <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                    </div>
+                    <div className="card-body">
+                      <p style={{fontSize:12,color:'var(--text2)',marginBottom:10}}>Các dòng có d = 0 hoặc N = 0 sẽ bị bỏ qua.</p>
+                      <div className={styles.results}>
+                        {equivalentDs.map((val, idx) => {
+                          const d = parseFloat(wireSet[idx].d) || 0;
+                          const n = parseFloat(wireSet[idx].n) || 0;
+                          if (d === 0 || n === 0) return null;
+                          return (
+                            <div key={`eq-${idx}`} className={styles.resRow}>
+                              <span className={styles.resLabel}>Sợi {idx+1} — tương đương</span>
+                              <span className="tag blue">{val.toFixed(4)} mm</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div className={styles.wire01TotalResult} style={{marginTop:14}}>
+                        <div className={styles.wire01TotalLabel}>✓ Tổng đường kính tương đương</div>
+                        <div className={styles.wire01TotalVal}>d<sub>t</sub> = <strong>{dt.toFixed(4)}</strong> mm</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* ── MỤC 02 ── */}
-              <h4 className={styles.quickWireHeading} style={{marginTop:28}}>
-                02: QUI ĐỔI MỘT ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN LỚN NHẤT, THÀNH NHIỀU ĐƯỜNG KÍNH DÂY ĐỒNG TRÒN TIẾT DIỆN NHỎ THAY THẾ (KHÔNG TÍNH LỚP MEN CÁCH ĐIỆN).
-              </h4>
-              <div className={styles.quickWireGrid}>
-                <div>
-                  <p className={styles.quickWireSub}>Nhập: Đường kính dây đồng tiết diện tròn lớn nhất. d<sub>t</sub> (mm)</p>
-                  <div className={styles.quickWireRow}>
-                    <label>Đường kính dây đồng lớn nhất d<sub>t</sub> (mm)</label>
-                    <input
-                      className={styles.quickWireInput}
-                      type="number"
-                      step="0.0001"
-                      value={dt02}
-                      onChange={e => setDt02(e.target.value)}
-                    />
-                  </div>
-                  <p className={styles.quickWireSub} style={{marginTop:12}}>Nhập: Đường kính dây đồng tiết diện tròn trên thực tế cần thi công.</p>
-                  {wireSet02.map((item, idx) => (
-                    <div key={`w02-d-${idx}`} className={styles.quickWireRow}>
-                      <label>Đường kính dây đồng tròn: d{idx + 1} (mm)</label>
-                      <input
-                        className={styles.quickWireInput}
-                        type="number"
-                        step="0.01"
-                        value={item.d}
-                        onChange={e => updateWire02(idx, 'd', e.target.value)}
-                      />
+              {/* MUC 02 */}
+              <div className={styles.wireSubTitle} style={{marginTop:28}}>
+                <span className={styles.wireSubNum}>02</span>
+                <span>Chia nhỏ dây đồng tròn — Tìm dây còn thiếu</span>
+              </div>
+              <div className={styles.layout}>
+                <div className={styles.inputPanel}>
+                  <div className="card">
+                    <div className="card-header">
+                      <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                      <h4>Nhập đường kính dt cần đạt &amp; các dây đã biết</h4>
+                      <span className="tag blue" style={{marginLeft:'auto'}}>Mục 02</span>
                     </div>
-                  ))}
-                </div>
-                <div>
-                  <p className={styles.quickWireSub}>Nhập: Số sợi chập có tiết diện bằng nhau</p>
-                  {wireSet02.map((item, idx) => (
-                    <div key={`w02-n-${idx}`} className={styles.quickWireRow}>
-                      <label>Số sợi chập tương đương nhau: N{idx + 1}</label>
-                      <input
-                        className={styles.quickWireInput}
-                        type="number"
-                        step="1"
-                        value={item.n}
-                        onChange={e => updateWire02(idx, 'n', e.target.value)}
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div>
-                  <p className={styles.quickWireSub}>Kết quả: Đường kính dây đồng tiết diện tròn cuối: d</p>
-                  <div className={styles.quickWireRow}>
-                    <label>Đường kính dây đồng tròn cuối: d (mm)</label>
-                    <div className={styles.quickWireResultWrap}>
-                      <input className={styles.quickWireInput} type="text" readOnly value={dRemain02.toFixed(4)} />
-                      <span>(mm)</span>
+                    <div className="card-body">
+                      <p style={{fontSize:12,color:'var(--text2)',marginBottom:12}}>
+                        Nhập d<sub>t</sub> mục tiêu và các sợi dây đã chọn. Hệ thống tính ngược ra đường kính sợi còn lại.
+                      </p>
+                      <div className={styles.field}>
+                        <label>Đường kính mục tiêu d<sub>t</sub> <span className={styles.unit}>mm</span></label>
+                        <input className="inp" type="number" step="0.0001" value={dt02} onChange={e => setDt02(e.target.value)} style={{width:120,textAlign:'right'}} />
+                      </div>
+                      <div className={styles.wire01Table} style={{marginTop:12}}>
+                        <div className={styles.wire01TableHead}>
+                          <span>Sợi</span>
+                          <span>Đường kính dᵢ (mm)</span>
+                          <span>Số sợi Nᵢ</span>
+                          <span>Đóng góp</span>
+                        </div>
+                        {wireSet02.map((item, idx) => {
+                          const d = parseFloat(item.d) || 0;
+                          const n = parseFloat(item.n) || 0;
+                          const contrib = d * d * n;
+                          const active = d > 0 && n > 0;
+                          return (
+                            <div key={`w02-row-${idx}`} className={`${styles.wire01TableRow} ${active ? styles.wire01RowActive : ''}`}>
+                              <span className={styles.wire01RowIdx}>{idx + 1}</span>
+                              <input className={styles.wire01Input} type="number" step="0.01" value={item.d} onChange={e => updateWire02(idx, 'd', e.target.value)} />
+                              <input className={styles.wire01Input} type="number" step="1" value={item.n} onChange={e => updateWire02(idx, 'n', e.target.value)} />
+                              <span className={`${styles.wire01EqVal} ${active ? styles.wire01EqValActive : ''}`}>{active ? contrib.toFixed(4) : '—'}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
-                  <div className={styles.quickWireTotal} style={{marginTop:12}}>
-                    <strong>Kết quả:</strong> Số sợi chập: n = 1
+                </div>
+                <div>
+                  <div className="card">
+                    <div className="card-header">
+                      <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                      <h4>Kết quả &amp; Hướng dẫn</h4>
+                      <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                    </div>
+                    <div className="card-body">
+                      <p style={{fontSize:12,color:'var(--text2)',marginBottom:10}}>Nhập d<sub>t</sub> mục tiêu và từng sợi dây đã biết.</p>
+                      <div className={styles.results}>
+                        <div className={styles.resRow}>
+                          <span className={styles.resLabel}>Tổng đã biết</span>
+                          <span className="tag blue">{sumKnown02.toFixed(4)}</span>
+                        </div>
+                        <div className={styles.resRow}>
+                          <span className={styles.resLabel}>d<sub>t</sub> mục tiêu bình phương</span>
+                          <span className="tag blue">{(dt02val * dt02val).toFixed(4)}</span>
+                        </div>
+                        <div className={styles.resRow}>
+                          <span className={styles.resLabel}>Phần còn lại</span>
+                          <span className="tag" style={{background: dt02val*dt02val-sumKnown02>=0?'#e6f1fb':'#fdecea',color:dt02val*dt02val-sumKnown02>=0?'var(--blue2)':'#c0392b',border:'1px solid currentColor'}}>
+                            {(dt02val * dt02val - sumKnown02).toFixed(4)}
+                          </span>
+                        </div>
+                      </div>
+                      <div className={styles.wire01TotalResult} style={{marginTop:14}}>
+                        <div className={styles.wire01TotalLabel}>✓ Đường kính sợi còn lại</div>
+                        <div className={styles.wire01TotalVal}>d<sub>còn lại</sub> = <strong style={{color: dRemain02>0?'#d92531':'#9aa3b0'}}>{dRemain02.toFixed(4)}</strong> mm</div>
+                      </div>
+                      {dRemain02 === 0 && dt02val > 0 && (
+                        <div className={styles.classifyFraction} style={{marginTop:8}}>⚠ Tổng diện tích đã vượt quá d<sub>t</sub> mục tiêu!</div>
+                      )}
+                      {dRemain02 > 0 && (
+                        <div className={styles.classifyInteger} style={{marginTop:8}}>✓ Hợp lệ — Ghép thêm 1 sợi d = {dRemain02.toFixed(4)} mm</div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* ── MỤC 03 ── */}
-              <h4 className={styles.quickWireHeading} style={{marginTop:28}}>
-                03: QUI ĐỔI DÂY ĐỒNG CHỮ NHẬT (DÂY DẸT) VỀ TỔNG ĐƯỜNG KÍNH DÂY ĐỒNG TIẾT DIỆN TRÒN (TÍNH LỚP MEN CÁCH ĐIỆN).
-              </h4>
-              <div className={styles.quickWireGrid}>
-                <div>
-                  <p className={styles.quickWireSub}>Nhập: Dây đồng chữ nhật (dây dẹt).</p>
-                  <div className={styles.quickWireRow}>
-                    <label>Chiều rộng b (mm)</label>
-                    <input
-                      className={styles.quickWireInput}
-                      type="number"
-                      step="0.01"
-                      value={flatB}
-                      onChange={e => setFlatB(e.target.value)}
-                    />
-                  </div>
-                  <div className={styles.quickWireRow}>
-                    <label>Chiều dày a (mm)</label>
-                    <input
-                      className={styles.quickWireInput}
-                      type="number"
-                      step="0.01"
-                      value={flatA}
-                      onChange={e => setFlatA(e.target.value)}
-                    />
+              {/* MUC 03 */}
+              <div className={styles.wireSubTitle} style={{marginTop:28}}>
+                <span className={styles.wireSubNum}>03</span>
+                <span>Dây đồng dẹt (chữ nhật) - Đường kính dây tròn tương đương</span>
+              </div>
+              <div className={styles.layout}>
+                <div className={styles.inputPanel}>
+                  <div className="card">
+                    <div className="card-header">
+                      <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                      <h4>Nhập kích thước dây đồng chữ nhật (dây dẹt)</h4>
+                      <span className="tag blue" style={{marginLeft:'auto'}}>Mục 03</span>
+                    </div>
+                    <div className="card-body">
+                      <p style={{fontSize:12,color:'var(--text2)',marginBottom:12}}>Nhập chiều rộng b và chiều dày a của dây đồng chữ nhật.</p>
+                      <div className={styles.field}>
+                        <label>Chiều rộng <strong>b</strong> <span className={styles.unit}>mm</span></label>
+                        <input className="inp" type="number" step="0.01" value={flatB} onChange={e => setFlatB(e.target.value)} style={{width:120,textAlign:'right'}} />
+                      </div>
+                      <div className={styles.field}>
+                        <label>Chiều dày <strong>a</strong> <span className={styles.unit}>mm</span></label>
+                        <input className="inp" type="number" step="0.01" value={flatA} onChange={e => setFlatA(e.target.value)} style={{width:120,textAlign:'right'}} />
+                      </div>
+                      <div className={styles.resRow} style={{marginTop:14,background:'linear-gradient(135deg,#e8f4fd,#f0f8ff)',border:'1px solid #b8d4ef',borderRadius:7,padding:'9px 12px'}}>
+                        <span style={{fontSize:11,fontWeight:700,color:'#0f6e56'}}>Tiết diện dây dẹt S</span>
+                        <span className="tag blue">{((parseFloat(flatA)||0)*(parseFloat(flatB)||0)).toFixed(4)} mm²</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div>
-                  <p className={styles.quickWireSub}>Công thức tính: d<sub>t</sub> = 1,128 × √(a × b)</p>
-                </div>
-                <div>
-                  <p className={styles.quickWireSub}>Kết quả: Đường kính dây đồng lớn có tiết diện tròn.</p>
-                  <div className={styles.quickWireRow}>
-                    <label>Đường kính dây đồng tiết diện tròn: d<sub>t</sub></label>
-                    <div className={styles.quickWireResultWrap}>
-                      <input className={styles.quickWireInput} type="text" readOnly value={dtFlat.toFixed(4)} />
-                      <span>(mm)</span>
+                  <div className="card">
+                    <div className="card-header">
+                      <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                      <h4>Kết quả &amp; Hướng dẫn</h4>
+                      <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                    </div>
+                    <div className="card-body">
+                      <p style={{fontSize:12,color:'var(--text2)',marginBottom:10}}>Nhập chiều rộng b (mm) và chiều dày a (mm) của dây đồng dẹt.</p>
+                      <div className={styles.wire01TotalResult} style={{marginTop:12}}>
+                        <div className={styles.wire01TotalLabel}>✓ Đường kính dây tròn tương đương</div>
+                        <div className={styles.wire01TotalVal}>d<sub>t</sub> = <strong style={{color:'#d92531'}}>{dtFlat.toFixed(4)}</strong> mm</div>
+                      </div>
+                      <div className={styles.classifyInteger} style={{marginTop:8}}>✓ Dây tròn tương đương: Ø {dtFlat.toFixed(3)} mm</div>
                     </div>
                   </div>
                 </div>
               </div>
+
             </div>
           )}
 
-          {/* TAB 02 — Số cực */}
+          {/* TAB 02 — So cuc */}
           {activeTab === 1 && (
-            <div className={styles.checkPanelGrid}>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>02</span>
-                  <h5>Kiểm tra nhanh số cực: 2p (Poles)</h5>
-                </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Tốc độ đồng bộ <strong>N<sub>db</sub> (RPM)</strong></span>
-                    <input className={styles.inp} type="number" value={p2n} onChange={e => setP2n(+e.target.value)} />
+            <div className={styles.layout}>
+              <div className={styles.inputPanel}>
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                    <h4>Thông số đầu vào</h4>
+                    <span className="tag blue" style={{marginLeft:'auto'}}>Số cực</span>
                   </div>
-                  <div className={styles.divider} />
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Tần số vận hành <strong>f (Hz)</strong></span>
-                    <input className={styles.inp} type="number" value={p2f} onChange={e => setP2f(+e.target.value)} />
-                  </div>
-                  <div className={styles.resultBox}>
-                    <span className={styles.resultLabel}>✓ Kết quả</span>
-                    <span className={styles.resultVal}>Tính toán số cực: 2P = {poles2} (cực)</span>
+                  <div className="card-body">
+                    <div className={styles.field}>
+                      <label>Tốc độ đồng bộ N<sub>db</sub> <span className={styles.unit}>RPM</span></label>
+                      <input className="inp" type="number" step="any" value={p2n} onChange={e => setP2n(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <div className={styles.field}>
+                      <label>Tần số vận hành f <span className={styles.unit}>Hz</span></label>
+                      <input className="inp" type="number" step="any" value={p2f} onChange={e => setP2f(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>02</span>
-                  <h5>Hướng dẫn</h5>
+              <div>
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                    <h4>Kết quả tính toán</h4>
+                    <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.results}>
+                      <div className={styles.resRow}>
+                        <span className={styles.resLabel}>Số cực tính toán 2P</span>
+                        <span className="tag blue">{poles2} cực</span>
+                      </div>
+                    </div>
+                    <div className={styles.tagRow} style={{marginTop:14}}>
+                      <span className={styles.tagBlue}>2P = 2 — 3000 RPM</span>
+                      <span className={styles.tagBlue}>2P = 4 — 1500 RPM</span>
+                      <span className={styles.tagBlue}>2P = 6 — 1000 RPM</span>
+                      <span className={styles.tagBlue}>2P = 8 — 750 RPM</span>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.infoBox}>Nhập thông định danh: Tốc độ đồng bộ Ndb và Tần số vận hành f (Hz).</div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>Công thức tính như sau: 2P = (120.f) / Ndb.</div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>Tính toán Số cực: 2p (Poles).</div>
-                  <div className={styles.tagRow}>
-                    <span className={styles.tagBlue}>2P = 2 → 3000 RPM</span>
-                    <span className={styles.tagBlue}>2P = 4 → 1500 RPM</span>
-                    <span className={styles.tagBlue}>2P = 6 → 1000 RPM</span>
-                    <span className={styles.tagBlue}>2P = 8 → 750 RPM</span>
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--gold)'}}/>
+                    <h4>Ghi chú kỹ thuật</h4>
+                  </div>
+                  <div className="card-body">
+                    <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:6}}>
+                      {['Nhập tốc độ đồng bộ Ndb (RPM) và tần số vận hành f (Hz).','Kết quả 2P được làm tròn lên số chẵn gần nhất.','Kiểm tra lại với nameplate của động cơ thực tế.']
+                      .map(t => (
+                        <li key={t} style={{fontSize:12,color:'var(--text2)',paddingLeft:16,position:'relative'}}>
+                          <span style={{position:'absolute',left:0,color:'var(--gold)'}}>›</span>{t}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
           )}
 
-          {/* TAB 03 — 3 pha 1 tốc độ */}
+          {/* TAB 03 — 3 pha 1 toc do */}
           {activeTab === 2 && (
-            <div className={styles.checkPanelGrid}>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>03</span>
-                  <h5>Kiểm tra phân loại động cơ 3 pha 1 tốc độ</h5>
-                </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.infoBox} style={{marginBottom:8}}>
-                    Nhập thông định danh: Số rãnh stator Z, Số cực 2p (Poles), Tần số vận hành F (Hz).
+            <div className={styles.layout}>
+              <div className={styles.inputPanel}>
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                    <h4>Thông số đầu vào</h4>
+                    <span className="tag blue" style={{marginLeft:'auto'}}>3 Pha · 1 Tốc độ</span>
                   </div>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Số rãnh Stator <strong>Z</strong></span>
-                    <input className={styles.inp} type="number" value={p3z} onChange={e => setP3z(+e.target.value)} />
-                  </div>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Số cực <strong>2P (Poles)</strong></span>
-                    <input className={styles.inp} type="number" value={p3p} onChange={e => setP3p(+e.target.value)} />
-                  </div>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Tần số <strong>F (Hz)</strong></span>
-                    <input className={styles.inp} type="number" value={p3f} onChange={e => setP3f(+e.target.value)} />
-                  </div>
-                  <div className={styles.resultBox}>
-                    <span className={styles.resultLabel}>Tốc độ đồng bộ</span>
-                    <span className={styles.resultVal}>{ndb3} RPM</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Bước cực từ τ</span>
-                    <span className={styles.resultVal}>{tauDen3 === 1 ? tauNum3 : `${tauNum3}/${tauDen3}`} (rãnh/1 pha/cực)</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Số rãnh/pha/cực q</span>
-                    <span className={styles.resultVal}>{qDen3 === 1 ? qNum3 : `${qNum3}/${qDen3}`} (rãnh/pha/cực)</span>
-                  </div>
-                  <div className={isIntegerQ ? styles.classifyInteger : styles.classifyFraction}>
-                    Vậy kết luận như sau: {isIntegerQ ? 'Thuộc loại dây quấn (số nguyên).' : 'Thuộc loại dây quấn (phân số tối giản).'}
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Bước dây d₁</span>
-                    <span className={styles.resultVal}>{d1_3} rãnh</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Bước dây d₂</span>
-                    <span className={styles.resultVal}>{d2_3} rãnh</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Bước dây d₃</span>
-                    <span className={styles.resultVal}>{d3_3} rãnh</span>
+                  <div className="card-body">
+                    <div className={styles.field}>
+                      <label>Số rãnh Stator <strong>Z</strong></label>
+                      <input className="inp" type="number" step="any" value={p3z} onChange={e => setP3z(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <div className={styles.field}>
+                      <label>Số cực <strong>2P (Poles)</strong></label>
+                      <input className="inp" type="number" step="any" value={p3p} onChange={e => setP3p(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <div className={styles.field}>
+                      <label>Tần số <strong>F</strong> <span className={styles.unit}>Hz</span></label>
+                      <input className="inp" type="number" step="any" value={p3f} onChange={e => setP3f(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>03</span>
-                  <h5>Kết luận</h5>
+              <div>
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                    <h4>Kết quả tính toán</h4>
+                    <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.results}>
+                      {[
+                        ['Tốc độ đồng bộ',   `${ndb3} RPM`,                                                   'blue'],
+                        ['Bước cực từ τ',     `${tauDen3===1?tauNum3:`${tauNum3}/${tauDen3}`} rãnh/cực`,      'blue'],
+                        ['Số rãnh/pha/cực q', `${qDen3===1?qNum3:`${qNum3}/${qDen3}`} rãnh/pha/cực`,         'blue'],
+                        ['Bước dây d₁',       `${d1_3} rãnh`,                                                 'gold'],
+                        ['Bước dây d₂',       `${d2_3} rãnh`,                                                 'gold'],
+                        ['Bước dây d₃',       `${d3_3} rãnh`,                                                 'gold'],
+                      ].map(([label, value, color]) => (
+                        <div key={label} className={styles.resRow}>
+                          <span className={styles.resLabel}>{label}</span>
+                          <span className={`tag ${color}`}>{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{marginTop:14,padding:12,background:isIntegerQ?'linear-gradient(135deg,#e8f5e9,#f1fff5)':'linear-gradient(135deg,#fff8e1,#fffde7)',borderRadius:8,border:`1.5px solid ${isIntegerQ?'#81c784':'#ffd54f'}`}}>
+                      <div style={{fontSize:11,color:isIntegerQ?'#388e3c':'#f57f17',fontWeight:600,marginBottom:4}}>
+                        {isIntegerQ ? '✓ Dây quấn số nguyên' : '◎ Dây quấn phân số tối giản'}
+                      </div>
+                      <div style={{fontSize:12,color:'var(--text2)'}}>
+                        Phân loại: <strong>{isIntegerQ ? `Số nguyên — q = ${qNum3}` : `Phân số tối giản — q = ${qNum3}/${qDen3}`}</strong>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.infoBox}>
-                    Công thức tính: τ = Z / 2p &nbsp;|&nbsp; q = Z / (2p × 3)
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--gold)'}}/>
+                    <h4>Ghi chú kỹ thuật</h4>
                   </div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>
-                    Nếu giá trị q là <strong>số nguyên</strong> (mẫu số = 1) thì thuộc loại dây quấn <strong>số nguyên</strong>.
-                  </div>
-                  <div className={styles.infoBox} style={{marginTop:8}}>
-                    Nếu giá trị q là <strong>phân số tối giản</strong> (mẫu số &gt; 1) thì thuộc loại dây quấn <strong>phân số tối giản</strong>.
-                  </div>
-                  <div className={isIntegerQ ? styles.classifyInteger : styles.classifyFraction} style={{marginTop:12}}>
-                    Kết luận: {isIntegerQ ? 'Dây quấn số nguyên — q = ' + qNum3 : `Dây quấn phân số tối giản — q = ${qNum3}/${qDen3}`}
+                  <div className="card-body">
+                    <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:6}}>
+                      {['Nhập số rãnh Z, số cực 2P và tần số F để xác định phân loại dây quấn.','Nếu q là số nguyên: dây quấn số nguyên.','Nếu q là phân số tối giản: dây quấn phân số tối giản.']
+                      .map(t => (
+                        <li key={t} style={{fontSize:12,color:'var(--text2)',paddingLeft:16,position:'relative'}}>
+                          <span style={{position:'absolute',left:0,color:'var(--gold)'}}>›</span>{t}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -660,73 +774,89 @@ export default function Home() {
 
           {/* TAB 04 — 1 pha */}
           {activeTab === 3 && (
-            <div className={styles.checkPanelGrid}>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>04</span>
-                  <h5>Kiểm tra phân loại động cơ 1 pha.</h5>
-                </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.infoBox} style={{marginBottom:8}}>
-                    Nhập thông định danh: Số rãnh stator Z, Số cực 2p (Poles), Tần số vận hành F (Hz).
+            <div className={styles.layout}>
+              <div className={styles.inputPanel}>
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                    <h4>Thông số đầu vào</h4>
+                    <span className="tag blue" style={{marginLeft:'auto'}}>1 Pha</span>
                   </div>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Số rãnh Stator <strong>Z</strong></span>
-                    <input className={styles.inp} type="number" value={p4z} onChange={e => setP4z(+e.target.value)} />
-                  </div>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Số cực <strong>2P (Poles)</strong></span>
-                    <input className={styles.inp} type="number" value={p4p} onChange={e => setP4p(+e.target.value)} />
-                  </div>
-                  <div className={styles.inpGroup}>
-                    <span className={styles.inpLabel}>Tần số <strong>F (Hz)</strong></span>
-                    <input className={styles.inp} type="number" value={p4f} onChange={e => setP4f(+e.target.value)} />
-                  </div>
-                  <div className={styles.resultBox}>
-                    <span className={styles.resultLabel}>Tốc độ đồng bộ</span>
-                    <span className={styles.resultVal}>{ndb4} RPM</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Bước cực từ τ</span>
-                    <span className={styles.resultVal}>{tau4} (rãnh/1 pha/cực)</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>✓ Quy tắc phân bố</span>
-                    <span className={styles.resultVal}>Xét giá trị τ chia hết cho 2, 3 hoặc 4</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Bước dây d₁</span>
-                    <span className={styles.resultVal}>{d1_4} rãnh</span>
-                  </div>
-                  <div className={styles.resultBox} style={{marginTop:6}}>
-                    <span className={styles.resultLabel}>Bước dây d₂</span>
-                    <span className={styles.resultVal}>{d2_4} rãnh</span>
+                  <div className="card-body">
+                    <div className={styles.field}>
+                      <label>Số rãnh Stator <strong>Z</strong></label>
+                      <input className="inp" type="number" step="any" value={p4z} onChange={e => setP4z(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <div className={styles.field}>
+                      <label>Số cực <strong>2P (Poles)</strong></label>
+                      <input className="inp" type="number" step="any" value={p4p} onChange={e => setP4p(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <div className={styles.field}>
+                      <label>Tần số <strong>F</strong> <span className={styles.unit}>Hz</span></label>
+                      <input className="inp" type="number" step="any" value={p4f} onChange={e => setP4f(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className={styles.checkCard}>
-                <div className={styles.checkHead}>
-                  <span className={styles.checkNum}>04</span>
-                  <h5>Kết luận phân bố QA và QB</h5>
+              <div>
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                    <h4>Kết quả tính toán</h4>
+                    <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.results}>
+                      {[
+                        ['Tốc độ đồng bộ', `${ndb4} RPM`,       'blue'],
+                        ['Bước cực từ τ',   `${tau4} rãnh/cực`, 'blue'],
+                        ['Bước dây d₁',     `${d1_4} rãnh`,     'gold'],
+                        ['Bước dây d₂',     `${d2_4} rãnh`,     'gold'],
+                      ].map(([label, value, color]) => (
+                        <div key={label} className={styles.resRow}>
+                          <span className={styles.resLabel}>{label}</span>
+                          <span className={`tag ${color}`}>{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-                <div className={styles.checkBody}>
-                  <div className={styles.infoBox} style={{marginBottom:8}}>
-                    Khi tính song giá trị τ. Xét giá trị τ chia hết cho cái nào thì thuộc loại dây quấn loại đó.
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--cyan)'}}/>
+                    <h4>Kết luận phân bố QA và QB</h4>
                   </div>
-                  <div className={styles.infoBox} style={{marginBottom:10}}>
-                    Xét giá trị τ chia hết cho cái nào thì thuộc loại dây quấn đó.{' '}
-                    <strong style={{color:'#c0392b'}}>Có 3 giá trị là: 2, 3 và 4.</strong>
+                  <div className="card-body">
+                    <p style={{fontSize:12,color:'var(--text2)',marginBottom:10}}>
+                      Xét giá trị τ chia hết cho cái nào thì thuộc loại dây quấn đó. <strong style={{color:'#c0392b'}}>Có 3 giá trị: 2, 3 và 4.</strong>
+                    </p>
+                    <div className={styles.distList}>
+                      <div className={tau4 % 2 === 0 ? styles.distActive : styles.distInactive}>
+                        Phân bố QA = QB — bước cực từ τ là bội số của <strong>2</strong>
+                      </div>
+                      <div className={tau4 % 3 === 0 ? styles.distActive : styles.distInactive}>
+                        Phân bố QA = 2.QB — bước cực từ τ là bội số của <strong>3</strong>
+                      </div>
+                      <div className={tau4 % 4 === 0 ? styles.distActive : styles.distInactive}>
+                        Phân bố QA = 3.QB — bước cực từ τ là bội số của <strong>4</strong>
+                      </div>
+                    </div>
                   </div>
-                  <div className={styles.distList}>
-                    <div className={tau4 % 2 === 0 ? styles.distActive : styles.distInactive}>
-                      Phân bố QA = QB được sử dụng khi bước cực từ τ là bội số của <strong>2</strong>
-                    </div>
-                    <div className={tau4 % 3 === 0 ? styles.distActive : styles.distInactive}>
-                      Phân bố QA = 2.QB được sử dụng khi bước cực từ τ là bội số của <strong>3</strong>
-                    </div>
-                    <div className={tau4 % 4 === 0 ? styles.distActive : styles.distInactive}>
-                      Phân bố QA = 3.QB được sử dụng khi bước cực từ τ là bội số của <strong>4</strong>
-                    </div>
+                </div>
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--gold)'}}/>
+                    <h4>Ghi chú kỹ thuật</h4>
+                  </div>
+                  <div className="card-body">
+                    <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:6}}>
+                      {['Nhập số rãnh Z, số cực 2P và tần số F để xác định phân bố dây quấn 1 pha.','Bước cực từ τ = Z / 2P (làm tròn về số nguyên).','Kiểm tra τ chia hết cho 2, 3 hoặc 4 để xác định loại phân bố QA/QB.']
+                      .map(t => (
+                        <li key={t} style={{fontSize:12,color:'var(--text2)',paddingLeft:16,position:'relative'}}>
+                          <span style={{position:'absolute',left:0,color:'var(--gold)'}}>›</span>{t}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
