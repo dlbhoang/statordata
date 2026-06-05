@@ -136,90 +136,83 @@ export const SUBNAV_ITEMS = [
   {
     label: 'Bắt đầu tính toán',
     path: '/',
+  },
+  {
+    label: 'Mục 1: Tính toán dữ liệu 3 pha, 1 tốc độ.',
+    path: '/hoc-tap/3pha-1tocdo',
     children: [
-  
+
       {
-        label: 'Mục 1: Tính toán dữ liệu 3 pha, 1 tốc độ.',
-        path: '/hoc-tap/3pha-1tocdo',
+        label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, SỐ NGUYÊN.',
+        path: '/hoc-tap/3pha-1tocdo/so-nguyen',
         children: [
-  
-          {
-            label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, SỐ NGUYÊN.',
-            path: '/hoc-tap/3pha-1tocdo/so-nguyen',
-            children: [
-              { label: 'Tính toán dữ liệu 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/1lop' },
-              { label: 'Tính toán dữ liệu 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/2lop' },
-              { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/huong-dan' },
-            ]
-          },
-  
-          {
-            label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, PHÂN SỐ TỐI GIẢN.',
-            path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian',
-            children: [
-              { label: 'Tính toán dữ liệu 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so/1lop' },
-              { label: 'Tính toán dữ liệu 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so/2lop' },
-              { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-1tocdo/phan-so/huong-dan' },
-            ]
-          }
-  
+          { label: 'Tính toán dữ liệu 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/1lop' },
+          { label: 'Tính toán dữ liệu 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/2lop' },
+          { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/huong-dan' },
         ]
       },
-  
+
       {
-        label: 'Mục 2: Tính toán dữ liệu dây quấn stator 3 pha, 2 tốc độ.',
-        path: '/hoc-tap/3pha-2tocdo',
+        label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, PHÂN SỐ TỐI GIẢN.',
+        path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian',
         children: [
-  
-          {
-            label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, 2 TỐC, THEO (ROBERT DAHLANDER).',
-            path: '/hoc-tap/3pha-2tocdo/dahlander',
-            children: [
-              { label: 'Tính toán dây quấn đổi tốc độ momen không đổi (2Y/Δ).', path: '/hoc-tap/3pha-2tocdo/momen' },
-              { label: 'Tính toán dây quấn đổi tốc độ công suất không đổi (Δ/2Y).', path: '/hoc-tap/3pha-2tocdo/cong-suat' },
-              { label: 'Tính toán dây quấn công suất và momen thay đổi (2Y/Y).', path: '/hoc-tap/3pha-2tocdo/thay-doi' },
-              { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-2tocdo/huong-dan' }
-            ]
-          }
-  
-        ]
-      },
-  
-      {
-        label: 'Mục 3: Tính toán dữ liệu 1 pha.',
-        path: '/hoc-tap/1pha',
-        children: [
-          { label: 'Tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/day-quan-sin' },
-          { label: 'Hướng dẫn tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/huong-dan' },
-  
-          { label: 'Tính toán dữ liệu phân bố QA = 2QB.', path: '/hoc-tap/1pha/qa-2qb' },
-          { label: 'Hướng dẫn QA = 2QB.', path: '/hoc-tap/1pha/qa-2qb/huong-dan' },
-  
-          { label: 'Tính toán dữ liệu phân bố QA = 3QB.', path: '/hoc-tap/1pha/qa-3qb' },
-          { label: 'Hướng dẫn QA = 3QB.', path: '/hoc-tap/1pha/qa-3qb/huong-dan' },
-  
-          { label: 'Tính toán dữ liệu phân bố QA = QB.', path: '/hoc-tap/1pha/qa-qb' },
-          { label: 'Hướng dẫn QA = QB.', path: '/hoc-tap/1pha/qa-qb/huong-dan' },
-        ]
-      },
-  
-      {
-        label: 'Mục 4: Hướng dẫn kỹ thuật tính toán dữ liệu.',
-        path: '/huong-dan',
-        children: [
-          { label: 'Xác định thông số động cơ 3 pha 1 tốc.', path: '/huong-dan/3pha-1toc' },
-          { label: 'Xác định thông số động cơ 3 pha 2 tốc.', path: '/huong-dan/3pha-2toc' },
-          { label: 'Xác định thông số động cơ 1 pha.', path: '/huong-dan/1pha' },
-  
-          { label: 'Quan hệ từ cảm trong gông và răng stator.', path: '/huong-dan/tu-cam' },
-          { label: 'Chọn mật độ dòng điện và hệ số công suất.', path: '/huong-dan/mat-do-dong' },
-          { label: 'Thuộc tính nhanh hệ thống.', path: '/huong-dan/thuoc-tinh-nhanh-he-thong' }
+          { label: 'Tính toán dữ liệu 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so/1lop' },
+          { label: 'Tính toán dữ liệu 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so/2lop' },
+          { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-1tocdo/phan-so/huong-dan' },
         ]
       }
-  
+
+    ]
+  },
+  {
+    label: 'Mục 2: Tính toán dữ liệu dây quấn stator 3 pha, 2 tốc độ.',
+    path: '/hoc-tap/3pha-2tocdo',
+    children: [
+
+      {
+        label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, 2 TỐC, THEO (ROBERT DAHLANDER).',
+        path: '/hoc-tap/3pha-2tocdo/dahlander',
+        children: [
+          { label: 'Tính toán dây quấn đổi tốc độ momen không đổi (2Y/Δ).', path: '/hoc-tap/3pha-2tocdo/momen' },
+          { label: 'Tính toán dây quấn đổi tốc độ công suất không đổi (Δ/2Y).', path: '/hoc-tap/3pha-2tocdo/cong-suat' },
+          { label: 'Tính toán dây quấn công suất và momen thay đổi (2Y/Y).', path: '/hoc-tap/3pha-2tocdo/thay-doi' },
+          { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-2tocdo/huong-dan' }
+        ]
+      }
+
+    ]
+  },
+  {
+    label: 'Mục 3: Tính toán dữ liệu 1 pha.',
+    path: '/hoc-tap/1pha',
+    children: [
+      { label: 'Tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/day-quan-sin' },
+      { label: 'Hướng dẫn tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/huong-dan' },
+
+      { label: 'Tính toán dữ liệu phân bố QA = 2QB.', path: '/hoc-tap/1pha/qa-2qb' },
+      { label: 'Hướng dẫn QA = 2QB.', path: '/hoc-tap/1pha/qa-2qb/huong-dan' },
+
+      { label: 'Tính toán dữ liệu phân bố QA = 3QB.', path: '/hoc-tap/1pha/qa-3qb' },
+      { label: 'Hướng dẫn QA = 3QB.', path: '/hoc-tap/1pha/qa-3qb/huong-dan' },
+
+      { label: 'Tính toán dữ liệu phân bố QA = QB.', path: '/hoc-tap/1pha/qa-qb' },
+      { label: 'Hướng dẫn QA = QB.', path: '/hoc-tap/1pha/qa-qb/huong-dan' },
+    ]
+  },
+  {
+    label: 'Mục 4: Hướng dẫn kỹ thuật tính toán dữ liệu.',
+    path: '/huong-dan',
+    children: [
+      { label: 'Xác định thông số động cơ 3 pha 1 tốc.', path: '/huong-dan/3pha-1toc' },
+      { label: 'Xác định thông số động cơ 3 pha 2 tốc.', path: '/huong-dan/3pha-2toc' },
+      { label: 'Xác định thông số động cơ 1 pha.', path: '/huong-dan/1pha' },
+
+      { label: 'Quan hệ từ cảm trong gông và răng stator.', path: '/huong-dan/tu-cam' },
+      { label: 'Chọn mật độ dòng điện và hệ số công suất.', path: '/huong-dan/mat-do-dong' },
+      { label: 'Thuộc tính nhanh hệ thống.', path: '/huong-dan/thuoc-tinh-nhanh-he-thong' }
     ]
   }
-  ];
+];
 export const CALCULATION_MENU = [
   {
     title: 'Tính Toán Dữ Liệu 3 Pha, 1 Tốc Độ',

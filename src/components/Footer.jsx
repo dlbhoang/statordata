@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
+import MapModal from './MapModal';
 
 export default function Footer() {
   return (
@@ -18,7 +19,14 @@ export default function Footer() {
           </p>
           <h4 className={styles.h}>Thông tin liên hệ</h4>
           <ul className={styles.contacts}>
-            <li><span>📍</span> Số nhà 319 – Đường DT 9 – Thôn 1, Tân Tiến, Đắk Lắk</li>
+            <li>
+              <span>📍</span>
+              <MapModal
+                address="Số nhà 319 – Đường DT 9 – Thôn 1, Tân Tiến, Đắk Lắk"
+                query="Tan Tien, Dak Lak, Vietnam"
+                label="Số nhà 319 – Đường DT 9 – Thôn 1, Tân Tiến, Đắk Lắk"
+              />
+            </li>
             <li><span>📞</span> 0366 332 181</li>
             <li><span>✉️</span> Statordata@gmail.com</li>
           </ul>
