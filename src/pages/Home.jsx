@@ -13,7 +13,6 @@ import dienApday2tcodo from '../assets/DIENAPDAY2TCODO.jpg';
 import dienAp1pha from '../assets/DIENAP1PHA.jpg';
 import { HERO_FEATURES, ANALYSIS_RESULTS, WHY_ITEMS } from '../data/content';
 import styles from './Home.module.css';
-import MapModal from '../components/MapModal';
 
 function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
 
@@ -159,9 +158,27 @@ export default function Home() {
               Thiết kế & Tính toán <em>dây quấn Stator</em> động cơ cảm ứng
             </h1>
             <ul className={styles.heroList}>
-              {HERO_FEATURES.map((f, i) => <li key={i}>{f}</li>)}
+              {HERO_FEATURES.slice(0, 4).map((f, i) => <li key={i}>{f}</li>)}
             </ul>
-            <div className={styles.heroActions} />          </div>
+            <div className={styles.heroActions}>
+              <Link to="/tinh-toan/3pha-1tocdo" className="btn btn-gold">Bắt đầu tính toán</Link>
+              <Link to="/huong-dan" className="btn btn-ghost">Hướng dẫn kỹ thuật</Link>
+            </div>
+            <div className={styles.heroStats}>
+              <div className={styles.heroStat}>
+                <strong>3 pha · 1 pha</strong>
+                <span>Đa dạng loại động cơ</span>
+              </div>
+              <div className={styles.heroStat}>
+                <strong>8 mục</strong>
+                <span>Kết quả phân tích</span>
+              </div>
+              <div className={styles.heroStat}>
+                <strong>100%</strong>
+                <span>Tính toán tự động</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <Subnav />
@@ -257,6 +274,10 @@ export default function Home() {
       {/* ── CALCULATION LINKS ── */}
       <section className={styles.calcSection}>
         <div className="page-wrap">
+          <div className={styles.calcHeader}>
+            <h2>Truy cập nhanh công cụ</h2>
+            <p>Chọn loại động cơ hoặc tài liệu kỹ thuật để bắt đầu</p>
+          </div>
           <div className={styles.calcGrid}>
             <Link to="/" className={styles.calcItem}>
               <div className={styles.calcIcon}>🚀</div>
@@ -314,7 +335,7 @@ export default function Home() {
                 <span className="tag green" style={{marginLeft:'auto'}}>HD</span>
               </div>
               <div className="card-body">
-                <div className="video-block" style={{display:'flex', justifyContent:'center', alignItems:'center'}}>                </div>
+                <img src={appGif} alt="Demo quá trình xử lý dữ liệu Statordata" className={styles.videoGif} />
               </div>
             </div>
           </div>
@@ -419,6 +440,11 @@ export default function Home() {
 
         {/* ── CHECK TABS ── */}
         <div className={styles.checkTabWrap}>
+          <div className={styles.checkTabHeader}>
+            <span className={styles.checkTabBadge}>Công cụ nhanh</span>
+            <h2>Kiểm tra &amp; quy đổi thông số</h2>
+            <p>6 công cụ tính toán nhanh — chọn tab bên dưới để bắt đầu</p>
+          </div>
           <div className={styles.checkTabBar}>
             {tabs.map((t, i) => (
               <button
