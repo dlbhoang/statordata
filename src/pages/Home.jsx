@@ -110,11 +110,29 @@ export default function Home() {
   /* ── Active tab ── */
   const [activeTab, setActiveTab] = useState(0);
 
+  /* ── Tab 05: Quy đổi số vòng & đường kính theo điện áp ── */
+  const [v05old, setV05old] = useState(100);
+  const [v05new, setV05new] = useState(220);
+  const [v05dt,  setV05dt]  = useState(1.5);
+  const [v05coils, setV05coils] = useState([2, 3, 4, 5, 6]);
+  const v05newCoils = v05coils.map(n => parseFloat((n * v05new / v05old).toFixed(4)));
+  const v05newDt    = parseFloat((v05dt * Math.sqrt(v05old / v05new)).toFixed(4));
+
+  /* ── Tab 06: Quy đổi số vòng & đường kính theo tần số ── */
+  const [f06old, setF06old] = useState(70);
+  const [f06new, setF06new] = useState(50);
+  const [f06dt,  setF06dt]  = useState(1.5);
+  const [f06coils, setF06coils] = useState([2, 3, 4, 5, 6]);
+  const f06newCoils = f06coils.map(n => parseFloat((n * f06old / f06new).toFixed(4)));
+  const f06newDt    = parseFloat((f06dt * Math.sqrt(f06new / f06old)).toFixed(4));
+
   const tabs = [
     { num: '01', title: 'Qui đổi đường kính dây đồng tiết diện tròn: dₙ (mm).' },
     { num: '02', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },
     { num: '03', title: 'Kiểm tra phân loại động cơ 3 pha 1 tốc độ' },
     { num: '04', title: 'Kiểm tra phân loại động cơ 1 pha' },
+    { num: '05', title: 'Qui đổi số vòng & đường kính dây theo điện áp' },
+    { num: '06', title: 'Qui đổi số vòng & đường kính dây theo tần số' },
   ];
 
   return (
@@ -862,6 +880,226 @@ export default function Home() {
               </div>
             </div>
           )}
+          {/* TAB 05 — Qui đổi số vòng & đường kính theo điện áp */}
+          {activeTab === 4 && (
+            <div className={styles.layout}>
+              {/* LEFT — inputs */}
+              <div className={styles.inputPanel}>
+                {/* OLD voltage */}
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                    <h4>Thông số dữ liệu cũ</h4>
+                    <span className="tag blue" style={{marginLeft:'auto'}}>Điện áp cũ</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.field}>
+                      <label>Điện áp cũ <strong>V<sub>pha</sub></strong> <span className={styles.unit}>Vôn</span></label>
+                      <input className="inp" type="number" step="any" value={v05old} onChange={e => setV05old(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <div style={{marginTop:12}}>
+                      <div style={{fontSize:12,fontWeight:700,color:'var(--text2)',marginBottom:8}}>Số vòng mỗi bối dây cũ (Vòng/Bối)</div>
+                      {v05coils.map((val, i) => (
+                        <div key={i} className={styles.field} style={{marginBottom:6}}>
+                          <label>N<sub>b{i+1}</sub></label>
+                          <input
+                            className="inp" type="number" step="any" value={val}
+                            onChange={e => setV05coils(prev => prev.map((v, j) => j === i ? (+e.target.value) : v))}
+                            style={{width:120,textAlign:'right'}}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <div className={styles.field} style={{marginTop:12}}>
+                      <label>Đường kính dây đồng <strong>d<sub>t</sub></strong> <span className={styles.unit}>mm</span></label>
+                      <input className="inp" type="number" step="any" value={v05dt} onChange={e => setV05dt(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                  </div>
+                </div>
+                {/* NEW voltage */}
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--gold)'}}/>
+                    <h4>Thông số điện áp mới</h4>
+                    <span className="tag gold" style={{marginLeft:'auto'}}>Điện áp mới</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.field}>
+                      <label>Điện áp mới <strong>V<sub>pha</sub></strong> <span className={styles.unit}>Vôn</span></label>
+                      <input className="inp" type="number" step="any" value={v05new} onChange={e => setV05new(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <p style={{fontSize:11,color:'var(--text2)',marginTop:8}}>
+                      Công thức: N<sub>mới</sub> = N<sub>cũ</sub> × (V<sub>mới</sub> / V<sub>cũ</sub>)
+                    </p>
+                    <p style={{fontSize:11,color:'var(--text2)',marginTop:4}}>
+                      d<sub>t mới</sub> = d<sub>t cũ</sub> × √(V<sub>cũ</sub> / V<sub>mới</sub>)
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT — results */}
+              <div>
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                    <h4>Kết quả: Số vòng mỗi bối dây mới</h4>
+                    <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.results}>
+                      {v05newCoils.map((val, i) => (
+                        <div key={i} className={styles.resRow}>
+                          <span className={styles.resLabel}>N<sub>b{i+1}</sub> ({v05coils[i]} → {v05new}V)</span>
+                          <span className="tag blue">{val} Vòng/Bối</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className={styles.wire01TotalResult} style={{marginTop:14}}>
+                      <div className={styles.wire01TotalLabel}>✓ Đường kính dây đồng mới</div>
+                      <div className={styles.wire01TotalVal}>
+                        d<sub>t</sub> = <strong style={{color:'#d92531'}}>{v05newDt}</strong> mm
+                      </div>
+                    </div>
+                    <div className={styles.classifyInteger} style={{marginTop:8}}>
+                      ✓ V<sub>cũ</sub> = {v05old} V → V<sub>mới</sub> = {v05new} V
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--gold)'}}/>
+                    <h4>Ghi chú kỹ thuật</h4>
+                  </div>
+                  <div className="card-body">
+                    <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:6}}>
+                      {[
+                        'Nhập điện áp cũ, số vòng mỗi bối dây cũ và đường kính dây cũ.',
+                        'Nhập điện áp mới để tính số vòng và đường kính dây mới.',
+                        'Số vòng tỉ lệ thuận với điện áp.',
+                        'Đường kính dây tỉ lệ nghịch căn bậc hai điện áp (bảo toàn tiết diện).',
+                      ].map(t => (
+                        <li key={t} style={{fontSize:12,color:'var(--text2)',paddingLeft:16,position:'relative'}}>
+                          <span style={{position:'absolute',left:0,color:'var(--gold)'}}>›</span>{t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* TAB 06 — Qui đổi số vòng & đường kính theo tần số */}
+          {activeTab === 5 && (
+            <div className={styles.layout}>
+              {/* LEFT — inputs */}
+              <div className={styles.inputPanel}>
+                {/* OLD freq */}
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
+                    <h4>Thông số dữ liệu cũ</h4>
+                    <span className="tag blue" style={{marginLeft:'auto'}}>Tần số cũ</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.field}>
+                      <label>Tần số cũ <strong>F</strong> <span className={styles.unit}>Hz</span></label>
+                      <input className="inp" type="number" step="any" value={f06old} onChange={e => setF06old(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <div style={{marginTop:12}}>
+                      <div style={{fontSize:12,fontWeight:700,color:'var(--text2)',marginBottom:8}}>Số vòng mỗi bối dây cũ (Vòng/Bối)</div>
+                      {f06coils.map((val, i) => (
+                        <div key={i} className={styles.field} style={{marginBottom:6}}>
+                          <label>N<sub>b{i+1}</sub></label>
+                          <input
+                            className="inp" type="number" step="any" value={val}
+                            onChange={e => setF06coils(prev => prev.map((v, j) => j === i ? (+e.target.value) : v))}
+                            style={{width:120,textAlign:'right'}}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    <div className={styles.field} style={{marginTop:12}}>
+                      <label>Đường kính dây đồng <strong>d<sub>t</sub></strong> <span className={styles.unit}>mm</span></label>
+                      <input className="inp" type="number" step="any" value={f06dt} onChange={e => setF06dt(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                  </div>
+                </div>
+                {/* NEW freq */}
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--gold)'}}/>
+                    <h4>Thông số tần số mới</h4>
+                    <span className="tag gold" style={{marginLeft:'auto'}}>Tần số mới</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.field}>
+                      <label>Tần số mới <strong>F</strong> <span className={styles.unit}>Hz</span></label>
+                      <input className="inp" type="number" step="any" value={f06new} onChange={e => setF06new(+e.target.value)} style={{width:120,textAlign:'right'}} />
+                    </div>
+                    <p style={{fontSize:11,color:'var(--text2)',marginTop:8}}>
+                      Công thức: N<sub>mới</sub> = N<sub>cũ</sub> × (F<sub>cũ</sub> / F<sub>mới</sub>)
+                    </p>
+                    <p style={{fontSize:11,color:'var(--text2)',marginTop:4}}>
+                      d<sub>t mới</sub> = d<sub>t cũ</sub> × √(F<sub>mới</sub> / F<sub>cũ</sub>)
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT — results */}
+              <div>
+                <div className="card" style={{marginBottom:16}}>
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
+                    <h4>Kết quả: Số vòng mỗi bối dây mới</h4>
+                    <span className="tag green" style={{marginLeft:'auto'}}>✓ Tự động</span>
+                  </div>
+                  <div className="card-body">
+                    <div className={styles.results}>
+                      {f06newCoils.map((val, i) => (
+                        <div key={i} className={styles.resRow}>
+                          <span className={styles.resLabel}>N<sub>b{i+1}</sub> ({f06coils[i]} vòng @ {f06old}Hz)</span>
+                          <span className="tag blue">{val} Vòng/Bối</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className={styles.wire01TotalResult} style={{marginTop:14}}>
+                      <div className={styles.wire01TotalLabel}>✓ Đường kính dây đồng mới</div>
+                      <div className={styles.wire01TotalVal}>
+                        d<sub>t</sub> = <strong style={{color:'#d92531'}}>{f06newDt}</strong> mm
+                      </div>
+                    </div>
+                    <div className={styles.classifyInteger} style={{marginTop:8}}>
+                      ✓ F<sub>cũ</sub> = {f06old} Hz → F<sub>mới</sub> = {f06new} Hz
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header">
+                    <div style={{width:10,height:10,borderRadius:'50%',background:'var(--gold)'}}/>
+                    <h4>Ghi chú kỹ thuật</h4>
+                  </div>
+                  <div className="card-body">
+                    <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:6}}>
+                      {[
+                        'Nhập tần số cũ, số vòng mỗi bối dây cũ và đường kính dây cũ.',
+                        'Nhập tần số mới để tính số vòng và đường kính dây mới.',
+                        'Số vòng tỉ lệ thuận với tần số (cũ/mới).',
+                        'Đường kính dây tỉ lệ căn bậc hai của tần số (mới/cũ).',
+                      ].map(t => (
+                        <li key={t} style={{fontSize:12,color:'var(--text2)',paddingLeft:16,position:'relative'}}>
+                          <span style={{position:'absolute',left:0,color:'var(--gold)'}}>›</span>{t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
         </div>
 
       </div>
