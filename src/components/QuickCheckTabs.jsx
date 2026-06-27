@@ -172,12 +172,7 @@ export default function QuickCheckTabs() {
                         <strong style={{ color: '#d92531' }}>{p1_2p_corrected}</strong>
                       </div>
                     </div>
-                    <div className={styles.classifyInteger} style={{ marginTop: 12 }}>
-                      Công thức:
-                    </div>
-                    <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 8, padding: '8px 12px', background: 'rgba(0,0,0,0.03)', borderRadius: 4 }}>
-                      2p = (120 × f) / N<sub>db</sub> = (120 × {p1f}) / {p1ndb} = {p1_2p_corrected}
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -277,12 +272,7 @@ export default function QuickCheckTabs() {
                         <span className="tag blue">{p2_classification_3ph}</span>
                       </div>
                     </div>
-                    <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 12, padding: '8px 12px', background: 'rgba(0,0,0,0.03)', borderRadius: 4 }}>
-                      <strong>Công thức:</strong>
-                      <div style={{ marginTop: 6 }}>N<sub>td</sub> = (120 × F) / 2p = (120 × {p2f}) / {p2_2p} = {p2_ntd} RPM</div>
-                      <div style={{ marginTop: 4 }}>τ = Z / 2p = {p2z} / {p2_2p} = {p2_tau.toFixed(2)}</div>
-                      <div style={{ marginTop: 4 }}>q = Z / (2p × 3) = {p2z} / ({p2_2p} × 3) = {p2_q_isInteger ? p2_q : `${p2_qNum}/${p2_qDen}`}</div>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -377,35 +367,7 @@ export default function QuickCheckTabs() {
                       </div>
                     </div>
 
-                    {p3_tau % 2 === 0 && (
-                      <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 12, padding: '8px 12px', background: 'rgba(0,0,0,0.03)', borderRadius: 4 }}>
-                        <strong>Phân bố Q<sub>A</sub> = Q<sub>B</sub></strong>
-                        <div style={{ marginTop: 4 }}>Q<sub>A</sub> = Q<sub>B</sub> = {p3_qa}</div>
-                        <div style={{ fontSize: 10, marginTop: 4, color: 'var(--text3)' }}>Áp dụng khi bước cực từ τ là bội số của 2</div>
-                      </div>
-                    )}
 
-                    {p3_tau % 3 === 0 && p3_tau % 2 !== 0 && (
-                      <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 12, padding: '8px 12px', background: 'rgba(0,0,0,0.03)', borderRadius: 4 }}>
-                        <strong>Phân bố Q<sub>A</sub> = 2.Q<sub>B</sub></strong>
-                        <div style={{ marginTop: 4 }}>Q<sub>A</sub> = {p3_qa}, Q<sub>B</sub> = {p3_qb}</div>
-                        <div style={{ fontSize: 10, marginTop: 4, color: 'var(--text3)' }}>Áp dụng khi bước cực từ τ là bội số của 3</div>
-                      </div>
-                    )}
-
-                    {p3_tau % 4 === 0 && p3_tau % 2 !== 0 && p3_tau % 3 !== 0 && (
-                      <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 12, padding: '8px 12px', background: 'rgba(0,0,0,0.03)', borderRadius: 4 }}>
-                        <strong>Phân bố Q<sub>A</sub> = 3.Q<sub>B</sub></strong>
-                        <div style={{ marginTop: 4 }}>Q<sub>A</sub> = {p3_qa}, Q<sub>B</sub> = {p3_qb}</div>
-                        <div style={{ fontSize: 10, marginTop: 4, color: 'var(--text3)' }}>Áp dụng khi bước cực từ τ là bội số của 4</div>
-                      </div>
-                    )}
-
-                    <div style={{ fontSize: 11, color: 'var(--text2)', marginTop: 12, padding: '8px 12px', background: 'rgba(0,0,0,0.03)', borderRadius: 4 }}>
-                      <strong>Công thức:</strong>
-                      <div style={{ marginTop: 6 }}>N<sub>td</sub> = (120 × F) / 2p = (120 × {p3f}) / {p3_2p} = {p3_ntd} RPM</div>
-                      <div style={{ marginTop: 4 }}>τ = Z / 2p = {p3z} / {p3_2p} = {p3_tau}</div>
-                    </div>
                   </div>
                 </div>
               </div>
