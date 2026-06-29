@@ -1169,6 +1169,37 @@
   font-size: 14px;
   color: rgba(255, 255, 255, .58);
 }
+.bigCard {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.bigCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 24px;
+  background: #1e4fd6; /* màu xanh đậm như ảnh */
+  color: #fff;
+}
+.bigCardHeaderNum {
+  font-size: 28px;
+  font-weight: 800;
+  opacity: 0.45;
+}
+.bigCardHeaderTitle {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.bigCardHeaderDesc {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.bigCardBody {
+  padding: 24px;
+}
 .calcGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1489,4 +1520,117 @@
     grid-template-columns: 28px 1fr 1fr 80px;
   }
   .wire01Input { max-width: 70px; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   STATS BANNER — "36+ / 3 PHA / 70% / 1986"
+   ════════════════════════════════════════════════════════════ */
+.statsBanner {
+  padding: 18px 24px;
+  background: linear-gradient(90deg, var(--navy) 0%, var(--blue) 100%);
+}
+.statsBannerInner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.statsItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  padding: 6px 12px;
+  position: relative;
+}
+.statsItem + .statsItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 255, 255, .16);
+}
+.statsNum {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: .3px;
+}
+.statsLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .68);
+}
+@media (max-width: 700px) {
+  .statsBannerInner { grid-template-columns: repeat(2, 1fr); row-gap: 16px; }
+  .statsItem + .statsItem::before { display: none; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   SYSTEM QUICK PROPERTIES — "Thuộc tính nhanh hệ thống" (máy biến áp)
+   ════════════════════════════════════════════════════════════ */
+.sysQuickSection {
+  padding: 36px 24px 8px;
+}
+.sysQuickTitle {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1.4;
+}
+.sysQuickSubtitle {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--blue);
+}
+.sysQuickGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .sysQuickGrid { grid-template-columns: 1fr; }
+}
+.sysQuickList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sysQuickList li {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #d62a2a;
+  line-height: 1.5;
+}
+.sysQuickList li strong {
+  font-weight: 800;
+  margin-right: 4px;
+}
+.sysQuickImageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  min-height: 160px;
+  border: 2px dashed var(--green);
+  border-radius: 14px;
+  padding: 24px;
+  color: var(--blue);
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.5;
+  background: rgba(46, 184, 92, .04);
+}
+.sysQuickImageBox svg {
+  color: var(--green);
 }

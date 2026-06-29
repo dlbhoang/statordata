@@ -64,6 +64,93 @@ export default function Home() {
       </section>
       <Subnav />
 
+      {/* ── STATS BANNER ── */}
+      <section className={styles.statsBanner}>
+        <div className="page-wrap">
+          <div className={styles.statsBannerInner}>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>36+</strong>
+              <span className={styles.statsLabel}>Rãnh Stator hỗ trợ</span>
+            </div>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>3 PHA</strong>
+              <span className={styles.statsLabel}>1 &amp; 2 tốc độ</span>
+            </div>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>70%</strong>
+              <span className={styles.statsLabel}>Tiết kiệm thời gian</span>
+            </div>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>1986</strong>
+              <span className={styles.statsLabel}>Nền tảng lý thuyết</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CALCULATION LINKS ── */}
+      <section className={styles.calcSection}>
+        <div className="page-wrap">
+          <div className={styles.calcHeader}>
+            <h2>Truy cập nhanh công cụ</h2>
+            <p>Chọn loại động cơ hoặc tài liệu kỹ thuật để bắt đầu</p>
+          </div>
+          <div className={styles.calcGrid}>
+            <Link to="/" className={styles.calcItem}>
+              <div className={styles.calcIcon}>🚀</div>
+              <h4>Bắt đầu tính toán</h4>
+              <p>Khởi động công cụ tính toán chuyên nghiệp</p>
+            </Link>
+            <Link to="/tinh-toan/3pha-1tocdo" className={styles.calcItem}>
+              <div className={styles.calcIcon}>⚡</div>
+              <h4>3 pha, 1 tốc độ</h4>
+              <p>Tính toán động cơ 3 pha tốc độ đơn</p>
+            </Link>
+            <Link to="/tinh-toan/3pha-2tocdo" className={styles.calcItem}>
+              <div className={styles.calcIcon}>🔄</div>
+              <h4>3 pha, 2 tốc độ (1/2)</h4>
+              <p>Tính toán động cơ 3 pha tốc độ kép</p>
+            </Link>
+            <Link to="/tinh-toan/1pha" className={styles.calcItem}>
+              <div className={styles.calcIcon}>🔌</div>
+              <h4>1 pha</h4>
+              <p>Tính toán động cơ 1 pha</p>
+            </Link>
+            <Link to="/huong-dan" className={styles.calcItem}>
+              <div className={styles.calcIcon}>📚</div>
+              <h4>Hướng dẫn kỹ thuật</h4>
+              <p>Hướng dẫn sử dụng và tài liệu kỹ thuật</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── QUICK SYSTEM PROPERTIES (MÁY BIẾN ÁP) ── */}
+      <section className={styles.sysQuickSection}>
+        <div className="page-wrap">
+          <h2 className={styles.sysQuickTitle}>
+            Thuộc tính nhanh hệ thống - Tính toán dữ liệu Stator động cơ cảm ứng.
+          </h2>
+          <h3 className={styles.sysQuickSubtitle}>Thuộc tính nhanh.</h3>
+          <div className={styles.sysQuickGrid}>
+            <ul className={styles.sysQuickList}>
+              <li><strong>01:</strong> Xác định điện áp &amp; thông số kích thước hình học.</li>
+              <li><strong>02:</strong> Xác định bước bối dây quấn sin động cơ 2 pha.</li>
+              <li><strong>03:</strong> Qui đổi đường kính dây đồng tiết diện tròn.</li>
+              <li><strong>04:</strong> Tính toán dây quấn máy biến áp.</li>
+            </ul>
+            <div className={styles.sysQuickImageBox}>
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.6"/>
+                <circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="1.6"/>
+                <path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span>Ảnh đo kích thước máy biến áp<br />(sẽ cập nhật)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CHECK BANNER ── */}
       <section className={styles.checkBannerSection}>
         <div className="page-wrap">
@@ -148,43 +235,6 @@ export default function Home() {
               </div>
             </Link>
 
-          </div>
-        </div>
-      </section>
-
-      {/* ── CALCULATION LINKS ── */}
-      <section className={styles.calcSection}>
-        <div className="page-wrap">
-          <div className={styles.calcHeader}>
-            <h2>Truy cập nhanh công cụ</h2>
-            <p>Chọn loại động cơ hoặc tài liệu kỹ thuật để bắt đầu</p>
-          </div>
-          <div className={styles.calcGrid}>
-            <Link to="/" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🚀</div>
-              <h4>Bắt đầu tính toán</h4>
-              <p>Khởi động công cụ tính toán chuyên nghiệp</p>
-            </Link>
-            <Link to="/tinh-toan/3pha-1tocdo" className={styles.calcItem}>
-              <div className={styles.calcIcon}>⚡</div>
-              <h4>3 pha, 1 tốc độ</h4>
-              <p>Tính toán động cơ 3 pha tốc độ đơn</p>
-            </Link>
-            <Link to="/tinh-toan/3pha-2tocdo" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🔄</div>
-              <h4>3 pha, 2 tốc độ (1/2)</h4>
-              <p>Tính toán động cơ 3 pha tốc độ kép</p>
-            </Link>
-            <Link to="/tinh-toan/1pha" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🔌</div>
-              <h4>1 pha</h4>
-              <p>Tính toán động cơ 1 pha</p>
-            </Link>
-            <Link to="/huong-dan" className={styles.calcItem}>
-              <div className={styles.calcIcon}>📚</div>
-              <h4>Hướng dẫn kỹ thuật</h4>
-              <p>Hướng dẫn sử dụng và tài liệu kỹ thuật</p>
-            </Link>
           </div>
         </div>
       </section>

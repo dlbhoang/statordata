@@ -1,0 +1,323 @@
+/* ====================================================================
+   QUICK CHECK TABS — styles matching the "Nhập thông số / Kết quả"
+   two-card layout shown in the reference design.
+   Add these rules into your existing Home.module.css
+   (or import this file separately and merge class names).
+   ==================================================================== */
+
+/* ---------- Layout: two-column grid for input + result cards ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Big card (shared shell for both columns) ---------- */
+.bigCard {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 33, 84, 0.08);
+  border: 1px solid #e7ebf7;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Card header (the blue "01 / 02" banner) ---------- */
+.bigCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 28px;
+  background: linear-gradient(135deg, #1d4fd8 0%, #2348c7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bigCardHeaderNum {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.28);
+  font-style: italic;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
+
+.bigCardHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bigCardHeaderTitle {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.bigCardHeaderDesc {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ---------- Card body ---------- */
+.bigCardBody {
+  padding: 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====================================================================
+   INPUT FIELDS (Z, 2p, F rows)
+   ==================================================================== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  color: #344054;
+  font-weight: 500;
+}
+
+/* small colored badge before the label, e.g. "Z", "2p", "F" */
+.field label > strong:first-child,
+.fieldBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 7px;
+  background: #eaf1ff;
+  color: #1d4fd8;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.unit {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* number input row: [ − ] [ input ] [ + ] */
+.fieldBtn {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid #dbe3f5;
+  background: #ffffff;
+  border-radius: 8px;
+  color: #1d4fd8;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.fieldBtn:hover {
+  background: #eaf1ff;
+  border-color: #1d4fd8;
+}
+
+.fieldBtn:active {
+  background: #dce6fb;
+}
+
+.inp {
+  flex: 1;
+  height: 38px;
+  text-align: center;
+  border: 1px solid #dbe3f5;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1b2440;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.inp:focus {
+  border-color: #1d4fd8;
+  box-shadow: 0 0 0 3px rgba(29, 79, 216, 0.12);
+}
+
+/* ====================================================================
+   "KIỂM TRA NGAY" button (inside input card)
+   ==================================================================== */
+.btnCheck {
+  width: 100%;
+  margin-top: auto;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1d4fd8 0%, #2348c7 100%);
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 6px 16px rgba(29, 79, 216, 0.28);
+}
+
+.btnCheck:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(29, 79, 216, 0.35);
+}
+
+.btnCheck:active {
+  transform: translateY(0);
+}
+
+/* ====================================================================
+   RESULT CARD — empty state (icon + helper text + CTA link)
+   ==================================================================== */
+.resultEmpty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 40px 20px;
+  min-height: 280px;
+}
+
+.resultEmptyIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #eaf1ff 0%, #f5f8ff 60%, transparent 100%);
+  border: 1px solid #e3eaff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.resultEmptyIcon::before {
+  content: '';
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #c4d4f9;
+}
+
+.resultEmptyIcon::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1d4fd8;
+}
+
+.resultEmptyText {
+  font-size: 14.5px;
+  color: #8493ad;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.resultEmptyCta {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #1d4fd8;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ====================================================================
+   RESULT CARD — filled state (rows of computed values)
+   ==================================================================== */
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.resRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #f7f9fd;
+  border-radius: 10px;
+  border: 1px solid #eef1f9;
+}
+
+.resLabel {
+  font-size: 13.5px;
+  color: #475569;
+  font-weight: 500;
+}
+
+/* the little blue "tag" badges used inside result rows */
+.results :global(.tag.blue) {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #eaf1ff;
+  color: #1d4fd8;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ====================================================================
+   Total-result hero block (used on Tab 01 — single big number)
+   ==================================================================== */
+.wire01TotalResult {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px 20px;
+  min-height: 220px;
+}
+
+.wire01TotalLabel {
+  font-size: 14px;
+  color: #8493ad;
+  font-weight: 600;
+}
+
+.wire01TotalVal {
+  font-size: 48px;
+  font-weight: 800;
+}
