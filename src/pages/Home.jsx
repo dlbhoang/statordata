@@ -116,19 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CHECK BANNER ── */}
-      <section className={styles.checkBannerSection}>
-        <div className="page-wrap">
-          <div className={styles.checkBanner}>
-            <div>
-              <h2>Dành cho bạn: <em>Kiểm tra nhanh</em> thiết kế động cơ</h2>
-              <p>Nhập thông số định danh để kiểm tra nhanh phân loại và cấu hình dây quấn</p>
-            </div>
-            <Link to="/tinh-toan/3pha-1tocdo" className="btn btn-gold">🚀 Dùng thử ngay</Link>
-          </div>
-        </div>
-      </section>
-
+    
      
 
       <div className="page-wrap">
