@@ -141,7 +141,7 @@ export const SUBNAV_ITEMS = [
     label: 'Mục 1: Tính toán dữ liệu 3 pha, 1 tốc độ.',
     path: '/hoc-tap/3pha-1tocdo',
     children: [
-
+      { label: 'Video hướng dẫn 3 pha 1 tốc độ', path: '/hoc-tap/3pha-1tocdo' },
       {
         label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, SỐ NGUYÊN.',
         path: '/hoc-tap/3pha-1tocdo/so-nguyen',
@@ -168,7 +168,7 @@ export const SUBNAV_ITEMS = [
     label: 'Mục 2: Tính toán dữ liệu dây quấn stator 3 pha, 2 tốc độ.',
     path: '/hoc-tap/3pha-2tocdo',
     children: [
-
+      { label: 'Video hướng dẫn 3 pha 2 tốc độ', path: '/hoc-tap/3pha-2tocdo' },
       {
         label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, 2 TỐC, THEO (ROBERT DAHLANDER).',
         path: '/hoc-tap/3pha-2tocdo/dahlander',
@@ -186,6 +186,7 @@ export const SUBNAV_ITEMS = [
     label: 'Mục 3: Tính toán dữ liệu 1 pha.',
     path: '/hoc-tap/1pha',
     children: [
+      { label: 'Video hướng dẫn 1 pha', path: '/hoc-tap/1pha' },
       { label: 'Tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/day-quan-sin' },
       { label: 'Hướng dẫn tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/huong-dan' },
 
@@ -220,7 +221,6 @@ export const CALCULATION_MENU = [
     items: [
       { label: 'Tính toán dữ liệu 3 pha 1 lớp.', path: '/tinh-toan/3pha-1tocdo/1lop' },
       { label: 'Tính toán dữ liệu 3 pha 2 lớp.', path: '/tinh-toan/3pha-1tocdo/2lop' },
-      { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/tinh-toan/3pha-1tocdo/guide' },
     ],
   },
   {
@@ -230,7 +230,6 @@ export const CALCULATION_MENU = [
       { label: 'Tính toán dữ liệu đối tốc độ moment không đổi (2y/Δ).', path: '/tinh-toan/3pha-2tocdo/case1' },
       { label: 'Tính toán dữ liệu đối tốc độ công suất không đổi (Δ/2y).', path: '/tinh-toan/3pha-2tocdo/case2' },
       { label: 'Tính toán dữ liệu đối tốc độ công suất & moment thay đổi (2Y/Y).', path: '/tinh-toan/3pha-2tocdo/case3' },
-      { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/tinh-toan/3pha-2tocdo/guide' },
     ],
   },
   {
@@ -241,7 +240,6 @@ export const CALCULATION_MENU = [
       { label: 'Tính toán dữ liệu phân bố Qₐ = 2Qᵦ.', path: '/tinh-toan/1pha/qa-2qb' },
       { label: 'Tính toán dữ liệu phân bố Qₐ = 3Qᵦ.', path: '/tinh-toan/1pha/qa-3qb' },
       { label: 'Tính toán dữ liệu phân bố Qₐ = Qᵦ.', path: '/tinh-toan/1pha/qa-qb' },
-      { label: 'Hướng dẫn tính toán dữ liệu dây quấn sin.', path: '/tinh-toan/1pha/guide' },
     ],
   },
   {
