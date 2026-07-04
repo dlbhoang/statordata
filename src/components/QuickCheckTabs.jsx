@@ -58,16 +58,19 @@ export default function QuickCheckTabs() {
   const p3_tau = p3_2pNum > 0 ? Math.round(p3zNum / p3_2pNum) : 0;
 
   // Determine classification based on divisibility
-  let p3_classification = '';
+  const p3_classifications = [];
   if (p3_tau % 2 === 0) {
-    p3_classification = 'Dây quấn loại 1 (Chia hết cho 2)';
-  } else if (p3_tau % 3 === 0) {
-    p3_classification = 'Dây quấn loại 2 (Chia hết cho 3)';
-  } else if (p3_tau % 4 === 0) {
-    p3_classification = 'Dây quấn loại 3 (Chia hết cho 4)';
-  } else {
-    p3_classification = 'Không thuộc loại nào được định nghĩa';
+    p3_classifications.push('Dây quấn loại 1 (Chia hết cho 2)');
   }
+  if (p3_tau % 3 === 0) {
+    p3_classifications.push('Dây quấn loại 2 (Chia hết cho 3)');
+  }
+  if (p3_tau % 4 === 0) {
+    p3_classifications.push('Dây quấn loại 3 (Chia hết cho 4)');
+  }
+  const p3_classification = p3_classifications.length > 0
+    ? p3_classifications.join(', ')
+    : 'Không thuộc loại nào được định nghĩa';
 
   const tabs = [
     { num: '01', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },

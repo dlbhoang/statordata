@@ -88,42 +88,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CALCULATION LINKS ── */}
-      <section className={styles.calcSection}>
-        <div className="page-wrap">
-          <div className={styles.calcHeader}>
-            <h2>Truy cập nhanh công cụ</h2>
-            <p>Chọn loại động cơ hoặc tài liệu kỹ thuật để bắt đầu</p>
-          </div>
-          <div className={styles.calcGrid}>
-            <Link to="/" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🚀</div>
-              <h4>Bắt đầu tính toán</h4>
-              <p>Khởi động công cụ tính toán chuyên nghiệp</p>
-            </Link>
-            <Link to="/tinh-toan/3pha-1tocdo" className={styles.calcItem}>
-              <div className={styles.calcIcon}>⚡</div>
-              <h4>3 pha, 1 tốc độ</h4>
-              <p>Tính toán động cơ 3 pha tốc độ đơn</p>
-            </Link>
-            <Link to="/tinh-toan/3pha-2tocdo" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🔄</div>
-              <h4>3 pha, 2 tốc độ (1/2)</h4>
-              <p>Tính toán động cơ 3 pha tốc độ kép</p>
-            </Link>
-            <Link to="/tinh-toan/1pha" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🔌</div>
-              <h4>1 pha</h4>
-              <p>Tính toán động cơ 1 pha</p>
-            </Link>
-            <Link to="/huong-dan" className={styles.calcItem}>
-              <div className={styles.calcIcon}>📚</div>
-              <h4>Hướng dẫn kỹ thuật</h4>
-              <p>Hướng dẫn sử dụng và tài liệu kỹ thuật</p>
-            </Link>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ── QUICK SYSTEM PROPERTIES (MÁY BIẾN ÁP) ── */}
       <section className={styles.sysQuickSection}>
@@ -164,80 +129,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── QUICK SYSTEM ATTRIBUTES ── */}
-      <section className={styles.quickSystemSection}>
-        <div className="page-wrap">
-          <div className={styles.quickSystemHeader}>
-            <span className={styles.quickSystemBadge}>Tham khảo nhanh</span>
-            <h2>Thuộc tính nhanh hệ thống</h2>
-            <p>Xác định điện áp pha và điện áp dây theo kiểu liên kết cuộn dây stator động cơ. Nhấn vào để tính toán chi tiết.</p>
-          </div>
-
-          <div className={styles.qsGrid}>
-
-            <Link to="/tinh-toan/3pha-1tocdo" className={styles.qsCard}>
-              <div className={styles.qsCardImgWrap}>
-                <img src={dienAphinhy} alt="Liên kết hình sao Y" className={styles.qsImage} />
-              </div>
-              <div className={styles.qsCardContent}>
-                <div className={styles.qsCardTop}>
-                  <span className={styles.qsNum}>01</span>
-                  <span className={styles.qsTag}>3 pha · 1 tốc độ</span>
-                </div>
-                <h5 className={styles.qsTitle}>Liên kết hình sao (Y)</h5>
-                <p className={styles.qsDesc}>Xác định điện áp pha V<sub>pha</sub> khi dây quấn stator liên kết hình sao.</p>
-                <span className={styles.qsLink}>Tính toán →</span>
-              </div>
-            </Link>
-
-            <Link to="/tinh-toan/3pha-1tocdo" className={styles.qsCard}>
-              <div className={styles.qsCardImgWrap}>
-                <img src={dienAptamgiac} alt="Liên kết hình tam giác" className={styles.qsImage} />
-              </div>
-              <div className={styles.qsCardContent}>
-                <div className={styles.qsCardTop}>
-                  <span className={styles.qsNum}>02</span>
-                  <span className={styles.qsTag}>3 pha · 1 tốc độ</span>
-                </div>
-                <h5 className={styles.qsTitle}>Liên kết hình tam giác (∆)</h5>
-                <p className={styles.qsDesc}>Xác định điện áp pha V<sub>pha</sub> khi dây quấn stator liên kết hình tam giác.</p>
-                <span className={styles.qsLink}>Tính toán →</span>
-              </div>
-            </Link>
-
-            <Link to="/tinh-toan/3pha-2tocdo" className={styles.qsCard}>
-              <div className={styles.qsCardImgWrap}>
-                <img src={dienApday2tcodo} alt="Dahlander 2 tốc độ" className={styles.qsImage} />
-              </div>
-              <div className={styles.qsCardContent}>
-                <div className={styles.qsCardTop}>
-                  <span className={styles.qsNum}>03</span>
-                  <span className={styles.qsTag}>3 pha · 2 tốc độ</span>
-                </div>
-                <h5 className={styles.qsTitle}>Dahlander — 2 tốc độ</h5>
-                <p className={styles.qsDesc}>Xác định điện áp dây V<sub>dây</sub> theo sơ đồ Robert Dahlander.</p>
-                <span className={styles.qsLink}>Tính toán →</span>
-              </div>
-            </Link>
-
-            <Link to="/tinh-toan/1pha" className={styles.qsCard}>
-              <div className={styles.qsCardImgWrap}>
-                <img src={dienAp1pha} alt="Nguồn áp 1 pha" className={styles.qsImage} />
-              </div>
-              <div className={styles.qsCardContent}>
-                <div className={styles.qsCardTop}>
-                  <span className={styles.qsNum}>04</span>
-                  <span className={styles.qsTag}>1 pha / 2 pha</span>
-                </div>
-                <h5 className={styles.qsTitle}>Liên kết nguồn áp 1 pha</h5>
-                <p className={styles.qsDesc}>Xác định điện áp pha V<sub>pha</sub> khi liên kết với nguồn áp 1 pha hoặc 2 pha.</p>
-                <span className={styles.qsLink}>Tính toán →</span>
-              </div>
-            </Link>
-
-          </div>
-        </div>
-      </section>
+     
 
       <div className="page-wrap">
 
