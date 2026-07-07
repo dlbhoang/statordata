@@ -1576,6 +1576,40 @@
   .historyMainGrid { grid-template-columns: repeat(2, 1fr); }
 }
 
+/* Timeline layout matching design sample */
+.historyMainWrap {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+}
+.historyMainPanel { }
+.historyList {
+  background: linear-gradient(180deg, rgba(9,33,98,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.28);
+  padding: 22px 20px;
+}
+.historyItem { display: grid; grid-template-columns: 72px 1fr; gap: 12px; align-items:start; padding: 14px 0; }
+.historyItem + .historyItem { border-top: 1px solid rgba(13,51,122,0.06); padding-top: 20px; margin-top: 6px; }
+.historyYear { color: var(--cyan); font-weight:900; font-size:20px; letter-spacing:1px; }
+.historyBody { }
+.historyItemTitle { margin:0 0 8px; font-size:20px; color:var(--navy); font-weight:800; }
+.historyItemDesc { margin:0; color:var(--text2); line-height:1.9; font-size:15px; }
+
+.historyMainAside { display:flex; justify-content:flex-end; }
+.profileCard { width:300px; background: #fff; border-radius:16px; padding:18px; text-align:center; border: none; box-shadow: 0 18px 40px rgba(2,6,23,0.12); }
+.profileAvatar { width:140px; height:160px; margin:0 auto 12px; background: linear-gradient(180deg,#052a59,#0f4b86); border-radius:14px; box-shadow: 0 18px 50px rgba(9,43,93,0.12); }
+.profileName { color: #0b3b6a; margin:6px 0 2px; font-weight:800; }
+.profileYears { color: rgba(255,255,255,0.45); font-size:13px; margin-bottom:6px; }
+.profileNote { color: rgba(255,255,255,0.6); font-size:13px; }
+
+@media (max-width: 920px) {
+  .historyMainWrap { grid-template-columns: 1fr; }
+  .historyMainAside { justify-content:flex-start; }
+  .profileCard { width:100%; }
+}
+
 /* ════════════════════════════════════════════════════════════
    STATS BANNER — "36+ / 3 PHA / 70% / 1986"
    ════════════════════════════════════════════════════════════ */

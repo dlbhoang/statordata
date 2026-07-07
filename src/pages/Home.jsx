@@ -209,26 +209,56 @@ export default function Home() {
           </div>
         </section>
 
-        {/* LỊCH SỬ NGẮN — HIỂN THỊ TRÊN TRANG CHÍNH */}
+        {/* LỊCH SỬ HÌNH THÀNH — MẪU THEO ẢNH */}
         <section className={styles.historyMainSection}>
           <div className="page-wrap">
             <h2 className={styles.historyMainTitle}>Lịch sử hình thành</h2>
-            <div className={styles.historyMainGrid}>
-              <article className={styles.historyMainEvent}>
-                <div className={styles.historyMainYear}>1986</div>
-                <div>
-                  <h5 className={styles.historyMainEventTitle}>Chương trình thiết kế và tính toán</h5>
-                  <p className={styles.historyMainEventDesc}>Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.</p>
-                </div>
-              </article>
 
-              <article className={styles.historyMainEvent}>
-                <div className={styles.historyMainYear}>NOW</div>
-                <div>
-                  <h5 className={styles.historyMainEventTitle}>Website STATORDATA</h5>
-                  <p className={styles.historyMainEventDesc}>Website STATORDATA do KS. Võ Nguyễn Bá Liêu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.</p>
+            <div className={styles.historyMainWrap}>
+              <div className={styles.historyMainPanel}>
+                <div className={styles.historyList}>
+                  <article className={styles.historyItem}>
+                    <div className={styles.historyYear}>1888</div>
+                    <div className={styles.historyBody}>
+                      <h5 className={styles.historyItemTitle}>Động cơ cảm ứng xoay chiều</h5>
+                      <p className={styles.historyItemDesc}>Động cơ cảm ứng xoay chiều được phát minh bởi Nikola Tesla. Công nghệ này cách mạng hoá ngành công nghiệp toàn cầu từ cuối thế kỷ XIX.</p>
+                    </div>
+                  </article>
+
+                  <article className={styles.historyItem}>
+                    <div className={styles.historyYear}>1958</div>
+                    <div className={styles.historyBody}>
+                      <h5 className={styles.historyItemTitle}>Động cơ tại Việt Nam</h5>
+                      <p className={styles.historyItemDesc}>Tại Việt Nam, ngành động cơ điện bắt đầu được tiếp nhận. Đến sau năm 1975, Việt Nam tự thiết kế và nội địa hoá sản xuất động cơ không đồng bộ.</p>
+                    </div>
+                  </article>
+
+                  <article className={styles.historyItem}>
+                    <div className={styles.historyYear}>1986</div>
+                    <div className={styles.historyBody}>
+                      <h5 className={styles.historyItemTitle}>Chương trình thiết kế và tính toán</h5>
+                      <p className={styles.historyItemDesc}>Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.</p>
+                    </div>
+                  </article>
+
+                  <article className={styles.historyItem}>
+                    <div className={styles.historyYear}>NOW</div>
+                    <div className={styles.historyBody}>
+                      <h5 className={styles.historyItemTitle}>Website STATORDATA</h5>
+                      <p className={styles.historyItemDesc}>Website STATORDATA do KS. Võ Nguyễn Bá Liêu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.</p>
+                    </div>
+                  </article>
                 </div>
-              </article>
+              </div>
+
+              <aside className={styles.historyMainAside}>
+                <div className={styles.profileCard}>
+                  <div className={styles.profileAvatar} />
+                  <h4 className={styles.profileName}>Nikola Tesla</h4>
+                  <div className={styles.profileYears}>1856 – 1943</div>
+                  <div className={styles.profileNote}>Nhà phát minh động cơ cảm ứng</div>
+                </div>
+              </aside>
             </div>
           </div>
         </section>
