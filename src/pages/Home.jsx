@@ -210,7 +210,9 @@ export default function Home() {
         </section>
 
         {/* LỊCH SỬ HÌNH THÀNH — MẪU THEO ẢNH */}
-        <section className={styles.historyMainSection}>
+       
+        <QuickCheckTabs />
+ <section className={styles.historyMainSection}>
           <div className="page-wrap">
             <h2 className={styles.historyMainTitle}>Lịch sử hình thành</h2>
 
@@ -262,8 +264,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <QuickCheckTabs />
 
       </div>
     </>
