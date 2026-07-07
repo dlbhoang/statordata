@@ -2,6 +2,24 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './Footer.module.css';
 import MapModal from './MapModal';
 
+const TIMELINE = [
+  {
+    year: '1888',
+    title: 'Phát minh của Nikola Tesla',
+    description: 'Động cơ cảm ứng xoay chiều được phát minh bởi Nikola Tesla. Công nghệ này cách mạng hoá ngành công nghiệp toàn cầu từ cuối thế kỷ XIX.',
+  },
+  {
+    year: '1986',
+    title: 'Chương trình thiết kế và tính toán',
+    description: 'Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.',
+  },
+  {
+    year: 'NOW',
+    title: 'Website DATA STATOR',
+    description: 'Website DATA STATOR do KS. Võ Nguyễn Bá Liễu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.',
+  },
+];
+
 export default function Footer() {
   const { pathname } = useLocation();
   const showHistoryInFooter = pathname === '/';
@@ -21,11 +39,16 @@ export default function Footer() {
             liệu dây quấn động cơ điện.
           </p>
           {showHistoryInFooter && (
-            <div className={styles.historySection}>
-              <h4 className={styles.h}>Lịch sử hình thành</h4>
-              <p className={styles.historyText}>
-                Từ phát minh của Nikola Tesla đến các ứng dụng hiện đại, Statordata.com mang đến nền tảng kỹ thuật giúp hiểu và thiết kế động cơ cảm ứng rõ ràng hơn.
-              </p>
+            <div className={styles.historyTimeline}>
+              {TIMELINE.map((item) => (
+                <article key={item.year} className={styles.event}>
+                  <div className={styles.eventYear}>{item.year}</div>
+                  <div>
+                    <h5 className={styles.eventTitle}>{item.title}</h5>
+                    <p className={styles.eventDesc}>{item.description}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           )}
           <h4 className={styles.h}>Thông tin liên hệ</h4>
