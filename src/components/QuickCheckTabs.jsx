@@ -74,7 +74,7 @@ export default function QuickCheckTabs() {
 
   const tabs = [
     { num: '01', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },
-    { num: '02', title: 'Kiểm tra & phân loại động cơ 3 pha 1 tốc độ' },
+    { num: '02', title: 'Thuộc tính nhanh hệ thống' },
     { num: '03', title: 'Kiểm tra & phân loại động cơ 1 pha' },
   ];
 
@@ -633,115 +633,42 @@ export default function QuickCheckTabs() {
           <div>
             <div className="qct-subtitle">
               <span className="qct-subtitle-num">02</span>
-              <span>Kiểm tra & phân loại động cơ 3 pha 1 tốc độ</span>
+              <span>Thuộc tính nhanh hệ thống</span>
             </div>
             <div className="qct-layout">
-              {/* ---- Card 01: Nhập thông số đầu vào ---- */}
               <div className="qct-card">
                 <div className="qct-card-header">
                   <span className="qct-card-header-num">01</span>
                   <div>
-                    <div className="qct-card-header-title">NHẬP THÔNG SỐ ĐẦU VÀO</div>
-                    <div className="qct-card-header-desc">Động cơ 3 pha – 1 tốc độ</div>
+                    <div className="qct-card-header-title">NỘI DUNG THUỘC TÍNH NHANH</div>
+                    <div className="qct-card-header-desc">Các mục tính toán nhanh trong thiết kế stator</div>
                   </div>
                 </div>
                 <div className="qct-card-body">
-                  <div className="qct-field">
-                    <div className="qct-field-top">
-                      <span className="qct-field-tag">Z</span>
-                      <span className="qct-field-label">Số rãnh stator</span>
-                      <span className="qct-field-unit">(rãnh)</span>
-                    </div>
-                    <div className="qct-field-row">
-                      <button className="qct-step-btn" onClick={() => setP2z(Math.max(1, toNum(p2z, 1) - 1))}>−</button>
-                      <input
-                        className="qct-field-input"
-                        type="number"
-                        step="1"
-                        value={p2z}
-                        onChange={(e) => setP2z(e.target.value)}
-                        onBlur={() => { if (p2z === '') setP2z(1); }}
-                      />
-                      <button className="qct-step-btn" onClick={() => setP2z(toNum(p2z, 1) + 1)}>+</button>
-                    </div>
-                  </div>
-
-                  <div className="qct-field">
-                    <div className="qct-field-top">
-                      <span className="qct-field-tag">2p</span>
-                      <span className="qct-field-label">Số cực</span>
-                      <span className="qct-field-unit">(cực)</span>
-                    </div>
-                    <div className="qct-field-row">
-                      <button className="qct-step-btn" onClick={() => setP2_2p(Math.max(1, toNum(p2_2p, 1) - 1))}>−</button>
-                      <input
-                        className="qct-field-input"
-                        type="number"
-                        step="1"
-                        value={p2_2p}
-                        onChange={(e) => setP2_2p(e.target.value)}
-                        onBlur={() => { if (p2_2p === '') setP2_2p(1); }}
-                      />
-                      <button className="qct-step-btn" onClick={() => setP2_2p(toNum(p2_2p, 1) + 1)}>+</button>
-                    </div>
-                  </div>
-
-                  <div className="qct-field">
-                    <div className="qct-field-top">
-                      <span className="qct-field-tag">F</span>
-                      <span className="qct-field-label">Tần số</span>
-                      <span className="qct-field-unit">(Hz)</span>
-                    </div>
-                    <div className="qct-field-row">
-                      <button className="qct-step-btn" onClick={() => setP2f(Math.max(1, toNum(p2f, 1) - 1))}>−</button>
-                      <input
-                        className="qct-field-input"
-                        type="number"
-                        step="any"
-                        value={p2f}
-                        onChange={(e) => setP2f(e.target.value)}
-                        onBlur={() => { if (p2f === '') setP2f(1); }}
-                      />
-                      <button className="qct-step-btn" onClick={() => setP2f(toNum(p2f, 1) + 1)}>+</button>
-                    </div>
-                  </div>
-
-                  <button className="qct-btn-check">
-                    ✓ KIỂM TRA NGAY
-                  </button>
+                  <ul style={{ margin: 0, paddingLeft: 20, display: 'grid', gap: 12, color: '#2a3550', lineHeight: 1.5 }}>
+                    <li><strong>01.</strong> Đổi đường kính dây đồng</li>
+                    <li><strong>02.</strong> Tính toán máy biến áp</li>
+                    <li><strong>03.</strong> Xác định bước bối dây động cơ 2 pha</li>
+                    <li><strong>04.</strong> Xác định thông số kích thước hình học</li>
+                  </ul>
                 </div>
               </div>
 
-              {/* ---- Card 02: Kết quả ---- */}
               <div className="qct-card qct-card-result">
                 <div className="qct-card-header qct-card-header-result">
                   <span className="qct-card-header-num">02</span>
                   <div>
-                    <div className="qct-card-header-title">KẾT QUẢ</div>
-                    <div className="qct-card-header-desc">Thông số tính toán</div>
+                    <div className="qct-card-header-title">GHI CHÚ</div>
+                    <div className="qct-card-header-desc">Nhấn vào tab khác để tiếp tục kiểm tra nhanh</div>
                   </div>
                 </div>
-                <div className="qct-card-body" style={{ padding: 0 }}>
-                  <div className="qct-results">
-                    <div className="qct-res-row">
-                      <span className="qct-res-label">Tốc độ đồng từ trường N<span className="qct-subscript-sm">td</span></span>
-                      <span className="qct-tag-blue">{p2_ntd} RPM</span>
-                    </div>
-                    <div className="qct-res-row">
-                      <span className="qct-res-label">Bước cực từ τ</span>
-                      <span className="qct-tag-blue">{p2_tau.toFixed(2)} (rãnh/cực)</span>
-                    </div>
-                    <div className="qct-res-row">
-                      <span className="qct-res-label">Số rãnh phân bố q</span>
-                      <span className="qct-tag-blue">
-                        {p2_q_isInteger ? p2_q : `${p2_qNum}/${p2_qDen}`} (rãnh/pha/cực)
-                      </span>
-                    </div>
-                    <div className="qct-res-row">
-                      <span className="qct-res-label">Phân loại dây quấn</span>
-                      <span className="qct-tag-blue">{p2_classification_3ph}</span>
-                    </div>
-                  </div>
+                <div className="qct-card-body">
+                  <p style={{ margin: '0 0 12px', color: '#2a3550', lineHeight: 1.6 }}>
+                    Nội dung này được giữ ở tab thứ hai để người dùng có thể tiếp cận nhanh các tính toán thuộc tính hệ thống trước khi vào các công cụ phân loại chi tiết.
+                  </p>
+                  <p style={{ margin: 0, color: '#5b6b85', lineHeight: 1.6 }}>
+                    Các mục còn lại trong phần khoa học kỹ thuật được giữ nguyên như hiện tại.
+                  </p>
                 </div>
               </div>
             </div>

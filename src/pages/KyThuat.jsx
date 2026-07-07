@@ -1,83 +1,111 @@
+import { Link } from 'react-router-dom';
 import Subnav from '../components/Subnav';
+import QuickCheckTabs from '../components/QuickCheckTabs';
 import styles from './KyThuat.module.css';
+
+const INFO_CARDS = [
+  {
+    title: 'Thiết kế dây quấn stator',
+    label: 'Thuộc tính nhanh',
+    text: 'Xác định bước cực, số rãnh và phân bố cuộn dây để đảm bảo động cơ hoạt động ổn định và hiệu suất cao.',
+  },
+  {
+    title: 'Tính toán mật độ từ thông',
+    label: 'Công suất',
+    text: 'Tối ưu hóa mật độ từ thông và thông số điện từ để giảm tổn hao và tăng hiệu suất cho động cơ cảm ứng.',
+  },
+  {
+    title: 'Phân loại QA / QB',
+    label: 'Phân bố',
+    text: 'Kiểm tra điều kiện QA = QB, QA = 2QB, QA = 3QB và xác định phương án dây quấn phù hợp.',
+  },
+];
+
+const TOPIC_CARDS = [
+  {
+    title: 'Trang tính toán 1 pha',
+    subtitle: 'Hoàn thiện dữ liệu và bước cực cho động cơ 1 pha.',
+  },
+  {
+    title: 'Trang tính toán 3 pha',
+    subtitle: 'Phân loại động cơ 3 pha 1 tốc độ và 2 tốc độ.',
+  },
+  {
+    title: 'Trang hướng dẫn kỹ thuật',
+    subtitle: 'Tài liệu chi tiết tối ưu hóa quấn dây và chọn thông số.',
+  },
+];
 
 export default function KyThuat() {
   return (
     <>
       <Subnav />
-      <div className="page-wrap" style={{paddingTop:28,paddingBottom:36}}>
-        <span className="sec-label">Kỹ thuật – Công nghệ</span>
-        <h2 className="sec-title">Nikola <span className="accent">Tesla</span></h2>
-        
-        {/* Thông tin Tesla */}
-        <div style={{marginBottom:48,padding:24,background:'var(--card)',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:32,alignItems:'center'}}>
-            <div>
-              <h3 style={{fontSize:18,fontWeight:700,marginBottom:16}}>Nhà phát minh vĩ đại</h3>
-              <div style={{fontSize:13,color:'var(--text2)',lineHeight:1.8}}>
-                <p><strong>Nikola Tesla</strong> (10/7/1856 - 7/1/1943) là một nhà phát minh, kỹ sư điện và kỹ sư cơ khí người Mỹ gốc Serbia.</p>
-                <p style={{marginTop:12}}>Tất cả các thiết kế của ông - khoảng 300 trong số đó được cấp bằng sáng chế - đều hướng tới tương lai và đó là lý do mọi người gọi ông là <strong>"nhà phát minh ra thế kỷ 20"</strong>.</p>
+      <div className="page-wrap" style={{ paddingTop: 28, paddingBottom: 36 }}>
+        <div className={styles.heroSection}>
+          <div>
+            <span className="sec-label">Kỹ thuật – Công nghệ</span>
+            <h2 className="sec-title">Kỹ thuật vòng dây <span className="accent">stator</span></h2>
+            <p className={styles.heroText}>
+              Khám phá các giải pháp thiết kế dây quấn stator, phân loại QA / QB và tần số vận hành cho động cơ 1 pha và 3 pha.
+            </p>
+          </div>
+          <div className={styles.heroCard}>
+            <p className={styles.heroCardTag}>Nguồn cảm hứng</p>
+            <h3>Nikola Tesla</h3>
+            <p>Ông là người mở đường cho động cơ cảm ứng xoay chiều và các công nghệ quấn dây stator hiện đại.</p>
+          </div>
+        </div>
+
+        <section className={styles.infoSection}>
+          <div className={styles.sectionHeader}>
+            <h3>Thuộc tính nhanh</h3>
+            <p>Những thông số quan trọng giúp bạn hiểu nhanh cấu trúc dây quấn và thuộc tính động cơ.</p>
+          </div>
+          <div className={styles.infoGrid}>
+            {INFO_CARDS.map((card) => (
+              <article key={card.title} className={styles.infoCard}>
+                <div className={styles.infoLabel}>{card.label}</div>
+                <h4>{card.title}</h4>
+                <p>{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.topicSection}>
+          <div className={styles.sectionHeader}>
+            <h3>Trang tính toán hoàn chỉnh</h3>
+            <p>Mỗi chức năng được hoàn thiện thành trang riêng, đầy đủ nội dung và hướng dẫn.</p>
+          </div>
+          <div className={styles.topicGrid}>
+            {TOPIC_CARDS.map((item) => (
+              <div key={item.title} className={styles.topicCard}>
+                <div className={styles.topicLabel}>Trang</div>
+                <h4>{item.title}</h4>
+                <p>{item.subtitle}</p>
               </div>
-            </div>
-            <div style={{background:'#f0f4fb',padding:20,borderRadius:'var(--radius)'}}>
-              <table style={{fontSize:12,width:'100%'}}>
-                <tbody>
-                  <tr style={{borderBottom:'1px solid var(--border)'}}>
-                    <td style={{padding:'8px 0',fontWeight:600,color:'var(--navy)'}}>Sinh</td>
-                    <td style={{padding:'8px 0',textAlign:'right'}}>13/9/1856, Smiljan (Croatia)</td>
-                  </tr>
-                  <tr style={{borderBottom:'1px solid var(--border)'}}>
-                    <td style={{padding:'8px 0',fontWeight:600,color:'var(--navy)'}}>Mất</td>
-                    <td style={{padding:'8px 0',textAlign:'right'}}>7/1/1943 (86 tuổi), New York</td>
-                  </tr>
-                  <tr style={{borderBottom:'1px solid var(--border)'}}>
-                    <td style={{padding:'8px 0',fontWeight:600,color:'var(--navy)'}}>Quốc tịch</td>
-                    <td style={{padding:'8px 0',textAlign:'right'}}>Áo, Mỹ</td>
-                  </tr>
-                  <tr>
-                    <td style={{padding:'8px 0',fontWeight:600,color:'var(--navy)'}}>Lĩnh vực</td>
-                    <td style={{padding:'8px 0',textAlign:'right'}}>Điện, Cơ khí</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            ))}
           </div>
-        </div>
+        </section>
 
-        {/* Phát minh nổi bật */}
-        <h3 style={{fontSize:18,fontWeight:700,marginBottom:20}}>Những phát minh nổi bật</h3>
-        <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:20,marginBottom:48}}>
-          <div style={{padding:20,background:'var(--card)',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
-            <h4 style={{color:'var(--blue2)',fontWeight:700,marginBottom:12}}>1. Cuộn dây Tesla</h4>
-            <p style={{fontSize:13,color:'var(--text2)',lineHeight:1.8}}>
-              Máy biến áp cộng hưởng bao gồm hai cuộn dây phản xạ năng lượng qua lại, tạo ra dòng điện xoay chiều có tần số và điện áp cực cao. Được sử dụng cho thí nghiệm điện chiếu sáng, điện xung trị liệu và truyền tải điện năng không dây.
-            </p>
+        <section className={styles.checkSection}>
+          <div className={styles.sectionHeader}>
+            <h3>Kiểm tra nhanh</h3>
+            <p>Xem nhanh phân loại động cơ và bước cực ngay trong trang này.</p>
           </div>
-          <div style={{padding:20,background:'var(--card)',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
-            <h4 style={{color:'var(--blue2)',fontWeight:700,marginBottom:12}}>2. Động cơ cảm ứng (AC)</h4>
-            <p style={{fontSize:13,color:'var(--text2)',lineHeight:1.8}}>
-              Phát triển năm 1887, chạy bằng dòng điện xoay chiều. Sử dụng điện đa pha, tạo ra từ trường để làm quay động cơ. Được cấp bằng sáng chế vào tháng 5/1888.
-            </p>
+          <QuickCheckTabs />
+        </section>
+
+        <section className={styles.historySection}>
+          <div className={styles.sectionHeader}>
+            <h3>Lịch sử phát triển động cơ cảm ứng</h3>
+            <p>Những bước ngoặt quan trọng từ Tesla đến các chuẩn tần số 50 Hz / 60 Hz.</p>
           </div>
-        </div>
-
-        {/* Lịch sử phát triển */}
-        <div style={{ marginBottom: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
-          <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 0 }}>Lịch sử phát triển động cơ cảm ứng</h3>
-          <a href="/ky-thuat/lich-su" className="btn btn-outline">Xem toàn bộ lịch sử</a>
-        </div>
-        <div style={{ marginBottom: 48, padding: 20, background: 'var(--card)', borderRadius: 'var(--radius)', border: '1px solid var(--border)' }}>
-          <p style={{ fontSize: 13, color: 'var(--text2)', lineHeight: 1.8, margin: 0 }}>
-            Các giai đoạn phát triển của động cơ cảm ứng từ thế kỷ 19 đến hiện nay đã được tách riêng thành một trang riêng để dễ theo dõi và chia sẻ.
-          </p>
-        </div>
-
-        <h3 style={{fontSize:18,fontWeight:700,marginBottom:20}}>Tần số chuẩn</h3>
-        <div style={{padding:20,background:'var(--card)',borderRadius:'var(--radius)',border:'1px solid var(--border)'}}>
-          <p style={{fontSize:13,color:'var(--text2)',lineHeight:1.8}}>
-            Trong giai đoạn phát triển tại Westinghouse, dòng điện xoay chiều 133 Hz được sử dụng để vận hành động cơ. Dòng điện được giảm xuống còn <strong>60 Hz</strong> do tốc độ động cơ quá nhanh. Đây là lý do tại sao <strong>tần số 60 Hz được sử dụng ở Hoa Kỳ và miền Tây Nhật Bản</strong> ngày nay, trong khi <strong>50 Hz là chuẩn tại Châu Âu, Ấn Độ, Trung Quốc, Việt Nam</strong>.
-          </p>
-        </div>
+          <div className={styles.historyCard}>
+            <p>Động cơ cảm ứng xoay chiều được phát minh năm 1888 bởi Nikola Tesla. Website STATORDATA.COM được xây dựng dựa trên nền tảng lý thuyết và kinh nghiệm thực tiễn nhằm hỗ trợ kỹ sư và sinh viên trong việc tính toán, thiết kế và phân tích số liệu dây quấn động cơ điện.</p>
+            <p style={{ margin: 0, color: 'var(--text2)' }}>Lịch sử hình thành sẽ được hiển thị tại footer của trang chủ.</p>
+          </div>
+        </section>
       </div>
     </>
   );

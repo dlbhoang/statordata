@@ -16,6 +16,8 @@
 .name { font-family:'Montserrat',sans-serif; font-size:20px; font-weight:700; color:#fff; }
 .name em { color:var(--cyan); font-style:normal; }
 .desc { font-size:12px; line-height:1.8; color:rgba(255,255,255,.5); max-width:600px; margin-bottom:16px; }
+.historySection { margin-bottom:16px; max-width:600px; }
+.historyText { font-size:12px; line-height:1.8; color:rgba(255,255,255,.5); margin:0; }
 .h {
   font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
   color:var(--gold); text-transform:uppercase; letter-spacing:1px;

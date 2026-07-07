@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Footer.module.css';
 import MapModal from './MapModal';
 
 export default function Footer() {
+  const { pathname } = useLocation();
+  const showHistoryInFooter = pathname === '/';
+
   return (
     <footer className={styles.footer}>
       <div className={`page-wrap ${styles.inner}`}>
@@ -17,6 +20,14 @@ export default function Footer() {
             Học Lạc Hồng phát triển, nhằm hỗ trợ kỹ sư và sinh viên trong việc tính toán, thiết kế và phân tích số
             liệu dây quấn động cơ điện.
           </p>
+          {showHistoryInFooter && (
+            <div className={styles.historySection}>
+              <h4 className={styles.h}>Lịch sử hình thành</h4>
+              <p className={styles.historyText}>
+                Từ phát minh của Nikola Tesla đến các ứng dụng hiện đại, Statordata.com mang đến nền tảng kỹ thuật giúp hiểu và thiết kế động cơ cảm ứng rõ ràng hơn.
+              </p>
+            </div>
+          )}
           <h4 className={styles.h}>Thông tin liên hệ</h4>
           <ul className={styles.contacts}>
             <li>

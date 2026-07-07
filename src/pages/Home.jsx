@@ -88,37 +88,6 @@ export default function Home() {
         </div>
       </section>
 
-      
-
-      {/* ── QUICK SYSTEM PROPERTIES (MÁY BIẾN ÁP) ── */}
-      <section className={styles.sysQuickSection}>
-        <div className="page-wrap">
-          <h2 className={styles.sysQuickTitle}>
-            Thuộc tính nhanh hệ thống - Tính toán dữ liệu Stator động cơ cảm ứng.
-          </h2>
-          <h3 className={styles.sysQuickSubtitle}>Thuộc tính nhanh.</h3>
-          <div className={styles.sysQuickGrid}>
-            <ul className={styles.sysQuickList}>
-              <li><strong>01:</strong> Xác định điện áp &amp; thông số kích thước hình học.</li>
-              <li><strong>02:</strong> Xác định bước bối dây quấn sin động cơ 2 pha.</li>
-              <li><strong>03:</strong> Qui đổi đường kính dây đồng tiết diện tròn.</li>
-              <li><strong>04:</strong> Tính toán dây quấn máy biến áp.</li>
-            </ul>
-            <div className={styles.sysQuickImageBox}>
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
-                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.6"/>
-                <circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="1.6"/>
-                <path d="M3 16l5-5 4 4 3-3 6 6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Ảnh đo kích thước máy biến áp<br />(sẽ cập nhật)</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    
-     
-
       <div className="page-wrap">
 
         {/* ── ANALYSIS ── */}
