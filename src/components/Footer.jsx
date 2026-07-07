@@ -4,19 +4,14 @@ import MapModal from './MapModal';
 
 const TIMELINE = [
   {
-    year: '1888',
-    title: 'Phát minh của Nikola Tesla',
-    description: 'Động cơ cảm ứng xoay chiều được phát minh bởi Nikola Tesla. Công nghệ này cách mạng hoá ngành công nghiệp toàn cầu từ cuối thế kỷ XIX.',
-  },
-  {
     year: '1986',
     title: 'Chương trình thiết kế và tính toán',
     description: 'Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.',
   },
   {
     year: 'NOW',
-    title: 'Website DATA STATOR',
-    description: 'Website DATA STATOR do KS. Võ Nguyễn Bá Liễu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.',
+    title: 'Website STATORDATA',
+    description: 'Website STATORDATA do KS. Võ Nguyễn Bá Liêu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.',
   },
 ];
 
