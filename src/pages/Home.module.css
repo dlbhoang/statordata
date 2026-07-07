@@ -1522,6 +1522,60 @@
   .wire01Input { max-width: 70px; }
 }
 
+/* Home history main section */
+.historyMainSection {
+  padding: 28px 0 36px;
+}
+.historyMainTitle {
+  font-size: 22px;
+  color: var(--blue2);
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+.historyMainGrid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(9,33,98,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.28);
+  margin-bottom: 22px;
+}
+.historyMainEvent {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 10px 0;
+}
+.historyMainEvent + .historyMainEvent {
+  border-top: 1px solid rgba(13,51,122,0.03);
+  padding-top: 18px;
+}
+.historyMainYear {
+  width: 64px;
+  color: var(--cyan);
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.historyMainEventTitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: var(--navy);
+  font-weight: 800;
+}
+.historyMainEventDesc {
+  margin: 0;
+  color: var(--text2);
+  opacity: 0.95;
+  line-height: 1.7;
+}
+
+@media (min-width: 920px) {
+  .historyMainGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ════════════════════════════════════════════════════════════
    STATS BANNER — "36+ / 3 PHA / 70% / 1986"
    ════════════════════════════════════════════════════════════ */

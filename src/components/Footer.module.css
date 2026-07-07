@@ -18,8 +18,17 @@
 .desc { font-size:12px; line-height:1.8; color:rgba(255,255,255,.5); max-width:600px; margin-bottom:16px; }
 .historySection { margin-bottom:16px; max-width:600px; }
 .historyText { font-size:12px; line-height:1.8; color:rgba(255,255,255,.5); margin:0; }
-.historyTimeline { margin-bottom:18px; border-top:1px solid rgba(255,255,255,0.04); padding-top:14px; display:grid; gap:18px; grid-template-columns: 1fr; }
-.event { display:flex; gap:18px; align-items:flex-start; padding:6px 0; border-bottom: none; }
+.historyTimeline {
+  margin: 18px 0 0; 
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(2,6,23,0.35);
+}
+.event { display:flex; gap:18px; align-items:flex-start; padding:10px 0; border-bottom: none; }
 .eventYear { width:64px; color:var(--cyan); font-weight:800; font-size:14px; flex-shrink:0; }
 .eventTitle { margin:0 0 6px; color:#fff; font-size:14px; font-weight:700; }
 .eventDesc { margin:0; color:rgba(255,255,255,0.75); font-size:13px; line-height:1.6; }

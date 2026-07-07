@@ -96,16 +96,7 @@ export default function KyThuat() {
           <QuickCheckTabs />
         </section>
 
-        <section className={styles.historySection}>
-          <div className={styles.sectionHeader}>
-            <h3>Lịch sử phát triển động cơ cảm ứng</h3>
-            <p>Những bước ngoặt quan trọng từ Tesla đến các chuẩn tần số 50 Hz / 60 Hz.</p>
-          </div>
-          <div className={styles.historyCard}>
-            <p>Động cơ cảm ứng xoay chiều được phát minh năm 1888 bởi Nikola Tesla. Website STATORDATA.COM được xây dựng dựa trên nền tảng lý thuyết và kinh nghiệm thực tiễn nhằm hỗ trợ kỹ sư và sinh viên trong việc tính toán, thiết kế và phân tích số liệu dây quấn động cơ điện.</p>
-            <p style={{ margin: 0, color: 'var(--text2)' }}>Lịch sử hình thành sẽ được hiển thị tại footer của trang chủ.</p>
-          </div>
-        </section>
+        {/* Lịch sử được hiển thị tại footer trang chủ. */}
       </div>
     </>
   );

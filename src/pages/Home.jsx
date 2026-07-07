@@ -209,9 +209,34 @@ export default function Home() {
           </div>
         </section>
 
+        {/* LỊCH SỬ NGẮN — HIỂN THỊ TRÊN TRANG CHÍNH */}
+        <section className={styles.historyMainSection}>
+          <div className="page-wrap">
+            <h2 className={styles.historyMainTitle}>Lịch sử hình thành</h2>
+            <div className={styles.historyMainGrid}>
+              <article className={styles.historyMainEvent}>
+                <div className={styles.historyMainYear}>1986</div>
+                <div>
+                  <h5 className={styles.historyMainEventTitle}>Chương trình thiết kế và tính toán</h5>
+                  <p className={styles.historyMainEventDesc}>Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.</p>
+                </div>
+              </article>
+
+              <article className={styles.historyMainEvent}>
+                <div className={styles.historyMainYear}>NOW</div>
+                <div>
+                  <h5 className={styles.historyMainEventTitle}>Website STATORDATA</h5>
+                  <p className={styles.historyMainEventDesc}>Website STATORDATA do KS. Võ Nguyễn Bá Liêu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <QuickCheckTabs />
 
       </div>
     </>
   );
 }
+
