@@ -281,7 +281,7 @@ export default function QuickCheckTabs() {
         }
         .qct-card-header-desc {
           font-size: 12px;
-          color: #cfe0ff;
+          color: rgba(255,255,255,0.35);
           margin-top: 2px;
         }
 
@@ -341,7 +341,7 @@ export default function QuickCheckTabs() {
         }
         .qct-field-unit {
           font-size: 12px;
-          color: #93a0b8;
+          color: #c7cede;
           font-weight: 500;
         }
         .qct-field-row {
