@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function gcd(a, b) {
-  return b === 0 ? a : gcd(b, a % b);
-}
+
 
 // Coerce a possibly-empty/invalid input value to a safe number for calculations.
 function toNum(v, fallback = 0) {
@@ -24,26 +22,23 @@ export default function QuickCheckTabs() {
   const p1_2p_corrected = p1_2p % 2 !== 0 ? p1_2p + 1 : p1_2p;
 
   // ==================== TAB 02: KIỂM TRA & PHÂN LOẠI 3 PHA ====================
-  const [p2z, setP2z] = useState(36);
-  const [p2_2p, setP2_2p] = useState(4);
-  const [p2f, setP2f] = useState(50);
 
-  const p2zNum = toNum(p2z, 0);
-  const p2_2pNum = toNum(p2_2p, 0);
-  const p2fNum = toNum(p2f, 0);
+  
 
-  const p2_ntd = p2_2pNum > 0 ? Math.round((120 * p2fNum) / p2_2pNum) : 0;
-  const p2_tau = p2_2pNum > 0 ? p2zNum / p2_2pNum : 0;
-  const p2_q = p2_2pNum > 0 ? p2zNum / (p2_2pNum * 3) : 0;
+  
+
+  
+  
+  
 
   // Check if q is integer
-  const p2_q_isInteger = Number.isInteger(p2_q);
-  const p2_classification_3ph = p2_q_isInteger ? 'Dây quấn số nguyên' : 'Dây quấn phân số tối giản';
+  
+  
 
   // Calculate q as fraction
-  const p2_gcd_q = p2_2pNum > 0 ? gcd(p2zNum, p2_2pNum * 3) || 1 : 1;
-  const p2_qNum = p2zNum / p2_gcd_q;
-  const p2_qDen = (p2_2pNum * 3) / p2_gcd_q;
+  
+  
+  
 
   // ==================== TAB 03: KIỂM TRA & PHÂN LOẠI 1 PHA ====================
   const [p3z, setP3z] = useState(36);
@@ -74,7 +69,7 @@ export default function QuickCheckTabs() {
 
   const tabs = [
     { num: '01', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },
-    { num: '02', title: 'Thuộc tính nhanh hệ thống' },
+    { num: '02', title: 'Thuộc tính nhanh' },
     { num: '03', title: 'Kiểm tra & phân loại động cơ 1 pha' },
   ];
 
@@ -129,11 +124,11 @@ export default function QuickCheckTabs() {
           }
         }
 
-        .qct-wrap {
-          max-width: 1180px;
-          margin: 0 auto;
-          padding: 0 16px 48px;
-        }
+       .qct-wrap {
+  max-width: 92%;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+}
         .qct-head {
           text-align: center;
           margin-bottom: 24px;
@@ -253,10 +248,17 @@ export default function QuickCheckTabs() {
           border: 1px solid #e7ecf6;
           transition: box-shadow 0.2s ease;
         }
-        .qct-card-result {
-          box-shadow: 0 4px 18px rgba(91, 111, 31, 0.1);
-          border-color: #e9edd8;
-        }
+       .qct-card-result {
+  background: #fbfcf5;
+  box-shadow: 0 4px 18px rgba(91, 111, 31, 0.1);
+  border-color: #e9edd8;
+}
+.qct-card-result .qct-res-row {
+  border-bottom-color: #e3e8d0;
+}
+.qct-card-result .qct-total-val strong {
+  color: #d92531;
+}
         .qct-card-header {
           display: flex;
           align-items: center;
@@ -633,7 +635,7 @@ export default function QuickCheckTabs() {
           <div>
             <div className="qct-subtitle">
               <span className="qct-subtitle-num">02</span>
-              <span>Thuộc tính nhanh hệ thống</span>
+              <span>Thuộc tính nhanh</span>
             </div>
             <div className="qct-layout">
               <div className="qct-card">
