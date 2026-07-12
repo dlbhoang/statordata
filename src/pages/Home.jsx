@@ -64,6 +64,40 @@ export default function Home() {
       </section>
       <Subnav />
 
+      {/* ── CALCULATION LINKS ── */}
+      <section className={styles.calcSection}>
+        <div className="page-wrap">
+          <div className={styles.calcGrid}>
+            <Link to="/" className={styles.calcItem}>
+              <div className={styles.calcIcon}>🚀</div>
+              <h4>Bắt đầu tính toán</h4>
+              <p>Khởi động công cụ tính toán chuyên nghiệp</p>
+            </Link>
+            <Link to="/tinh-toan/3pha-1tocdo" className={styles.calcItem}>
+              <div className={styles.calcIcon}>⚡</div>
+              <h4>3 pha, 1 tốc độ</h4>
+              <p>Tính toán động cơ 3 pha tốc độ đơn</p>
+            </Link>
+            <Link to="/tinh-toan/3pha-2tocdo" className={styles.calcItem}>
+              <div className={styles.calcIcon}>🔄</div>
+              <h4>3 pha, 2 tốc độ (1/2)</h4>
+              <p>Tính toán động cơ 3 pha tốc độ kép</p>
+            </Link>
+            <Link to="/tinh-toan/1pha" className={styles.calcItem}>
+              <div className={styles.calcIcon}>🔌</div>
+              <h4>1 pha</h4>
+              <p>Tính toán động cơ 1 pha</p>
+            </Link>
+            <Link to="/huong-dan" className={styles.calcItem}>
+              <div className={styles.calcIcon}>📚</div>
+              <h4>Hướng dẫn kỹ thuật</h4>
+              <p>Hướng dẫn sử dụng và tài liệu kỹ thuật</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+
       {/* ── STATS BANNER ── */}
       <section className={styles.statsBanner}>
         <div className="page-wrap">
