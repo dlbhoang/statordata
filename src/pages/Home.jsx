@@ -63,6 +63,29 @@ export default function Home() {
         </div>
       </section>
       <Subnav />
+      <section className={styles.statsBanner}>
+        <div className="page-wrap">
+          <div className={styles.statsBannerInner}>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>36+</strong>
+              <span className={styles.statsLabel}>Rãnh Stator hỗ trợ</span>
+            </div>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>3 PHA</strong>
+              <span className={styles.statsLabel}>1 &amp; 2 tốc độ</span>
+            </div>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>70%</strong>
+              <span className={styles.statsLabel}>Tiết kiệm thời gian</span>
+            </div>
+            <div className={styles.statsItem}>
+              <strong className={styles.statsNum}>1986</strong>
+              <span className={styles.statsLabel}>Nền tảng lý thuyết</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* ── CALCULATION LINKS ── */}
       <section className={styles.calcSection}>
@@ -100,29 +123,7 @@ export default function Home() {
         <QuickCheckTabs />
 
       {/* ── STATS BANNER ── */}
-      <section className={styles.statsBanner}>
-        <div className="page-wrap">
-          <div className={styles.statsBannerInner}>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>36+</strong>
-              <span className={styles.statsLabel}>Rãnh Stator hỗ trợ</span>
-            </div>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>3 PHA</strong>
-              <span className={styles.statsLabel}>1 &amp; 2 tốc độ</span>
-            </div>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>70%</strong>
-              <span className={styles.statsLabel}>Tiết kiệm thời gian</span>
-            </div>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>1986</strong>
-              <span className={styles.statsLabel}>Nền tảng lý thuyết</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
       <div className="page-wrap">
 
         {/* ── ANALYSIS ── */}
