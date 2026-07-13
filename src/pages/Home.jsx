@@ -97,6 +97,7 @@ export default function Home() {
         </div>
       </section>
 
+        <QuickCheckTabs />
 
       {/* ── STATS BANNER ── */}
       <section className={styles.statsBanner}>
@@ -243,9 +244,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* LỊCH SỬ HÌNH THÀNH — MẪU THEO ẢNH */}
+        {/* ── PROGRAM BANNER: Chương trình → Tính toán dữ liệu ── */}
        
-        <QuickCheckTabs />
+        {/* LỊCH SỬ HÌNH THÀNH — MẪU THEO ẢNH */}
+
  <section className={styles.historyMainSection}>
           <div className="page-wrap">
             <h2 className={styles.historyMainTitle}>Lịch sử hình thành</h2>
@@ -303,4 +305,3 @@ export default function Home() {
     </>
   );
 }
-

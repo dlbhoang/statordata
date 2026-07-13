@@ -193,9 +193,7 @@
   box-shadow: 0 4px 18px rgba(91, 111, 31, 0.1);
   border-color: #e9edd8;
 }
-.bigCardResult .resRow {
-  border-bottom-color: #e3e8d0;
-}
+
 
 /* ---------- Header thẻ (banner xanh "01 / 02") ---------- */
 .bigCardHeader {
@@ -378,6 +376,83 @@
 }
 
 /* ====================================================================
+   Ô KẾT QUẢ dạng thẻ 2 hàng — cùng cấu trúc với ô nhập (.field)
+   [badge + nhãn + đơn vị] rồi tới [ô giá trị], nhưng giữ tông olive
+   ==================================================================== */
+.resField {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #f6f8ec;
+  box-shadow: 0 2px 10px rgba(91, 111, 31, 0.08);
+  border: 1px solid rgba(224, 230, 196, 0.85);
+}
+
+.resFieldTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resFieldBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: #eaf1d4;
+  color: #5b6f1f;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.resFieldLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2a3550;
+  flex: 1;
+}
+
+.resFieldUnit {
+  margin-left: auto;
+  font-size: 12px;
+  color: #9aab7a;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.resFieldValueBox {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  border: 1px solid #dce6c4;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1b2440;
+  padding: 8px 14px;
+  line-height: 1.4;
+}
+
+/* biến thể cho kết quả dạng văn bản dài (vd. phân loại dây quấn) */
+.resFieldValueText {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+/* ====================================================================
    Nút "KIỂM TRA NGAY"
    ==================================================================== */
 .btnCheck {
@@ -470,83 +545,6 @@
 }
 
 /* ====================================================================
-   THẺ KẾT QUẢ — trạng thái đã có dữ liệu (các hàng giá trị tính toán)
+   THẺ KẾT QUẢ — trạng thái đã có dữ liệu
+   (đã chuyển sang dùng .resField... ở trên, xem khối "Ô KẾT QUẢ dạng thẻ 2 hàng")
    ==================================================================== */
-.results {
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.resRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px dashed #e7ecf6;
-}
-.resRow:last-child {
-  border-bottom: none;
-}
-
-.resLabel {
-  font-size: 13px;
-  color: #5b6b85;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.subscriptSm {
-  display: inline-block;
-  font-size: 0.7em;
-  font-weight: 700;
-  line-height: 1;
-  transform: translateY(0.3em);
-}
-
-/* tag xanh nhỏ trong các hàng kết quả */
-.tagBlue {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  border-radius: 8px;
-  background: #eaf1ff;
-  color: #1450c4;
-  font-weight: 700;
-  font-size: 13px;
-  white-space: nowrap;
-}
-/* dùng kèm .tagBlue khi tag nằm trong thẻ kết quả olive */
-.tagBlueResult {
-  background: #f0f4de;
-  color: #5b6f1f;
-}
-
-/* ====================================================================
-   Khối kết quả dạng số lớn (Tab 01 — số cực 2p)
-   ==================================================================== */
-.wire01TotalResult {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 30px 22px;
-  min-height: 220px;
-  text-align: center;
-}
-
-.wire01TotalLabel {
-  font-size: 13px;
-  color: #5b6b85;
-  font-weight: 600;
-}
-
-.wire01TotalVal {
-  font-size: 38px;
-  font-weight: 800;
-  color: #1450c4;
-}

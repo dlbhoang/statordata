@@ -159,10 +159,14 @@ export default function QuickCheckTabs() {
                   </div>
                 </div>
                 <div className={styles.bigCardBody}>
-                  <div className={styles.wire01TotalResult}>
-                    <div className={styles.wire01TotalLabel}>Số cực: 2p (Poles)</div>
-                    <div className={styles.wire01TotalVal}>
-                      <strong style={{ color: '#d92531' }}>{p1_2p_corrected}</strong>
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>2p</span>
+                      <span className={styles.resFieldLabel}>Số cực động cơ</span>
+                      <span className={styles.resFieldUnit}>(Poles)</span>
+                    </div>
+                    <div className={styles.resFieldValueBox}>
+                      <strong style={{ color: '#d92531', fontSize: 20 }}>{p1_2p_corrected}</strong>
                     </div>
                   </div>
                 </div>
@@ -311,20 +315,31 @@ export default function QuickCheckTabs() {
                     <div className={styles.bigCardHeaderDesc}>Thông số tính toán</div>
                   </div>
                 </div>
-                <div className={styles.bigCardBody} style={{ padding: 0 }}>
-                  <div className={styles.results}>
-                    <div className={styles.resRow}>
-                      <span className={styles.resLabel}>Tốc độ đồng từ trường N<span className={styles.subscriptSm}>td</span></span>
-                      <span className={`${styles.tagBlue} ${styles.tagBlueResult}`}>{p3_ntd} RPM</span>
+                <div className={styles.bigCardBody}>
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>N<span className={styles.subscript}>td</span></span>
+                      <span className={styles.resFieldLabel}>Tốc độ đồng bộ</span>
+                      <span className={styles.resFieldUnit}>(RPM)</span>
                     </div>
-                    <div className={styles.resRow}>
-                      <span className={styles.resLabel}>Bước cực từ τ</span>
-                      <span className={`${styles.tagBlue} ${styles.tagBlueResult}`}>{p3_tau} (rãnh/cực)</span>
+                    <div className={styles.resFieldValueBox}>{p3_ntd}</div>
+                  </div>
+
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>τ</span>
+                      <span className={styles.resFieldLabel}>Bước cực từ</span>
+                      <span className={styles.resFieldUnit}>(rãnh/cực)</span>
                     </div>
-                    <div className={styles.resRow}>
-                      <span className={styles.resLabel}>Phân loại dây quấn</span>
-                      <span className={`${styles.tagBlue} ${styles.tagBlueResult}`}>{p3_classification}</span>
+                    <div className={styles.resFieldValueBox}>{p3_tau}</div>
+                  </div>
+
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>PL</span>
+                      <span className={styles.resFieldLabel}>Phân loại dây quấn</span>
                     </div>
+                    <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText}`}>{p3_classification}</div>
                   </div>
                 </div>
               </div>
