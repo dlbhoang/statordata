@@ -264,14 +264,14 @@ export const HERO_FEATURES = [
 ];
 
 export const ANALYSIS_RESULTS = [
-  '01: Kiểm tra cực tốt nhất có thể thực hiện cho động cơ.',
-  '02: Thông số xây dựng sơ đồ khai triển dây quấn stator động cơ.',
-  '03: Góc lệch vị trí không gian giữa hai pha liên tiếp.',
-  '04: Quan hệ từ thông cực đại trên mỗi cực từ với tử cảm cực đại tại khe hở không khí.',
-  '05: Số vòng dây quấn cho mỗi pha dây quấn stator động cơ.',
-  '06: Số vòng dây quấn cho mỗi bối dây và chọn lại số vòng dây quấn cho mỗi bối dây.',
-  '07: Đường kính dây đồng có tiết diện tròn không có lớp men cách điện d.',
-  '08: Các thông số định mức động cơ.',
+  'Kiểm tra cực tốt nhất có thể thực hiện cho động cơ.',
+  'Thông số xây dựng sơ đồ khai triển dây quấn stator động cơ.',
+  'Góc lệch vị trí không gian giữa hai pha liên tiếp.',
+  'Quan hệ từ thông cực đại trên mỗi cực từ với tử cảm cực đại tại khe hở không khí.',
+  'Số vòng dây quấn cho mỗi pha dây quấn stator động cơ.',
+  'Số vòng dây quấn cho mỗi bối dây và chọn lại số vòng dây quấn cho mỗi bối dây.',
+  'Đường kính dây đồng có tiết diện tròn không có lớp men cách điện d.',
+  'Các thông số định mức động cơ.',
 ];
 
 export const WHY_ITEMS = [
