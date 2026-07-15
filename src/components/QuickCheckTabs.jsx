@@ -32,22 +32,28 @@ export default function QuickCheckTabs() {
   const p3fNum = toNum(p3f, 0);
 
   const p3_ntd = p3_2pNum > 0 ? Math.round((120 * p3fNum) / p3_2pNum) : 0;
-  const p3_tau = p3_2pNum > 0 ? Math.round(p3zNum / p3_2pNum) : 0;
 
-  // Determine classification based on divisibility
-  const p3_classifications = [];
-  if (p3_tau % 2 === 0) {
-    p3_classifications.push('Dây quấn loại 1 (Chia hết cho 2)');
+  // τ (bước cực từ) = Z / 2p — KHÔNG được làm tròn âm thầm, vì phần lẻ
+  // (Z không chia hết cho 2p) là thông tin quan trọng để phân loại đúng.
+  const p3_tauRaw = p3_2pNum > 0 ? p3zNum / p3_2pNum : 0;
+  const p3_tauIsInteger = Number.isInteger(p3_tauRaw);
+  // Hiển thị: số nguyên nếu chia hết, ngược lại giữ tối đa 2 chữ số thập phân
+  const p3_tau = p3_tauIsInteger ? p3_tauRaw : Math.round(p3_tauRaw * 100) / 100;
+
+  // Phân loại dây quấn — ưu tiên loại đặc hiệu nhất trước (loại trừ lẫn nhau,
+  // vì chia hết cho 4 thì chắc chắn cũng chia hết cho 2, không được liệt kê cả hai).
+  let p3_classification;
+  if (!p3_tauIsInteger) {
+    p3_classification = 'Z không chia hết cho 2p (τ lẻ) — cần kiểm tra lại thông số đầu vào';
+  } else if (p3_tauRaw % 4 === 0) {
+    p3_classification = 'Dây quấn loại 3 (τ chia hết cho 4)';
+  } else if (p3_tauRaw % 3 === 0) {
+    p3_classification = 'Dây quấn loại 2 (τ chia hết cho 3)';
+  } else if (p3_tauRaw % 2 === 0) {
+    p3_classification = 'Dây quấn loại 1 (τ chia hết cho 2)';
+  } else {
+    p3_classification = 'Không thuộc loại nào được định nghĩa';
   }
-  if (p3_tau % 3 === 0) {
-    p3_classifications.push('Dây quấn loại 2 (Chia hết cho 3)');
-  }
-  if (p3_tau % 4 === 0) {
-    p3_classifications.push('Dây quấn loại 3 (Chia hết cho 4)');
-  }
-  const p3_classification = p3_classifications.length > 0
-    ? p3_classifications.join(', ')
-    : 'Không thuộc loại nào được định nghĩa';
 
   const tabs = [
     { num: '01', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },

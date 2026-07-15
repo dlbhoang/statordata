@@ -166,7 +166,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (max-width: 900px) {
@@ -185,6 +185,7 @@
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.2s ease;
+  height: 100%;
 }
 
 /* Biến thể cho thẻ "Kết quả" — nền hơi ngả vàng-olive nhạt */
@@ -230,11 +231,11 @@
   text-transform: uppercase;
 }
 
-/* Chữ mô tả — cố tình làm mờ giống ảnh mẫu */
+/* Chữ mô tả — làm mờ nhẹ nhưng vẫn đọc được trên nền gradient xanh */
 .bigCardHeaderDesc {
   font-size: 12.5px;
   font-weight: 500;
-  color: rgba(20, 40, 90, 0.28);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 /* Header riêng cho thẻ "Kết quả" — gradient xanh-vàng olive */
