@@ -7,7 +7,10 @@ import fluxImage from '../assets/LYTHUYETMACHTUTRONGMAYDIEN.png';
 import statorPhoto from '../assets/HINHTHONGSODINHMUC.jpg';
 import appGif from '../assets/app.gif';
 import fluxDensityImage from '../assets/PHANBOMATDOTUTHONG.jpg';
-
+import dienAphinhy from '../assets/DIENAPHINHY.jpg';
+import dienAptamgiac from '../assets/DIENAPTAMGIAC.jpg';
+import dienApday2tcodo from '../assets/DIENAPDAY2TCODO.jpg';
+import dienAp1pha from '../assets/DIENAP1PHA.jpg';
 import { HERO_FEATURES, ANALYSIS_RESULTS, WHY_ITEMS } from '../data/content';
 import styles from './Home.module.css';
 
@@ -119,100 +122,7 @@ export default function Home() {
 
       {/* ── THUỘC TÍNH NHANH (danh sách trái + hộp ảnh phải) ── */}
      
- <section className={styles.quickPropsSection}>
-        <div className="page-wrap">
-          <div
-            className={styles.quickPropsGrid}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'minmax(280px, 1fr) 360px',
-              gap: '20px',
-              alignItems: 'start',
-            }}
-          >
-            <div className={styles.quickPropsList}>
-              <h2 style={{ fontSize: 22, fontWeight: 800, color: 'var(--navy)', lineHeight: 1.15, marginBottom: 8 }}>THUỘC TÍNH NHANH HỆ THỐNG - TÍNH TOÁN DỮ LIỆU STATOR ĐỘNG CƠ CẢM ỨNG.</h2>
-              <h3 style={{ fontSize: 16, fontWeight: 800, color: 'var(--blue2)', marginBottom: 14 }}>THUỘC TÍNH NHANH.</h3>
-              {(() => {
-                const ITEMS = [
-                  'Xác định điện áp & phạm vi số kích thước hình học.',
-                  'Xác định bước bối dây quấn sin động cơ 2 pha.',
-                  'Qui đổi đường kính dây đồng tiết diện tròn.',
-                  'Tính toán dây quấn máy biến áp.',
-                ];
-                return (
-                  <ul
-                    className={styles.quickPropsListUl}
-                    style={{ listStyle: 'none', padding: 0, margin: 0 }}
-                  >
-                    {ITEMS.map((t, i) => (
-                      <li
-                        key={i}
-                        className={styles.quickItem}
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: '44px 1fr',
-                          gap: '14px',
-                          alignItems: 'flex-start',
-                          padding: '16px 18px',
-                          background: '#fff',
-                          borderRadius: '14px',
-                          border: '1px solid var(--border)',
-                          boxShadow: '0 2px 12px rgba(10, 22, 60, 0.05)',
-                          marginBottom: '12px',
-                          transition: 'transform .18s ease, box-shadow .18s ease',
-                        }}
-                      >
-                        <div
-                          className={styles.quickNum}
-                          style={{
-                            width: '44px',
-                            height: '44px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: 'linear-gradient(135deg, var(--blue2), #1450c4)',
-                            color: '#fff',
-                            fontWeight: 800,
-                            fontSize: '13px',
-                            borderRadius: '12px',
-                            boxShadow: '0 6px 14px rgba(26, 92, 216, 0.12)',
-                          }}
-                        >
-                          {String(i + 1).padStart(2, '0')}
-                        </div>
-                        <div
-                          className={styles.quickItemText}
-                          style={{ color: '#1a2340', fontWeight: 700, fontSize: '14px', lineHeight: 1.45 }}
-                        >
-                          {t}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                );
-              })()}
-            </div>
 
-            <div
-              className={styles.quickPropsImageBox}
-              style={{
-                boxSizing: 'border-box',
-                width: '360px',
-                maxWidth: '100%',
-                padding: 20,
-                border: '1px solid rgba(26,92,216,0.12)',
-                boxShadow: '0 12px 30px rgba(10,22,60,0.06)',
-                alignSelf: 'start',
-                background: '#fff'
-              }}
-            >
-              <img src={statorPhoto} alt="Đặt ảnh đo kích thước" style={{ maxWidth: '100%', height: 'auto', display: 'block', borderRadius: 8 }} />
-              <div className={styles.quickPropsImageCaption}>Đặt ngay đây ảnh đo kích thước máy biến áp</div>
-            </div>
-          </div>
-        </div>
-      </section>
       <QuickCheckTabs />
 
       {/* ── STATS BANNER ── */}
