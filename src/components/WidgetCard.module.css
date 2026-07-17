@@ -1,0 +1,56 @@
+.widgetCard {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(10, 22, 60, .06);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.widgetCard:hover {
+  box-shadow: 0 12px 32px rgba(10, 22, 60, .1);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  margin: 0;
+}
+
+.body {
+  padding: 22px;
+}
+
+.tag {
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 20px;
+  letter-spacing: .3px;
+}
+
+.blue {
+  background: rgba(26, 92, 216, .1);
+  color: var(--blue2);
+  border: 1px solid rgba(26, 92, 216, .18);
+}
+
+.green {
+  background: rgba(46, 184, 92, .12);
+  color: var(--green);
+  border: 1px solid rgba(46, 184, 92, .2);
+}

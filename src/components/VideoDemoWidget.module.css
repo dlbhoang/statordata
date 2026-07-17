@@ -1,0 +1,13 @@
+.videoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.videoGif {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(10, 22, 60, .12);
+}

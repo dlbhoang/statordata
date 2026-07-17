@@ -57,7 +57,7 @@ export default function QuickCheckTabs() {
 
   const tabs = [
     { num: '01', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },
-    { num: '02', title: 'Thuộc tính nhanh' },
+    { num: '02', title: 'Kiểm tra & phân loại động cơ 3 pha 1 tốc độ' },
     { num: '03', title: 'Kiểm tra & phân loại động cơ 1 pha' },
   ];
 
@@ -76,11 +76,7 @@ export default function QuickCheckTabs() {
       </section>
 
       <div className={styles.wrap}>
-        <div className={styles.head}>
-          <span className={styles.badge}>Công cụ nhanh</span>
-          <h2>Kiểm tra &amp; quy đổi thông số</h2>
-          <p>3 công cụ tính toán nhanh — chọn tab bên dưới để bắt đầu</p>
-        </div>
+      
 
         <div className={styles.tabbar}>
           {tabs.map((t, i) => (
@@ -186,7 +182,7 @@ export default function QuickCheckTabs() {
           <div>
             <div className={styles.subtitle}>
               <span className={styles.subtitleNum}>02</span>
-              <span>Thuộc tính nhanh</span>
+              <span>Kiểm tra & phân loại động cơ 3 pha 1 tốc độ</span>
             </div>
             <div className={styles.layout}>
               <div className={styles.bigCard}>

@@ -7,12 +7,17 @@ import fluxImage from '../assets/LYTHUYETMACHTUTRONGMAYDIEN.png';
 import statorPhoto from '../assets/HINHTHONGSODINHMUC.jpg';
 import appGif from '../assets/app.gif';
 import fluxDensityImage from '../assets/PHANBOMATDOTUTHONG.jpg';
-import dienAphinhy from '../assets/DIENAPHINHY.jpg';
-import dienAptamgiac from '../assets/DIENAPTAMGIAC.jpg';
-import dienApday2tcodo from '../assets/DIENAPDAY2TCODO.jpg';
-import dienAp1pha from '../assets/DIENAP1PHA.jpg';
+
 import { HERO_FEATURES, ANALYSIS_RESULTS, WHY_ITEMS } from '../data/content';
 import styles from './Home.module.css';
+import VideoDemoWidget from '../components/VideoDemoWidget';
+import AnalysisWidget from '../components/AnalysisWidget';
+import CalculationLinksWidget from '../components/CalculationLinksWidget';
+import StatsBannerWidget from '../components/StatsBannerWidget';
+import MagneticWidget from '../components/MagneticWidget';
+import WhyWidget from '../components/WhyWidget';
+import FluxDensityWidget from '../components/FluxDensityWidget';
+import HistoryWidget from '../components/HistoryWidget';
 
 export default function Home() {
   return (
@@ -63,249 +68,21 @@ export default function Home() {
         </div>
       </section>
       <Subnav />
-      <section className={styles.statsBanner}>
-        <div className="page-wrap">
-          <div className={styles.statsBannerInner}>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>36+</strong>
-              <span className={styles.statsLabel}>Rãnh Stator hỗ trợ</span>
-            </div>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>3 PHA</strong>
-              <span className={styles.statsLabel}>1 &amp; 2 tốc độ</span>
-            </div>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>70%</strong>
-              <span className={styles.statsLabel}>Tiết kiệm thời gian</span>
-            </div>
-            <div className={styles.statsItem}>
-              <strong className={styles.statsNum}>1986</strong>
-              <span className={styles.statsLabel}>Nền tảng lý thuyết</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* ── CALCULATION LINKS ── */}
-      <section className={styles.calcSection}>
-        <div className="page-wrap">
-          <div className={styles.calcGrid}>
-            <Link to="/" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🚀</div>
-              <h4>Bắt đầu tính toán</h4>
-              <p>Khởi động công cụ tính toán chuyên nghiệp</p>
-            </Link>
-            <Link to="/tinh-toan/3pha-1tocdo" className={styles.calcItem}>
-              <div className={styles.calcIcon}>⚡</div>
-              <h4>3 pha, 1 tốc độ</h4>
-              <p>Tính toán động cơ 3 pha tốc độ đơn</p>
-            </Link>
-            <Link to="/tinh-toan/3pha-2tocdo" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🔄</div>
-              <h4>3 pha, 2 tốc độ (1/2)</h4>
-              <p>Tính toán động cơ 3 pha tốc độ kép</p>
-            </Link>
-            <Link to="/tinh-toan/1pha" className={styles.calcItem}>
-              <div className={styles.calcIcon}>🔌</div>
-              <h4>1 pha</h4>
-              <p>Tính toán động cơ 1 pha</p>
-            </Link>
-            <Link to="/huong-dan" className={styles.calcItem}>
-              <div className={styles.calcIcon}>📚</div>
-              <h4>Hướng dẫn kỹ thuật</h4>
-              <p>Hướng dẫn sử dụng và tài liệu kỹ thuật</p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── THUỘC TÍNH NHANH (danh sách trái + hộp ảnh phải) ── */}
-     
-
+      <StatsBannerWidget />
+      <CalculationLinksWidget />
       <QuickCheckTabs />
-
-      {/* ── STATS BANNER ── */}
-      
-      <div className="page-wrap">
-
-        {/* ── ANALYSIS ── */}
-        <section className="section">
+      <section className="section">
+        <div className="page-wrap">
           <div className={styles.featGrid}>
-            <div className="card">
-              <div className="card-header">
-                <div style={{width:10,height:10,borderRadius:'50%',background:'var(--blue2)'}}/>
-                <h4 className={styles.analysisLabel}>Phương pháp xử lý dữ liệu</h4>
-              </div>
-              <div className="card-body">
-                <div className={styles.analysisHeader}>
-                  <h3 className={styles.analysisMain}>XỬ LÝ DỮ LIỆU ĐẦU VÀO VÀ XUẤT KẾT QUẢ.</h3>
-                  <span className="tag blue">8 Mục</span>
-                </div>
-                <ul className="feature-list">
-                  {ANALYSIS_RESULTS.map((line, i) => <li key={i}>{line}</li>)}
-                </ul>
-              </div>
-            </div>
-            <div className="card">
-              <div className="card-header">
-                <div style={{width:10,height:10,borderRadius:'50%',background:'var(--green)'}}/>
-                <h4>Video demo quá trình xử lý</h4>
-                <span className="tag green" style={{marginLeft:'auto'}}>HD</span>
-              </div>
-              <div className="card-body">
-                <img src={appGif} alt="Demo quá trình xử lý dữ liệu Statordata" className={styles.videoGif} />
-              </div>
-            </div>
+            <AnalysisWidget results={ANALYSIS_RESULTS} />
+            <VideoDemoWidget src={appGif} alt="Demo quá trình xử lý dữ liệu Statordata" />
           </div>
-        </section>
-
-        {/* ── MAGNETIC ── */}
-        <section className={styles.magSection}>
-          <div className={styles.magTitle}>Mạch từ & Thông số vận hành trong máy điện</div>
-          <div className={styles.magGrid}>
-            <div className={styles.magCard}>
-              <Link to="/ky-thuat" className={styles.magTitleLink}>
-                <h4>LÝ THUYẾT MẠCH TỪ TRONG MÁY ĐIỆN.</h4>
-              </Link>
-              <p>Nắm bắt những hiểu biết giá trị về thiết kế và hoạt động của động cơ cảm ứng, thông qua phân tích chi tiết mạch từ. Xác định quan hệ Từ cảm cực đại tại gông stator so với từ cảm cực đại tại khe hở không khí trên mỗi cực từ hay xác định quan hệ Từ cảm cực đại tại răng stator so với từ cảm cực đại tại khe hở không khí trên mỗi cực từ, cùng như nắm rõ từ thông cực đại trên mỗi cực từ động cơ cảm ứng khi vận hành khi mang tải định mức.</p>
-              <Link to="/ky-thuat" className={styles.magImageRow}>
-                <img src={fluxImage} alt="Lý thuyết mạch từ" className={styles.magImage} />
-              </Link>
-            </div>
-            <div className={styles.magCard}>
-              <Link to="/ky-thuat" className={styles.magTitleLink}>
-                <h4>THÔNG SỐ ĐỊNH MỨC ĐỘNG CƠ ĐIỆN.</h4>
-              </Link>
-              <p>Thông số định mức là các đại lượng đặc trưng cho chế độ làm việc tiêu chuẩn của động cơ điện, bao gồm công suất, điện áp, dòng điện, tốc độ, hệ số công suất (Power Factor), hiệu suất (efficiency (%)), cấp cách điện và chế độ làm việc S1...S8. Các thông số này là cơ sở để đánh giá khả năng vận hành và phục vụ cho quá trình thiết kế và tính toán dữ liệu.</p>
-              <Link to="/ky-thuat" className={styles.magFigure}>
-                <img src={statorPhoto} alt="Thông số định mức động cơ điện" className={styles.magFigureImg} />
-                <div className={styles.magFigureCaption}>Hình: ảnh cho phần LÝ THUYẾT MẠCH TỪ TRONG MÁY ĐIỆN.</div>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ── WHY ── */}
-        <section className="section">
-          <h2 className="sec-title">Vì sao các kỹ sư lựa chọn<br /><span className="accent">nền tảng Statordata.com?</span></h2>
-          <div className={styles.whyItemsGrid}>
-            <div className={styles.whyLeft}>
-              {WHY_ITEMS.filter((_, i) => i < 3).map(item => (
-                <div key={item.num} className={styles.whyItem}>
-                  <div className={styles.whyNum}>{item.num}</div>
-                  <div>
-                    <h5>{item.title}</h5>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className={styles.whyLeft}>
-              {WHY_ITEMS.filter((_, i) => i >= 3).map(item => (
-                <div key={item.num} className={styles.whyItem}>
-                  <div className={styles.whyNum}>{item.num}</div>
-                  <div>
-                    <h5>{item.title}</h5>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className={styles.whyBottomGrid}>
-            <div className={styles.chartCard}>
-              <h4>Biểu đồ Efficiency — Induction Motor</h4>
-              <EfficiencyChart height={220} />
-              <div style={{textAlign:'center',fontSize:10.5,color:'var(--text2)',marginTop:6}}>P(kW) — Efficiency of Induction Motor</div>
-            </div>
-            <div className={styles.statorNote}>
-              <p><strong>STATORDATA.COM</strong> là nền tảng kỹ thuật chuyên sâu dành cho kỹ sư thiết kế và sửa chữa động cơ cảm ứng.</p>
-              <ul className={styles.statorBullets}>
-                <li>➤ Hệ thống cho phép nhập các thông số định danh như: Điện áp, tần số, số rãnh, số cực, số mạch nhánh song song. Dựa trên các dữ liệu này, hệ thống nhanh chóng xuất kết quả như: Thông số xây dựng sơ đồ khai triển dây quấn, vị trí đặt hai đầu dây pha liên tiếp trong không gian stator hoặc rotor.</li>
-                <li>➤ Hệ thống cho phép nhập các thông số kích thước kỹ thuật: Thông số kích thước stator hoặc rotor, thông số kích thước rãnh stator hoặc rotor, Thông số từ thông cực đại. Dựa trên các dữ liệu này, hệ thống nhanh chóng xuất kết quả như: Xác định từ cảm cực đại tại khe hở với từ thông cực đại trên mỗi cực từ, số vòng dây quấn mỗi pha dây quấn, số vòng mỗi bối dây...vv</li>
-                <li>➤ Hệ thống cho phép nhập các thông số định mức đầu vào như: Mật độ dòng điện, hệ số công suất (Power Factor) và hiệu suất (Efficiency). Dựa trên các dữ liệu này các thông số định mức của động cơ như công suất định mức, dòng điện định mức cũng được xác định, đảm bảo sự tương thích giữa thiết kế điện từ và đặc tính từ hóa của mạch từ.</li>
-              </ul>
-              <p><strong>STATORDATA.COM</strong> không chỉ là công cụ thiết kế - tính toán dữ liệu động cơ cảm ứng mà còn là hệ thống hỗ trợ học tập và nghiên cứu, giúp người dùng hiểu sâu hơn về bản chất thiết kế máy điện.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* ── FLUX DENSITY ── */}
-        <section className={styles.fluxSection}>
-          <h2 className={styles.fluxTitle}>PHÂN BỐ MẬT ĐỘ TỪ THÔNG TRONG MẠCH TỪ.</h2>
-          <div className={styles.fluxGrid}>
-            <div className={styles.fluxImgCol}>
-              <img src={fluxDensityImage} alt="Phân bố mật độ từ thông trong mạch từ" className={styles.fluxImg} />
-              <div className={styles.fluxDesc}>
-                <p><strong>01:</strong> Mô hình 2D. Mật độ từ thông phân bố trong mạch từ, động cơ 2p = 8 cực, tần số vận hành f = 80 hz. Tốc độ 1200 (RPM). khi động cơ hoạt động không tải.</p>
-                <p><strong>03:</strong> Video Mật độ từ thông phân bố trong mạch từ, động cơ 2p = 8 cực, tần số vận hành f = 80 hz. Tốc độ 1200 (RPM). khi động cơ hoạt động với tải. Phân tích có tải cho thấy sự tương tác phức tạp giữa từ trường, dòng điện cuộn dây.</p>
-              </div>
-            </div>
-            <div className={styles.fluxInfoCol}>
-              <img src={appGif} alt="Video mạch từ" className={styles.fluxGif} />
-            </div>
-          </div>
-        </section>
-
-        {/* ── PROGRAM BANNER: Chương trình → Tính toán dữ liệu ── */}
-       
-        {/* LỊCH SỬ HÌNH THÀNH — MẪU THEO ẢNH */}
-
- <section className={styles.historyMainSection}>
-          <div className="page-wrap">
-            <h2 className={styles.historyMainTitle}>Lịch sử hình thành</h2>
-
-            <div className={styles.historyMainWrap}>
-              <div className={styles.historyMainPanel}>
-                <div className={styles.historyList}>
-                  <article className={styles.historyItem}>
-                    <div className={styles.historyYear}>1888</div>
-                    <div className={styles.historyBody}>
-                      <h5 className={styles.historyItemTitle}>Động cơ cảm ứng xoay chiều</h5>
-                      <p className={styles.historyItemDesc}>Động cơ cảm ứng xoay chiều được phát minh bởi Nikola Tesla. Công nghệ này cách mạng hoá ngành công nghiệp toàn cầu từ cuối thế kỷ XIX.</p>
-                    </div>
-                  </article>
-
-                  <article className={styles.historyItem}>
-                    <div className={styles.historyYear}>1958</div>
-                    <div className={styles.historyBody}>
-                      <h5 className={styles.historyItemTitle}>Động cơ tại Việt Nam</h5>
-                      <p className={styles.historyItemDesc}>Tại Việt Nam, ngành động cơ điện bắt đầu được tiếp nhận. Đến sau năm 1975, Việt Nam tự thiết kế và nội địa hoá sản xuất động cơ không đồng bộ.</p>
-                    </div>
-                  </article>
-
-                  <article className={styles.historyItem}>
-                    <div className={styles.historyYear}>1986</div>
-                    <div className={styles.historyBody}>
-                      <h5 className={styles.historyItemTitle}>Chương trình thiết kế và tính toán</h5>
-                      <p className={styles.historyItemDesc}>Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.</p>
-                    </div>
-                  </article>
-
-                  <article className={styles.historyItem}>
-                    <div className={styles.historyYear}>NOW</div>
-                    <div className={styles.historyBody}>
-                      <h5 className={styles.historyItemTitle}>Website STATORDATA</h5>
-                      <p className={styles.historyItemDesc}>Website STATORDATA do KS. Võ Nguyễn Bá Liêu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.</p>
-                    </div>
-                  </article>
-                </div>
-              </div>
-
-              <aside className={styles.historyMainAside}>
-                <div className={styles.profileCard}>
-                  <div className={styles.profileAvatar} />
-                  <h4 className={styles.profileName}>Nikola Tesla</h4>
-                  <div className={styles.profileYears}>1856 – 1943</div>
-                  <div className={styles.profileNote}>Nhà phát minh động cơ cảm ứng</div>
-                </div>
-              </aside>
-            </div>
-          </div>
-        </section>
-
-      </div>
+        </div>
+      </section>
+      <MagneticWidget fluxImage={fluxImage} statorPhoto={statorPhoto} />
+      <WhyWidget items={WHY_ITEMS} />
+      <FluxDensityWidget fluxDensityImage={fluxDensityImage} appGif={appGif} />
+      <HistoryWidget />
     </>
   );
 }
