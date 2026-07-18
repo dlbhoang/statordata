@@ -246,7 +246,7 @@ export const ANALYSIS_RESULTS = [
   'Quan hệ từ thông cực đại trên mỗi cực từ với tử cảm cực đại tại khe hở không khí.',
   'Số vòng dây quấn cho mỗi pha dây quấn stator động cơ.',
   'Số vòng dây quấn cho mỗi bối dây và chọn lại số vòng dây quấn cho mỗi bối dây.',
-  'Đường kính dây đồng có tiết diện tròn không có lớp men cách điện d.',
+  'Đường kính dây đồng có tiết diện tròn không  lớp men cách điện dT.',
   'Các thông số định mức động cơ.',
 ];
 

@@ -59,6 +59,8 @@ export default function Home() {
       <QuickCheckTabs />
       <section className="section">
         <div className="page-wrap">
+          <h2 className={styles.analysisSectionTitle}>PHƯƠNG PHÁP XỬ LÝ DỮ LIỆU TÍNH TOÁN</h2>
+          <div className={styles.analysisSectionTitleLine} />
           <div className={styles.featGrid}>
             <AnalysisWidget results={ANALYSIS_RESULTS} />
             <VideoDemoWidget src={appGif} alt="Demo quá trình xử lý dữ liệu Statordata" />

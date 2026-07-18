@@ -41,10 +41,10 @@ export default function CalculationLinksWidget() {
       <div className="page-wrap">
         <div className={styles.calcCard}>
           <div className={styles.calcTop}>
-            <span className={styles.calcEyebrow}>Công cụ tính toán</span>
-            <h3 className={styles.calcHeading}>Chọn mục cần sử dụng</h3>
-            <p className={styles.calcSub}>Truy cập nhanh các công cụ tính toán kỹ thuật cho động cơ điện.</p>
-          </div>
+  <h3 className={styles.calcHeading}>Công cụ bắt đầu tính toán dữ liệu</h3>
+  <div className={styles.calcDivider} />
+  <p className={styles.calcSub}>Truy cập nhanh các công cụ tính toán kỹ thuật cho động cơ điện</p>
+</div>
           <div className={styles.calcGrid}>
             {LINKS.map(link => (
               <Link key={link.to} to={link.to} className={styles.calcItem}>
