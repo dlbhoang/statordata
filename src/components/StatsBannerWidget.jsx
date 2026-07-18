@@ -3,6 +3,7 @@ import styles from '../pages/Home.module.css';
 const STATS = [
   { value: '18+', label: 'Rãnh Stator hỗ trợ' },
   { value: '3 PHA', label: '1 & 2 tốc độ' },
+  { value: '1 PHA', label: '1 Pha' },
   { value: '70%', label: 'Tiết kiệm thời gian' },
   { value: '1986', label: 'Nền tảng lý thuyết' },
 ];
