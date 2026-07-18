@@ -6,15 +6,25 @@
    ==================================================================== */
 
 /* ---------- Banner giới thiệu phía trên ---------- */
-.bannerSection {
-  padding: 28px 0;
-}
 .banner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 22px 24px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(10, 22, 60, .06);
+}
+.panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(10, 22, 60, .06);
 }
 .banner h2 {
   margin: 0 0 6px;
@@ -55,11 +65,6 @@
 }
 
 /* ---------- Khung bọc chính + tiêu đề khối công cụ ---------- */
-.wrap {
-  max-width: 92%;
-  margin: 0 auto;
-  padding: 0 24px 48px;
-}
 .head {
   text-align: center;
   margin-bottom: 24px;

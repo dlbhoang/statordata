@@ -1,13 +1,17 @@
 .videoWrap {
+  flex: 1;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
+  min-height: 280px;
 }
 
 .videoGif {
   width: 100%;
-  height: auto;
+  height: 100%;
+  min-height: 280px;
   display: block;
+  object-fit: cover;
   border-radius: 14px;
   box-shadow: 0 18px 48px rgba(10, 22, 60, .12);
 }

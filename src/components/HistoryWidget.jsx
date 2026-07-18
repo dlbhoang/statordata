@@ -9,8 +9,9 @@ const HISTORY = [
 
 export default function HistoryWidget() {
   return (
-    <section className={styles.historyMainSection}>
+    <section className="section">
       <div className="page-wrap">
+        <div className={styles.historyCard}>
         <div className={styles.historyHeader}>
           <div>
             <p className={styles.historyLabel}>Lịch sử hình thành</p>
@@ -44,6 +45,7 @@ export default function HistoryWidget() {
               alt="Nikola Tesla, người phát minh động cơ cảm ứng xoay chiều"
             />
           </div>
+        </div>
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ const LINKS = [
 
 export default function CalculationLinksWidget() {
   return (
-    <section className={styles.calcSection}>
+    <section className="section">
       <div className="page-wrap">
         <WidgetCard title="Công cụ bắt đầu tính toán" tag={{ label: 'Bắt đầu', variant: 'green' }}>
           <div className={styles.calcIntro}>

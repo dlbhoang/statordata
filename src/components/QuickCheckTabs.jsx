@@ -63,7 +63,7 @@ export default function QuickCheckTabs() {
 
   return (
     <>
-      <section className={styles.bannerSection}>
+      <section className="section">
         <div className="page-wrap">
           <div className={styles.banner}>
             <div>
@@ -72,12 +72,8 @@ export default function QuickCheckTabs() {
             </div>
             <Link to="/tinh-toan/3pha-1tocdo" className={styles.bannerCta}>🚀 Dùng thử ngay</Link>
           </div>
-        </div>
-      </section>
 
-      <div className={styles.wrap}>
-      
-
+          <div className={styles.panel}>
         <div className={styles.tabbar}>
           {tabs.map((t, i) => (
             <button
@@ -348,7 +344,9 @@ export default function QuickCheckTabs() {
             </div>
           </div>
         )}
-      </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

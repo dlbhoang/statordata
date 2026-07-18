@@ -9,15 +9,17 @@ const STATS = [
 
 export default function StatsBannerWidget() {
   return (
-    <section className={styles.statsBanner}>
+    <section className="section">
       <div className="page-wrap">
-        <div className={styles.statsBannerInner}>
-          {STATS.map(stat => (
-            <div key={stat.value} className={styles.statsItem}>
-              <strong className={styles.statsNum}>{stat.value}</strong>
-              <span className={styles.statsLabel}>{stat.label}</span>
-            </div>
-          ))}
+        <div className={styles.statsBannerCard}>
+          <div className={styles.statsBannerInner}>
+            {STATS.map(stat => (
+              <div key={stat.value} className={styles.statsItem}>
+                <strong className={styles.statsNum}>{stat.value}</strong>
+                <span className={styles.statsLabel}>{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

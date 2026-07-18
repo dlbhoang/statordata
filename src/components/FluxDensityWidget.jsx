@@ -4,6 +4,7 @@ import styles from '../pages/Home.module.css';
 export default function FluxDensityWidget({ fluxDensityImage, appGif }) {
   return (
     <section className="section">
+      <div className="page-wrap">
       <WidgetCard title="Phân bố mật độ từ thông trong mạch từ" tag={{ label: 'Mạch từ', variant: 'blue' }}>
         <div className={styles.fluxGrid}>
           <div className={styles.fluxImgCol}>
@@ -18,6 +19,7 @@ export default function FluxDensityWidget({ fluxDensityImage, appGif }) {
           </div>
         </div>
       </WidgetCard>
+      </div>
     </section>
   );
 }

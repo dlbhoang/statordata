@@ -4,6 +4,7 @@ import styles from '../pages/Home.module.css';
 export default function WhyWidget({ items }) {
   return (
     <section className="section">
+      <div className="page-wrap">
       <WidgetCard title="Vì sao các kỹ sư lựa chọn nền tảng Statordata.com?" tag={{ label: 'Tính năng', variant: 'green' }}>
         <div className={styles.whyItemsGrid}>
           {items.map((item) => (
@@ -33,6 +34,7 @@ export default function WhyWidget({ items }) {
           </div>
         </div>
       </WidgetCard>
+      </div>
     </section>
   );
 }
