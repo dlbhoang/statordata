@@ -1,7 +1,7 @@
 import styles from '../pages/Home.module.css';
 
 const STATS = [
-  { value: '36+', label: 'Rãnh Stator hỗ trợ' },
+  { value: '18+', label: 'Rãnh Stator hỗ trợ' },
   { value: '3 PHA', label: '1 & 2 tốc độ' },
   { value: '70%', label: 'Tiết kiệm thời gian' },
   { value: '1986', label: 'Nền tảng lý thuyết' },
