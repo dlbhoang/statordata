@@ -3,7 +3,6 @@ import MotorSVG from '../components/MotorSVG';
 import EfficiencyChart from '../components/EfficiencyChart';
 import Subnav from '../components/Subnav';
 import QuickCheckTabs from '../components/QuickCheckTabs';
-import fluxImage from '../assets/LYTHUYETMACHTUTRONGMAYDIEN.png';
 import statorPhoto from '../assets/HINHTHONGSODINHMUC.jpg';
 import appGif from '../assets/app.gif';
 import fluxDensityImage from '../assets/PHANBOMATDOTUTHONG.jpg';
@@ -67,7 +66,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <MagneticWidget fluxImage={fluxImage} statorPhoto={statorPhoto} />
+      <MagneticWidget fluxImage={appGif} statorPhoto={statorPhoto} />
       <WhyWidget items={WHY_ITEMS} />
       <FluxDensityWidget fluxDensityImage={fluxDensityImage} appGif={appGif} />
       <HistoryWidget />

@@ -16,6 +16,14 @@ export default function MagneticWidget({ fluxImage, statorPhoto }) {
               <Link to="/ky-thuat" className={styles.magImageRow}>
                 <img src={fluxImage} alt="Lý thuyết mạch từ" className={styles.magImage} />
               </Link>
+              <div className={styles.magMoreWrap}>
+                <Link to="/ky-thuat" className={styles.magMoreLink}>
+                  Xem thêm
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              </div>
             </div>
             <div className={styles.magCard}>
               <Link to="/ky-thuat" className={styles.magTitleLink}>
@@ -24,8 +32,15 @@ export default function MagneticWidget({ fluxImage, statorPhoto }) {
               <p>Thông số định mức là các đại lượng đặc trưng cho chế độ làm việc tiêu chuẩn của động cơ điện, bao gồm công suất, điện áp, dòng điện, tốc độ, hệ số công suất (Power Factor), hiệu suất (efficiency (%)), cấp cách điện và chế độ làm việc S1...S8. Các thông số này là cơ sở để đánh giá khả năng vận hành và phục vụ cho quá trình thiết kế và tính toán dữ liệu.</p>
               <Link to="/ky-thuat" className={styles.magFigure}>
                 <img src={statorPhoto} alt="Thông số định mức động cơ điện" className={styles.magFigureImg} />
-                <div className={styles.magFigureCaption}>Hình: ảnh cho phần LÝ THUYẾT MẠCH TỪ TRONG MÁY ĐIỆN.</div>
               </Link>
+              <div className={styles.magMoreWrap}>
+                <Link to="/ky-thuat" className={styles.magMoreLink}>
+                  Xem thêm
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -192,6 +192,34 @@
   /* bỏ height: 100% — không cần nữa vì đã bỏ stretch */
 }
 
+.magMoreWrap {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+.magMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: var(--cyan2);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: .3px;
+  transition: background .2s ease, transform .2s ease, color .2s ease;
+}
+.magMoreLink:hover {
+  background: rgba(0, 200, 224, .16);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.magMoreLink svg { transition: transform .2s ease; }
+.magMoreLink:hover svg { transform: translateX(3px); }
+
 .analysisSectionTitle {
   text-align: center;
   font-family: 'Montserrat', sans-serif;
@@ -202,7 +230,8 @@
   margin: 0 0 12px;
 }
 .analysisSectionTitleLine {
-  width: 600px;
+  width: 480px;
+  max-width: 90%;
   height: 4px;
   margin: 0 auto 24px;
   border-radius: 999px;
