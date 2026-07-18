@@ -1,4 +1,5 @@
 export const NAV_ITEMS = [
+  {label:'Trang chủ', path: '/'},
   { label: 'Kỹ thuật – Công nghệ', path: '/ky-thuat' },
   { label: 'Điều khoản dịch vụ', path: '/dieu-khoan' },
   {
