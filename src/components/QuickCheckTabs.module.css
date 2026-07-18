@@ -8,10 +8,10 @@
 /* ---------- Banner giới thiệu phía trên ---------- */
 .banner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
+  text-align: center;
+  gap: 14px;
   margin-bottom: 20px;
   padding: 22px 24px;
   background: #fff;
@@ -27,14 +27,23 @@
   box-shadow: 0 4px 20px rgba(10, 22, 60, .06);
 }
 .banner h2 {
-  margin: 0 0 6px;
+  margin: 0;
+  text-transform: uppercase;
   font-size: 22px;
-  font-weight: 700;
-  color: #102a56;
+  font-weight: 800;
+  color: #d92531;
+  letter-spacing: 0.3px;
 }
 .banner h2 em {
-  color: #1450c4;
+  color: #d92531;
   font-style: normal;
+}
+.bannerDivider {
+  width: 100%;
+  max-width: 480px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(20, 80, 196, 0.15), #1450c4, rgba(20, 80, 196, 0.15));
 }
 .banner p {
   margin: 0;
@@ -55,15 +64,9 @@
 }
 @media (max-width: 600px) {
   .banner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .bannerCta {
-    align-self: stretch;
-    justify-content: center;
+    padding: 20px 18px;
   }
 }
-
 /* ---------- Khung bọc chính + tiêu đề khối công cụ ---------- */
 .head {
   text-align: center;

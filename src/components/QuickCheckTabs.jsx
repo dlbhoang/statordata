@@ -68,9 +68,10 @@ export default function QuickCheckTabs() {
           <div className={styles.banner}>
             <div>
               <h2>Dành cho bạn: <em>Kiểm tra nhanh</em> thiết kế động cơ</h2>
+                <div className={styles.bannerDivider} />
+
               <p>Nhập thông số định danh để kiểm tra nhanh phân loại và cấu hình dây quấn</p>
             </div>
-            <Link to="/tinh-toan/3pha-1tocdo" className={styles.bannerCta}>🚀 Dùng thử ngay</Link>
           </div>
 
           <div className={styles.panel}>
