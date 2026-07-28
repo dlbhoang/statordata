@@ -22,6 +22,30 @@ export default function QuickCheckTabs() {
 
   // ==================== TAB 02: KIỂM TRA & PHÂN LOẠI 3 PHA ====================
 
+  // ==================== TAB 02: KIỂM TRA & PHÂN LOẠI 3 PHA 1 TỐC ĐỘ ====================
+  const [p2z, setP2z] = useState(36);
+  const [p2_2p, setP2_2p] = useState(4);
+  const [p2f, setP2f] = useState(50);
+
+  const p2zNum = toNum(p2z, 0);
+  const p2_2pNum = toNum(p2_2p, 0);
+  const p2fNum = toNum(p2f, 0);
+
+  const p2_ntd = p2_2pNum > 0 ? Math.round((120 * p2fNum) / p2_2pNum) : 0;
+
+  // τ (bước cực từ) = Z / 2p — giữ nguyên phần lẻ để phân loại đúng
+  const p2_tauRaw = p2_2pNum > 0 ? p2zNum / p2_2pNum : 0;
+  const p2_tauIsInteger = Number.isInteger(p2_tauRaw);
+  const p2_tau = p2_tauIsInteger ? p2_tauRaw : Math.round(p2_tauRaw * 100) / 100;
+
+  // q (số rãnh phân bố mỗi pha trên mỗi cực) = τ / 3
+  const p2_qRaw = p2_tauRaw / 3;
+  const p2_qIsInteger = Number.isInteger(p2_qRaw);
+  const p2_q = p2_qIsInteger ? p2_qRaw : Math.round(p2_qRaw * 100) / 100;
+
+  const p2_classification = p2_qIsInteger
+    ? 'Dây quấn số nguyên (q là số nguyên)'
+    : 'Dây quấn phân số tối giản (q là phân số)';
   // ==================== TAB 03: KIỂM TRA & PHÂN LOẠI 1 PHA ====================
   const [p3z, setP3z] = useState(36);
   const [p3_2p, setP3_2p] = useState(4);
@@ -42,18 +66,19 @@ export default function QuickCheckTabs() {
 
   // Phân loại dây quấn — ưu tiên loại đặc hiệu nhất trước (loại trừ lẫn nhau,
   // vì chia hết cho 4 thì chắc chắn cũng chia hết cho 2, không được liệt kê cả hai).
-  let p3_classification;
+ let p3_classification;
   if (!p3_tauIsInteger) {
     p3_classification = 'Z không chia hết cho 2p (τ lẻ) — cần kiểm tra lại thông số đầu vào';
   } else if (p3_tauRaw % 4 === 0) {
-    p3_classification = 'Dây quấn loại 3 (τ chia hết cho 4)';
+    p3_classification = 'Phân bố QA = 3.QB (τ là bội số của 4)';
   } else if (p3_tauRaw % 3 === 0) {
-    p3_classification = 'Dây quấn loại 2 (τ chia hết cho 3)';
+    p3_classification = 'Phân bố QA = 2.QB (τ là bội số của 3)';
   } else if (p3_tauRaw % 2 === 0) {
-    p3_classification = 'Dây quấn loại 1 (τ chia hết cho 2)';
+    p3_classification = 'Phân bố QA = QB (τ là bội số của 2)';
   } else {
     p3_classification = 'Không thuộc loại nào được định nghĩa';
   }
+  
 
   const tabs = [
     { num: '01', title: 'Kiểm tra nhanh số cực: 2p (Poles)' },
@@ -174,7 +199,7 @@ export default function QuickCheckTabs() {
           </div>
         )}
 
-        {/* ==================== TAB 02 ==================== */}
+{/* ==================== TAB 02 ==================== */}
         {activeTab === 1 && (
           <div>
             <div className={styles.subtitle}>
@@ -182,45 +207,130 @@ export default function QuickCheckTabs() {
               <span>Kiểm tra & phân loại động cơ 3 pha 1 tốc độ</span>
             </div>
             <div className={styles.layout}>
+              {/* ---- Card 01: Nhập thông số đầu vào ---- */}
               <div className={styles.bigCard}>
                 <div className={styles.bigCardHeader}>
                   <span className={styles.bigCardHeaderNum}>01</span>
                   <div className={styles.bigCardHeaderText}>
-                    <div className={styles.bigCardHeaderTitle}>NỘI DUNG THUỘC TÍNH NHANH</div>
-                    <div className={styles.bigCardHeaderDesc}>Các mục tính toán nhanh trong thiết kế stator</div>
+                    <div className={styles.bigCardHeaderTitle}>NHẬP THÔNG SỐ ĐẦU VÀO</div>
+                    <div className={styles.bigCardHeaderDesc}>Động cơ 3 pha 1 tốc độ</div>
                   </div>
                 </div>
                 <div className={styles.bigCardBody}>
-                  <ul style={{ margin: 0, paddingLeft: 20, display: 'grid', gap: 12, color: '#2a3550', lineHeight: 1.5 }}>
-                    <li><strong>01.</strong> Đổi đường kính dây đồng</li>
-                    <li><strong>02.</strong> Tính toán máy biến áp</li>
-                    <li><strong>03.</strong> Xác định bước bối dây động cơ 2 pha</li>
-                    <li><strong>04.</strong> Xác định thông số kích thước hình học</li>
-                  </ul>
+                  <div className={styles.field}>
+                    <div className={styles.fieldTop}>
+                      <span className={styles.fieldBadge}>Z</span>
+                      <span className={styles.fieldLabel}>Số rãnh stator</span>
+                      <span className={styles.unit}>(rãnh)</span>
+                    </div>
+                    <div className={styles.fieldRow}>
+                      <button className={styles.fieldBtn} onClick={() => setP2z(Math.max(1, toNum(p2z, 1) - 1))}>−</button>
+                      <input
+                        className={styles.inp}
+                        type="number"
+                        step="1"
+                        value={p2z}
+                        onChange={(e) => setP2z(e.target.value)}
+                        onBlur={() => { if (p2z === '') setP2z(1); }}
+                      />
+                      <button className={styles.fieldBtn} onClick={() => setP2z(toNum(p2z, 1) + 1)}>+</button>
+                    </div>
+                  </div>
+
+                  <div className={styles.field}>
+                    <div className={styles.fieldTop}>
+                      <span className={styles.fieldBadge}>2p</span>
+                      <span className={styles.fieldLabel}>Số cực</span>
+                      <span className={styles.unit}>(cực)</span>
+                    </div>
+                    <div className={styles.fieldRow}>
+                      <button className={styles.fieldBtn} onClick={() => setP2_2p(Math.max(1, toNum(p2_2p, 1) - 1))}>−</button>
+                      <input
+                        className={styles.inp}
+                        type="number"
+                        step="1"
+                        value={p2_2p}
+                        onChange={(e) => setP2_2p(e.target.value)}
+                        onBlur={() => { if (p2_2p === '') setP2_2p(1); }}
+                      />
+                      <button className={styles.fieldBtn} onClick={() => setP2_2p(toNum(p2_2p, 1) + 1)}>+</button>
+                    </div>
+                  </div>
+
+                  <div className={styles.field}>
+                    <div className={styles.fieldTop}>
+                      <span className={styles.fieldBadge}>F</span>
+                      <span className={styles.fieldLabel}>Tần số</span>
+                      <span className={styles.unit}>(Hz)</span>
+                    </div>
+                    <div className={styles.fieldRow}>
+                      <button className={styles.fieldBtn} onClick={() => setP2f(Math.max(1, toNum(p2f, 1) - 1))}>−</button>
+                      <input
+                        className={styles.inp}
+                        type="number"
+                        step="any"
+                        value={p2f}
+                        onChange={(e) => setP2f(e.target.value)}
+                        onBlur={() => { if (p2f === '') setP2f(1); }}
+                      />
+                      <button className={styles.fieldBtn} onClick={() => setP2f(toNum(p2f, 1) + 1)}>+</button>
+                    </div>
+                  </div>
+
+                  <button className={styles.btnCheck}>
+                    ✓ KIỂM TRA NGAY
+                  </button>
                 </div>
               </div>
 
+              {/* ---- Card 02: Kết quả ---- */}
               <div className={`${styles.bigCard} ${styles.bigCardResult}`}>
                 <div className={`${styles.bigCardHeader} ${styles.bigCardHeaderResult}`}>
                   <span className={styles.bigCardHeaderNum}>02</span>
                   <div className={styles.bigCardHeaderText}>
-                    <div className={styles.bigCardHeaderTitle}>GHI CHÚ</div>
-                    <div className={styles.bigCardHeaderDesc}>Nhấn vào tab khác để tiếp tục kiểm tra nhanh</div>
+                    <div className={styles.bigCardHeaderTitle}>KẾT QUẢ</div>
+                    <div className={styles.bigCardHeaderDesc}>Kiểm tra động cơ</div>
                   </div>
                 </div>
                 <div className={styles.bigCardBody}>
-                  <p style={{ margin: '0 0 12px', color: '#2a3550', lineHeight: 1.6 }}>
-                    Nội dung này được giữ ở tab thứ hai để người dùng có thể tiếp cận nhanh các tính toán thuộc tính hệ thống trước khi vào các công cụ phân loại chi tiết.
-                  </p>
-                  <p style={{ margin: 0, color: '#5b6b85', lineHeight: 1.6 }}>
-                    Các mục còn lại trong phần khoa học kỹ thuật được giữ nguyên như hiện tại.
-                  </p>
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>N<span className={styles.subscript}>td</span></span>
+                      <span className={styles.resFieldLabel}>Tốc độ đồng bộ từ trường</span>
+                      <span className={styles.resFieldUnit}>(RPM)</span>
+                    </div>
+                    <div className={styles.resFieldValueBox}>{p2_ntd}</div>
+                  </div>
+
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>τ</span>
+                      <span className={styles.resFieldLabel}>Bước cực từ</span>
+                      <span className={styles.resFieldUnit}>(rãnh/cực)</span>
+                    </div>
+                    <div className={styles.resFieldValueBox}>{p2_tau}</div>
+                  </div>
+
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>q</span>
+                      <span className={styles.resFieldLabel}>Số rãnh phân bố mỗi pha</span>
+                    </div>
+                    <div className={styles.resFieldValueBox}>{p2_q}</div>
+                  </div>
+
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>PL</span>
+                      <span className={styles.resFieldLabel}>Phân loại dây quấn</span>
+                    </div>
+                    <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText}`}>{p2_classification}</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         )}
-
         {/* ==================== TAB 03 ==================== */}
         {activeTab === 2 && (
           <div>

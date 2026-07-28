@@ -49,12 +49,10 @@ export default function KyThuat() {
               Khám phá các giải pháp thiết kế dây quấn stator, phân loại QA / QB và tần số vận hành cho động cơ 1 pha và 3 pha.
             </p>
           </div>
-          <div className={styles.heroCard}>
-            <p className={styles.heroCardTag}>Nguồn cảm hứng</p>
+<Link to="/ky-thuat/nikola-tesla" className={styles.heroCard}>            <p className={styles.heroCardTag}>Nguồn cảm hứng</p>
             <h3>Nikola Tesla</h3>
             <p>Ông là người mở đường cho động cơ cảm ứng xoay chiều và các công nghệ quấn dây stator hiện đại.</p>
-          </div>
-        </div>
+</Link>        </div>
 
         <section className={styles.infoSection}>
           <div className={styles.sectionHeader}>

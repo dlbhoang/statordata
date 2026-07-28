@@ -135,6 +135,7 @@ function AppContent() {
           <Route path="/lien-he"                   element={<LienHe />} />
           <Route path="/group"                     element={<Group />} />
           <Route path="*"                          element={<NotFound />} />
+          <Route path="/ky-thuat/nikola-tesla" element={<PdfContentPage />} />
         </Routes>
       </main>
       <Footer />
