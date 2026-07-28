@@ -2,7 +2,21 @@ import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 import MapModal from './MapModal';
 
+const TIMELINE = [
+  {
+    year: '1986',
+    title: 'Chương trình thiết kế và tính toán',
+    description: 'Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.',
+  },
+  {
+    year: 'NOW',
+    title: 'Website STATORDATA',
+    description: 'Website STATORDATA do KS. Võ Nguyễn Bá Liêu – Khoa Cơ Điện, ĐH Lạc Hồng xây dựng, hỗ trợ kỹ sư và sinh viên tính toán chính xác, nhanh chóng.',
+  },
+];
+
 export default function Footer() {
+
   return (
     <footer className={styles.footer}>
       <div className={`page-wrap ${styles.inner}`}>
@@ -11,12 +25,8 @@ export default function Footer() {
             <div className={styles.mark}><span>⚙</span><small>STATOR</small></div>
             <div className={styles.name}>Stator<em>data</em>.com</div>
           </div>
-          <p className={styles.desc}>
-            Động cơ cảm ứng xoay chiều được phát minh năm 1888 bởi Nikola Tesla. Website STATORDATA.COM được xây dựng
-            dựa trên nền tảng lý thuyết và kinh nghiệm thực tiễn, do kỹ sư Nguyễn Bá Siêu — Khoa Cơ Điện, Trường Đại
-            Học Lạc Hồng phát triển, nhằm hỗ trợ kỹ sư và sinh viên trong việc tính toán, thiết kế và phân tích số
-            liệu dây quấn động cơ điện.
-          </p>
+          {/* footer description removed as requested */}
+        
           <h4 className={styles.h}>Thông tin liên hệ</h4>
           <ul className={styles.contacts}>
             <li>
@@ -40,12 +50,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className={styles.person}>
-          <div className={styles.photo}>👤</div>
-          <div className={styles.pname}>Nikola Tesla</div>
-          <div className={styles.pyear}>1856 – 1943</div>
-          <div className={styles.psub}>Cha đẻ của<br />động cơ cảm ứng<br />xoay chiều</div>
-        </div>
+        {/* right-side profile removed as requested */}
       </div>
 
       <div className={styles.bottom}>

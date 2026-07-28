@@ -9,11 +9,6 @@ const TIMELINE = [
     description: 'Động cơ cảm ứng xoay chiều được phát minh bởi Nikola Tesla. Công nghệ này cách mạng hoá ngành công nghiệp toàn cầu từ cuối thế kỷ XIX.',
   },
   {
-    year: '1958',
-    title: 'Động cơ điện tại Việt Nam bắt đầu tiếp nhận',
-    description: 'Tại Việt Nam, ngành động cơ điện bắt đầu được tiếp nhận. Đến sau năm 1975, Việt Nam tự thiết kế và nội địa hóa sản xuất động cơ không đồng bộ.',
-  },
-  {
     year: '1986',
     title: 'Chương trình thiết kế và tính toán',
     description: 'Chương trình thiết kế và tính toán được biên soạn bởi KS. Nguyễn Thế Kiệt – Giảng viên ĐH Bách Khoa TP.HCM. Ứng dụng rộng rãi trong đào tạo và thực tiễn đến ngày nay.',

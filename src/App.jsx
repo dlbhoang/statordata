@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home             from './pages/Home';
 import KyThuat          from './pages/KyThuat';
-import LichSu          from './pages/LichSu';
 import DieuKhoan        from './pages/DieuKhoan';
 import HocTap           from './pages/HocTap';
 import TinhToan3Pha1Toc from './pages/TinhToan3Pha1Toc';
@@ -119,7 +118,6 @@ function AppContent() {
         <Routes>
           <Route path="/"                          element={<Home />} />
           <Route path="/ky-thuat"                  element={<KyThuat />} />
-          <Route path="/ky-thuat/lich-su"          element={<LichSu />} />
           <Route path="/dieu-khoan"                element={<DieuKhoan />} />
           <Route path="/hoc-tap/:loai"             element={<HocTap />} />
           <Route path="/hoc-tap/*"                 element={<PdfContentPage />} />
@@ -137,6 +135,7 @@ function AppContent() {
           <Route path="/lien-he"                   element={<LienHe />} />
           <Route path="/group"                     element={<Group />} />
           <Route path="*"                          element={<NotFound />} />
+          <Route path="/ky-thuat/nikola-tesla" element={<PdfContentPage />} />
         </Routes>
       </main>
       <Footer />

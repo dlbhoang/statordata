@@ -1,0 +1,15 @@
+.videoWrap {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(10, 22, 60, .06);
+}
+
+.videoGif {
+  width: 100%;
+  height: auto;      /* chiều cao tự tính theo tỉ lệ gốc của ảnh, không ép cố định */
+  display: block;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 18px 48px rgba(10, 22, 60, .12);
+}

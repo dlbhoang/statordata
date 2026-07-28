@@ -292,4 +292,26 @@ export const PDF_ROUTE_CONTENT = {
       'Phương pháp xử lý dữ liệu đầu vào và xuất kết quả.',
     ],
   },
+
+  '/ky-thuat/nikola-tesla': {
+    title: 'Nikola Tesla – Người đặt nền móng cho động cơ cảm ứng',
+    sections: [
+      'TIỂU SỬ: Sinh 10/7/1856 tại Smiljan, Đế quốc Áo (nay là Croatia). Mất 7/1/1943 (86 tuổi) tại New York, Hoa Kỳ. Nguyên nhân mất: huyết khối động mạch vành. Nơi an nghỉ: Belgrade, Serbia.',
+      'Tư cách công dân: Áo (1856–1891), Mỹ (1891–qua đời). Học vị: Đại học công nghệ Graz (đã bỏ học).',
+      'Ngành kỹ sư: Kỹ sư điện, Kỹ sư cơ khí. Các dự án nổi bật: Dòng điện xoay chiều, Điện cao thế, Thí nghiệm về điện tần số cao.',
+      'Thiết kế nổi bật: Động cơ cảm ứng, Từ trường quay, Cuộn dây Tesla, Radio, Xe điều khiển từ xa, Ngư lôi.',
+      'NHỮNG PHÁT MINH ĐI TRƯỚC THỜI ĐẠI: Trong suốt cuộc đời, Tesla tạo ra hàng trăm thiết bị và quy trình làm thay đổi thế giới, với khoảng 300 thiết kế được cấp bằng sáng chế — vì vậy ông được gọi là "nhà phát minh ra thế kỷ 20".',
+      '1.1.0 – CUỘN DÂY TESLA: Là nền tảng cho phần lớn công việc sau này của ông. Tesla bị hấp dẫn bởi điện tần số cao; máy phát điện quay bị hỏng ở tốc độ 20.000 vòng/giây nên ông chế tạo cuộn dây Tesla — một máy biến áp cộng hưởng gồm hai cuộn dây phản xạ năng lượng qua lại, tạo dòng điện xoay chiều tần số và điện áp cực cao. Ứng dụng trong điện chiếu sáng, điện xung trị liệu và truyền tải điện năng không dây.',
+      '1.1.2 – ĐỘNG CƠ CẢM ỨNG: Năm 1887 Tesla phát triển động cơ cảm ứng (động cơ không đồng bộ) chạy bằng dòng điện xoay chiều, sử dụng điện đa pha tạo từ trường quay động cơ. Được cấp bằng sáng chế tháng 5/1888. Trình diễn động cơ quy mô lớn tại Triển lãm Thế giới 1893 ở Chicago.',
+      'Tại Westinghouse, dòng điện AC 133 Hz được dùng để vận hành động cơ, sau giảm còn 60 Hz do tốc độ động cơ quá nhanh — đây là lý do tần số 60Hz được dùng ở Hoa Kỳ và miền Tây Nhật Bản ngày nay.',
+      'George Westinghouse mua bằng sáng chế AC của Tesla vào 7/1888. Năm 1889 Westinghouse bán chiếc quạt AC 125W đầu tiên trên thế giới. Bằng sáng chế đầu của Tesla là động cơ hai pha; động cơ 1 pha phổ biến trong hộ gia đình, động cơ 3 pha hiệu suất cao phổ biến trong công nghiệp.',
+      'Mikhail Osipovich Dolivo-Dobrovolsky (kỹ sư Nga, làm việc tại AEG Đức) chế tạo động cơ không đồng bộ ba pha đầu tiên vào năm 1889.',
+      'THỜI GIAN PHÁT TRIỂN ĐỘNG CƠ CẢM ỨNG — 1888: Tesla phát minh động cơ cảm ứng xoay chiều. 1890–1914: Đức (Siemens, AEG), Anh, Pháp, Ý, Thụy Điển xây dựng nhà máy điện và xưởng chế tạo motor.',
+      '1918–1939 (Công nghiệp hóa mạnh): Siemens, AEG, Brown Boveri (Thụy Sĩ), ASEA (Thụy Điển) phát triển motor công suất lớn.',
+      '1945–nay (Thời kỳ vàng công nghiệp điện cơ): Cải tiến motor hiệu suất cao, chuẩn IEC, motor tiết kiệm năng lượng IE2/IE3/IE4. Các tập đoàn lớn: Siemens, ABB, WEG (châu Âu–Brazil), Leroy Somer (Pháp).',
+      'LIÊN XÔ (1920–1930): Sau Cách mạng Tháng Mười 1917, Liên Xô điện khí hóa toàn quốc, tự sản xuất động cơ 1 pha, 3 pha, cảm ứng, đồng bộ. Nhà máy Elektrosila (Leningrad), Ural Electroapparat, Kharkov, Novocherkassk. Động cơ kiểu A, AO, AO2, 4A, 4AM xuất khẩu sang Việt Nam, Trung Quốc, Cuba, Triều Tiên.',
+      'TRUNG QUỐC (từ 1953): Sau khi thành lập CHND Trung Hoa (1949), nhận viện trợ kỹ thuật từ Liên Xô. 1953–1957 xây nhà máy Harbin, Shanghai Motor Factory, Beijing Electric Machinery Works. Thập niên 1960 tự thiết kế motor 3 pha kiểu Y, Y2 dựa trên mẫu AO2.',
+      'VIỆT NAM (từ 1958, phát triển sau 1975): 1958–1975 nhận viện trợ Liên Xô và Trung Quốc, chủ yếu lắp ráp, sửa chữa, cải tiến động cơ. Sau 1975–1986: Việt Nam bắt đầu tự tính toán, nội địa hóa và sản xuất hàng loạt động cơ tại các nhà máy trong nước.',
+    ],
+  },
 };

@@ -1,5 +1,5 @@
 export const NAV_ITEMS = [
-  { label: 'Trang chủ', path: '/' },
+  {label:'Trang chủ', path: '/'},
   { label: 'Kỹ thuật – Công nghệ', path: '/ky-thuat' },
   { label: 'Điều khoản dịch vụ', path: '/dieu-khoan' },
   {
@@ -33,7 +33,7 @@ export const NAV_ITEMS = [
     ],
   },
   {
-    label: 'Trung tâm học tập 3 pha, 2 Tốc độ. Tỉ lệ (1/2).',
+    label: 'Trung tâm học tập 3 pha, 2 Tốc độ.',
     path: '/hoc-tap/3pha-2tocdo',
     children: [
       { 
@@ -57,31 +57,6 @@ export const NAV_ITEMS = [
   },
   {
     label: 'Trung tâm học tập 1 pha.',
-    path: '/hoc-tap/1pha',
-    children: [
-      { 
-        label: 'Lý thuyết và phân loại trong trong máy điện 1 pha.', 
-        path: '/hoc-tap/1pha',
-        children: [
-          { label: 'Lý thuyết & phân loại', path: '/hoc-tap/1pha/lythuyet' },
-          { label: 'Sơ đồ & thông số kỹ thuật', path: '/hoc-tap/1pha/sodo' },
-        ]
-      },
-      { 
-        label: 'Sơ đồ liên kết tổng quát và Thông số kỹ thuật tính toán dữ liệu.', 
-        path: '/hoc-tap/1pha/phuong-phap',
-        children: [
-          { label: 'Qₐ = Qᵦ (Bằng pha khởi)', path: '/hoc-tap/1pha/qa-qb' },
-          { label: 'Qₐ = 2Qᵦ (2x pha khởi)', path: '/hoc-tap/1pha/qa-2qb' },
-          { label: 'Qₐ = 3Qᵦ (3x pha khởi)', path: '/hoc-tap/1pha/qa-3qb' },
-          { label: 'Dây quấn 2 lớp', path: '/hoc-tap/1pha/2lop' },
-          { label: 'Pha làm việc & khởi động sin', path: '/hoc-tap/1pha/sin' },
-        ]
-      },
-    ],
-  },
-  {
-    label: 'PHƯƠNG PHÁP XÂY DỰNG SƠ ĐỒ KHAI TRIỂN ĐỘNG CƠ 1 PHA.',
     path: '/so-do-mach',
     children: [
       {
@@ -102,7 +77,7 @@ export const NAV_ITEMS = [
     ],
   },
   {
-    label: 'Các dạng sơ đồ mạch nhánh song song (A).',
+    label: 'Mạch nhánh song song (A).',
     path: '/so-do-mach/nhanh-song-song',
     children: [
       {
@@ -133,12 +108,20 @@ export const NAV_ITEMS = [
 ];
 
 export const SUBNAV_ITEMS = [
+  
   {
-    label: 'Bắt đầu tính toán',
-    path: '/',
+    label: 'Thuộc tính nhanh',
+    path: '/thuoc-tinh-nhanh',
+    children: [
+      { label: 'Đổi đường kính dây đồng', path: '/thuoc-tinh-nhanh/doi-duong-kinh-day-dong' },
+      { label: 'Tính toán máy biến áp', path: '/thuoc-tinh-nhanh/tinh-toan-may-bien-ap' },
+      { label: 'Xác định bước bối dây động cơ 2 pha', path: '/thuoc-tinh-nhanh/buoc-boi-day-dong-co-2-pha' },
+      { label: 'Xác định điện áp & kích thước hình học', path: '/thuoc-tinh-nhanh/dien-ap-kich-thuoc-hinh-hoc' },
+      { label: 'Hướng dẫn kỹ thuật', path: '/huong-dan' },
+    ]
   },
   {
-    label: 'Mục 1: Tính toán dữ liệu 3 pha, 1 tốc độ.',
+    label: 'Đổi đường kính dây đồng',
     path: '/hoc-tap/3pha-1tocdo',
     children: [
       { label: 'Video hướng dẫn 3 pha 1 tốc độ', path: '/hoc-tap/3pha-1tocdo' },
@@ -151,9 +134,8 @@ export const SUBNAV_ITEMS = [
           { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/huong-dan' },
         ]
       },
-
       {
-        label: 'TÍNH TOÁN DỮ LIỆU DÂY QUẤN STATOR 3 PHA, PHÂN SỐ TỐI GIẢN.',
+        label: 'Tính toán máy biến áp.',
         path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian',
         children: [
           { label: 'Tính toán dữ liệu 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so/1lop' },
@@ -161,11 +143,10 @@ export const SUBNAV_ITEMS = [
           { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-1tocdo/phan-so/huong-dan' },
         ]
       }
-
     ]
   },
   {
-    label: 'Mục 2: Tính toán dữ liệu dây quấn stator 3 pha, 2 tốc độ.',
+    label: 'Xác định bước bối dây động cơ 2 pha',
     path: '/hoc-tap/3pha-2tocdo',
     children: [
       { label: 'Video hướng dẫn 3 pha 2 tốc độ', path: '/hoc-tap/3pha-2tocdo' },
@@ -179,35 +160,30 @@ export const SUBNAV_ITEMS = [
           { label: 'Hướng dẫn tính toán dữ liệu dây quấn stator.', path: '/hoc-tap/3pha-2tocdo/huong-dan' }
         ]
       }
-
     ]
   },
   {
-    label: 'Mục 3: Tính toán dữ liệu 1 pha.',
+    label: 'Xác định điện áp & kích thước hình học.',
     path: '/hoc-tap/1pha',
     children: [
       { label: 'Video hướng dẫn 1 pha', path: '/hoc-tap/1pha' },
       { label: 'Tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/day-quan-sin' },
       { label: 'Hướng dẫn tính toán dữ liệu dây quấn sin.', path: '/hoc-tap/1pha/huong-dan' },
-
       { label: 'Tính toán dữ liệu phân bố QA = 2QB.', path: '/hoc-tap/1pha/qa-2qb' },
       { label: 'Hướng dẫn QA = 2QB.', path: '/hoc-tap/1pha/qa-2qb/huong-dan' },
-
       { label: 'Tính toán dữ liệu phân bố QA = 3QB.', path: '/hoc-tap/1pha/qa-3qb' },
       { label: 'Hướng dẫn QA = 3QB.', path: '/hoc-tap/1pha/qa-3qb/huong-dan' },
-
       { label: 'Tính toán dữ liệu phân bố QA = QB.', path: '/hoc-tap/1pha/qa-qb' },
       { label: 'Hướng dẫn QA = QB.', path: '/hoc-tap/1pha/qa-qb/huong-dan' },
     ]
   },
   {
-    label: 'Mục 4: Hướng dẫn kỹ thuật tính toán dữ liệu.',
+    label: 'Hướng dẫn kỹ thuật.',
     path: '/huong-dan',
     children: [
       { label: 'Xác định thông số động cơ 3 pha 1 tốc.', path: '/huong-dan/3pha-1toc' },
       { label: 'Xác định thông số động cơ 3 pha 2 tốc.', path: '/huong-dan/3pha-2toc' },
       { label: 'Xác định thông số động cơ 1 pha.', path: '/huong-dan/1pha' },
-
       { label: 'Quan hệ từ cảm trong gông và răng stator.', path: '/huong-dan/tu-cam' },
       { label: 'Chọn mật độ dòng điện và hệ số công suất.', path: '/huong-dan/mat-do-dong' },
       { label: 'Thuộc tính nhanh hệ thống.', path: '/huong-dan/thuoc-tinh-nhanh-he-thong' }
@@ -264,14 +240,14 @@ export const HERO_FEATURES = [
 ];
 
 export const ANALYSIS_RESULTS = [
-  '01: Kiểm tra cực tốt nhất có thể thực hiện cho động cơ.',
-  '02: Thông số xây dựng sơ đồ khai triển dây quấn stator động cơ.',
-  '03: Góc lệch vị trí không gian giữa hai pha liên tiếp.',
-  '04: Quan hệ từ thông cực đại trên mỗi cực từ với tử cảm cực đại tại khe hở không khí.',
-  '05: Số vòng dây quấn cho mỗi pha dây quấn stator động cơ.',
-  '06: Số vòng dây quấn cho mỗi bối dây và chọn lại số vòng dây quấn cho mỗi bối dây.',
-  '07: Đường kính dây đồng có tiết diện tròn không có lớp men cách điện d.',
-  '08: Các thông số định mức động cơ.',
+  'Kiểm tra cực tốt nhất có thể thực hiện cho động cơ.',
+  'Thông số xây dựng sơ đồ khai triển dây quấn stator động cơ.',
+  'Góc lệch vị trí không gian giữa hai pha liên tiếp.',
+  'Quan hệ từ thông cực đại trên mỗi cực từ với tử cảm cực đại tại khe hở không khí.',
+  'Số vòng dây quấn cho mỗi pha dây quấn stator động cơ.',
+  'Số vòng dây quấn cho mỗi bối dây và chọn lại số vòng dây quấn cho mỗi bối dây.',
+  'Đường kính dây đồng có tiết diện tròn không  lớp men cách điện dT.',
+  'Các thông số định mức động cơ.',
 ];
 
 export const WHY_ITEMS = [

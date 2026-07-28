@@ -1,0 +1,559 @@
+/* ====================================================================
+   QUICK CHECK TABS — CSS Module
+   Gộp từ file QuickCheckTabs.css (bigCard, field, unit, results...)
+   + toàn bộ phần style trước đây nằm inline trong QuickCheckTabs.jsx
+   (banner, tabbar, subtitle, empty-state, tag-blue, total-result...)
+   ==================================================================== */
+
+/* ---------- Banner giới thiệu phía trên ---------- */
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 22px 24px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(10, 22, 60, .06);
+}
+.panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(10, 22, 60, .06);
+}
+.banner h2 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 800;
+  color: #d92531;
+  letter-spacing: 0.3px;
+}
+.banner h2 em {
+  color: #d92531;
+  font-style: normal;
+}
+.bannerDivider {
+  width: 100%;
+  max-width: 480px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(20, 80, 196, 0.15), #1450c4, rgba(20, 80, 196, 0.15));
+}
+.banner p {
+  margin: 0;
+  color: #5b6b85;
+  font-size: 14px;
+}
+.bannerCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #f5b942, #e89b1f);
+  color: #1a1a1a;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .banner {
+    padding: 20px 18px;
+  }
+}
+/* ---------- Khung bọc chính + tiêu đề khối công cụ ---------- */
+.head {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: #e8f0ff;
+  color: #1450c4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.head h2 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  font-weight: 800;
+  color: #102a56;
+}
+.head p {
+  margin: 0;
+  color: #5b6b85;
+  font-size: 14px;
+}
+
+/* ---------- Thanh tab ---------- */
+.tabbar {
+  display: flex;
+  gap: 0;
+  background: #1450c4;
+  border-radius: 14px;
+  padding: 6px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.tab {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: #cfe0ff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.tab:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.tabActive {
+  background: #ffffff !important;
+  color: #102a56 !important;
+}
+.tabNum {
+  font-weight: 800;
+  font-size: 13px;
+  opacity: 0.6;
+}
+.tabActive .tabNum {
+  color: #1450c4;
+  opacity: 1;
+}
+.tabTitle {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ---------- Subtitle của từng tab ---------- */
+.subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.subtitleNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: #fff4da;
+  color: #e89b1f;
+  font-weight: 800;
+  font-size: 13px;
+}
+.subtitle span:last-child {
+  font-weight: 700;
+  color: #102a56;
+  font-size: 15px;
+}
+
+/* ---------- Layout: hai cột thẻ nhập / kết quả ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Thẻ lớn (khung chung cho 2 cột) ---------- */
+.bigCard {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 33, 84, 0.08);
+  border: 1px solid #e7ebf7;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease;
+  height: 100%;
+}
+
+/* Biến thể cho thẻ "Kết quả" — nền hơi ngả vàng-olive nhạt */
+.bigCardResult {
+  background: #fbfcf5;
+  box-shadow: 0 4px 18px rgba(91, 111, 31, 0.1);
+  border-color: #e9edd8;
+}
+
+
+/* ---------- Header thẻ (banner xanh "01 / 02") ---------- */
+.bigCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 28px;
+  background: linear-gradient(135deg, #1d4fd8 0%, #2348c7 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bigCardHeaderNum {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.28);
+  font-style: italic;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
+
+.bigCardHeaderText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bigCardHeaderTitle {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* Chữ mô tả — làm mờ nhẹ nhưng vẫn đọc được trên nền gradient xanh */
+.bigCardHeaderDesc {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* Header riêng cho thẻ "Kết quả" — gradient xanh-vàng olive */
+.bigCardHeaderResult {
+  background: linear-gradient(135deg, #5b6f1f, #8a9c2e);
+}
+.bigCardHeaderResult .bigCardHeaderNum {
+  color: rgba(255, 255, 255, 0.45);
+}
+.bigCardHeaderResult .bigCardHeaderTitle {
+  color: #d92531;
+}
+.bigCardHeaderResult .bigCardHeaderDesc {
+  color: #f3f0d9;
+}
+
+/* ---------- Thân thẻ ---------- */
+.bigCardBody {
+  padding: 24px 22px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ====================================================================
+   Ô NHẬP LIỆU (các hàng Z, 2p, F...)
+   ==================================================================== */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #f4f7fc;
+  box-shadow: 0 2px 10px rgba(15, 33, 84, 0.07);
+  border: 1px solid rgba(219, 227, 245, 0.7);
+}
+
+.fieldTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fieldLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2a3550;
+  flex: 1;
+}
+
+/* badge nhỏ trước label, ví dụ "Z", "2p", "F" */
+.fieldBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: #eaf1ff;
+  color: #1450c4;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.subscript {
+  display: inline-block;
+  font-size: 0.62em;
+  font-weight: 800;
+  line-height: 1;
+  transform: translateY(0.45em);
+}
+
+/* Đơn vị — xanh nhạt, căn phải giống ảnh mẫu */
+.unit {
+  margin-left: auto;
+  font-size: 12px;
+  color: #a8bdd8;
+  font-weight: 500;
+}
+
+/* hàng nhập số: [ − ] [ input ] [ + ] */
+.fieldRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fieldBtn {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border: 1px solid #dbe3f5;
+  background: #ffffff;
+  border-radius: 8px;
+  color: #1d4fd8;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.fieldBtn:hover {
+  background: #eaf1ff;
+  border-color: #1d4fd8;
+}
+
+.fieldBtn:active {
+  background: #dce6fb;
+  transform: scale(0.96);
+}
+
+.inp {
+  flex: 1;
+  height: 38px;
+  text-align: center;
+  border: 1px solid #dbe3f5;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1b2440;
+  background: #ffffff;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease;
+}
+
+.inp:focus {
+  border-color: #1d4fd8;
+  box-shadow: 0 0 0 3px rgba(29, 79, 216, 0.12);
+}
+
+/* ====================================================================
+   Ô KẾT QUẢ dạng thẻ 2 hàng — cùng cấu trúc với ô nhập (.field)
+   [badge + nhãn + đơn vị] rồi tới [ô giá trị], nhưng giữ tông olive
+   ==================================================================== */
+.resField {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: #f6f8ec;
+  box-shadow: 0 2px 10px rgba(91, 111, 31, 0.08);
+  border: 1px solid rgba(224, 230, 196, 0.85);
+}
+
+.resFieldTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.resFieldBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: #eaf1d4;
+  color: #5b6f1f;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.resFieldLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2a3550;
+  flex: 1;
+}
+
+.resFieldUnit {
+  margin-left: auto;
+  font-size: 12px;
+  color: #9aab7a;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.resFieldValueBox {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  border: 1px solid #dce6c4;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1b2440;
+  padding: 8px 14px;
+  line-height: 1.4;
+}
+
+/* biến thể cho kết quả dạng văn bản dài (vd. phân loại dây quấn) */
+.resFieldValueText {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+/* ====================================================================
+   Nút "KIỂM TRA NGAY"
+   ==================================================================== */
+.btnCheck {
+  width: 100%;
+  margin-top: auto;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1d4fd8 0%, #2348c7 100%);
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 6px 16px rgba(29, 79, 216, 0.28);
+}
+
+.btnCheck:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(29, 79, 216, 0.35);
+}
+
+.btnCheck:active {
+  transform: translateY(0);
+}
+
+/* ====================================================================
+   THẺ KẾT QUẢ — trạng thái rỗng (chưa có sẵn trong JSX, giữ lại để dùng sau)
+   ==================================================================== */
+.resultEmpty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 40px 20px;
+  min-height: 280px;
+}
+
+.resultEmptyIcon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #eaf1ff 0%, #f5f8ff 60%, transparent 100%);
+  border: 1px solid #e3eaff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.resultEmptyIcon::before {
+  content: '';
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #c4d4f9;
+}
+
+.resultEmptyIcon::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1d4fd8;
+}
+
+.resultEmptyText {
+  font-size: 14.5px;
+  color: #8493ad;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.resultEmptyCta {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #1d4fd8;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* ====================================================================
+   THẺ KẾT QUẢ — trạng thái đã có dữ liệu
+   (đã chuyển sang dùng .resField... ở trên, xem khối "Ô KẾT QUẢ dạng thẻ 2 hàng")
+   ==================================================================== */
