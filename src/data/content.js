@@ -3,33 +3,50 @@ export const NAV_ITEMS = [
   { label: 'Kỹ thuật – Công nghệ', path: '/ky-thuat' },
   { label: 'Điều khoản dịch vụ', path: '/dieu-khoan' },
   {
-    label: 'Trung tâm học tập 3 pha, 1 Tốc độ.',
-    path: '/hoc-tap/3pha-1tocdo',
-    children: [
-      { 
-        label: 'KỸ THUẬT DÂY QUẤN ĐỘNG CƠ CẢM ỨNG 3 PHA, 1 TỐC ĐỘ.',
-        path: '/hoc-tap/3pha-1tocdo',
-        children: [
-          { label: 'Ký hiệu và nguyên lý kỹ thuật dây quấn.', path: '/hoc-tap/3pha-1tocdo/kyhieu' },
-          { label: 'Truyền động điện và sơ đồ liên kết tổng quát.', path: '/hoc-tap/3pha-1tocdo/truyen-dong' },
-        ]
-      },
-      { 
-        label: 'PHƯƠNG PHÁP XÂY DỰNG SƠ ĐỒ KHAI TRIỂN 3 PHA 1 TỐC ĐỘ, SỐ NGUYÊN.', 
-        path: '/hoc-tap/3pha-1tocdo/so-nguyen',
-        children: [
-          { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/1lop' },
-          { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/2lop' },
-        ]
-      },
-      { 
-        label: 'PHƯƠNG PHÁP XÂY DỰNG SƠ ĐỒ KHAI TRIỂN 3 PHA 1 TỐC ĐỘ, PHÂN SỐ TỐI GIẢN.', 
-        path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian',
-        children: [
-          { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian/1lop' },
-          { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian/2lop' },
-        ]
-      },
+  label: 'Trung tâm học tập 3 pha, 1 Tốc độ.',
+  path: '/hoc-tap/3pha-1tocdo',
+  children: [
+    {
+      label: 'LÝ THUYẾT 3 PHA, 1 TỐC ĐỘ.',
+      path: '/ly-thuyet/3pha-1tocdo',
+      children: [
+        {
+          label: 'Ký hiệu và nguyên lý kỹ thuật dây quấn.',
+          path: '/ly-thuyet/3pha-1tocdo/kyhieu',
+        },
+        {
+          label: 'Truyền động điện và sơ đồ liên kết tổng quát.',
+          path: '/ly-thuyet/3pha-1tocdo/truyen-dong',
+        },
+      ],
+    },
+
+    { 
+      label: 'KỸ THUẬT DÂY QUẤN ĐỘNG CƠ CẢM ỨNG 3 PHA, 1 TỐC ĐỘ.',
+      path: '/hoc-tap/3pha-1tocdo',
+      children: [
+        { label: 'Ký hiệu và nguyên lý kỹ thuật dây quấn.', path: '/hoc-tap/3pha-1tocdo/kyhieu' },
+        { label: 'Truyền động điện và sơ đồ liên kết tổng quát.', path: '/hoc-tap/3pha-1tocdo/truyen-dong' },
+      ]
+    },
+
+    { 
+      label: 'PHƯƠNG PHÁP XÂY DỰNG SƠ ĐỒ KHAI TRIỂN 3 PHA 1 TỐC ĐỘ, SỐ NGUYÊN.',
+      path: '/hoc-tap/3pha-1tocdo/so-nguyen',
+      children: [
+        { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/1lop' },
+        { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/so-nguyen/2lop' },
+      ]
+    },
+
+    { 
+      label: 'PHƯƠNG PHÁP XÂY DỰNG SƠ ĐỒ KHAI TRIỂN 3 PHA 1 TỐC ĐỘ, PHÂN SỐ TỐI GIẢN.',
+      path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian',
+      children: [
+        { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 1 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian/1lop' },
+        { label: 'Phương pháp Xây dựng sơ đồ khai triển 3 pha 2 lớp.', path: '/hoc-tap/3pha-1tocdo/phan-so-toi-gian/2lop' },
+      ]
+    },
     ],
   },
   {
