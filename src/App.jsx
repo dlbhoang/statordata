@@ -22,6 +22,7 @@ import LienHe           from './pages/LienHe';
 import Group            from './pages/Group';
 import NotFound         from './pages/NotFound';
 import MapModal         from './components/MapModal';
+   import LyThuyet3Pha1Toc from './pages/LyThuyet3Pha1Toc';
 
 function AppContent() {
   const { pathname } = useLocation();
@@ -135,6 +136,7 @@ function AppContent() {
           <Route path="/lien-he"                   element={<LienHe />} />
           <Route path="/group"                     element={<Group />} />
           <Route path="*"                          element={<NotFound />} />
+             <Route path="/ly-thuyet/3pha-1tocdo" element={<LyThuyet3Pha1Toc />} />
           <Route path="/ky-thuat/nikola-tesla" element={<PdfContentPage />} />
         </Routes>
       </main>
