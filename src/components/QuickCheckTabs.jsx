@@ -9,6 +9,34 @@ function toNum(v, fallback = 0) {
   return Number.isNaN(n) ? fallback : n;
 }
 
+// Icon trang trí ở góc header (card "Nhập thông số")
+function IconSliders({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+      <path d="M4 21V14M4 10V3M12 21V12M12 8V3M20 21V16M20 12V3M1 14H7M9 8H15M17 16H23" />
+    </svg>
+  );
+}
+
+// Icon trang trí ở góc header (card "Kết quả")
+function IconCheckCircle({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M9 12l2 2 4-4" />
+      <circle cx="12" cy="12" r="9" />
+    </svg>
+  );
+}
+
+// Icon trang trí (Kết quả") — dùng cho 2 ô cạnh giá trị kết quả nổi bật
+function IconSpark({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" />
+    </svg>
+  );
+}
+
 export default function QuickCheckTabs() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -64,20 +92,12 @@ export default function QuickCheckTabs() {
   // Hiển thị: số nguyên nếu chia hết, ngược lại giữ tối đa 2 chữ số thập phân
   const p3_tau = p3_tauIsInteger ? p3_tauRaw : Math.round(p3_tauRaw * 100) / 100;
 
-  // Phân loại dây quấn — ưu tiên loại đặc hiệu nhất trước (loại trừ lẫn nhau,
-  // vì chia hết cho 4 thì chắc chắn cũng chia hết cho 2, không được liệt kê cả hai).
- let p3_classification;
-  if (!p3_tauIsInteger) {
-    p3_classification = 'Z không chia hết cho 2p (τ lẻ) — cần kiểm tra lại thông số đầu vào';
-  } else if (p3_tauRaw % 4 === 0) {
-    p3_classification = 'Phân bố QA = 3.QB (τ là bội số của 4)';
-  } else if (p3_tauRaw % 3 === 0) {
-    p3_classification = 'Phân bố QA = 2.QB (τ là bội số của 3)';
-  } else if (p3_tauRaw % 2 === 0) {
-    p3_classification = 'Phân bố QA = QB (τ là bội số của 2)';
-  } else {
-    p3_classification = 'Không thuộc loại nào được định nghĩa';
-  }
+  // Phân loại dây quấn — τ có thể thỏa nhiều điều kiện cùng lúc (VD τ=12 chia hết
+  // cho cả 2, 3, 4 thì phải hiện đủ CẢ 3 loại, không loại trừ lẫn nhau).
+  const p3_div2 = p3_tauIsInteger && p3_tauRaw % 2 === 0;
+  const p3_div3 = p3_tauIsInteger && p3_tauRaw % 3 === 0;
+  const p3_div4 = p3_tauIsInteger && p3_tauRaw % 4 === 0;
+  const p3_noneMatch = p3_tauIsInteger && !p3_div2 && !p3_div3 && !p3_div4;
   
 
   const tabs = [
@@ -124,6 +144,7 @@ export default function QuickCheckTabs() {
               {/* ---- Card 01: Nhập thông số ---- */}
               <div className={styles.bigCard}>
                 <div className={styles.bigCardHeader}>
+                  <IconSliders className={styles.bigCardHeaderIcon} />
                   <span className={styles.bigCardHeaderNum}>01</span>
                   <div className={styles.bigCardHeaderText}>
                     <div className={styles.bigCardHeaderTitle}>NHẬP THÔNG SỐ ĐẦU VÀO</div>
@@ -170,12 +191,17 @@ export default function QuickCheckTabs() {
                       <button className={styles.fieldBtn} onClick={() => setP1f(toNum(p1f, 1) + 10)}>+</button>
                     </div>
                   </div>
+
+                  <button className={styles.btnCheck}>
+                    ✓ KIỂM TRA NGAY
+                  </button>
                 </div>
               </div>
 
               {/* ---- Card 02: Kết quả ---- */}
               <div className={`${styles.bigCard} ${styles.bigCardResult}`}>
                 <div className={`${styles.bigCardHeader} ${styles.bigCardHeaderResult}`}>
+                  <IconCheckCircle className={styles.bigCardHeaderIcon} />
                   <span className={styles.bigCardHeaderNum}>02</span>
                   <div className={styles.bigCardHeaderText}>
                     <div className={styles.bigCardHeaderTitle}>KẾT QUẢ</div>
@@ -189,8 +215,12 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldLabel}>Số cực động cơ</span>
                       <span className={styles.resFieldUnit}>(Poles)</span>
                     </div>
-                    <div className={styles.resFieldValueBox}>
-                      <strong style={{ color: '#d92531', fontSize: 20 }}>{p1_2p_corrected}</strong>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={styles.resFieldValueBox}>
+                        <strong style={{ color: '#d92531', fontSize: 20 }}>{p1_2p_corrected}</strong>
+                      </div>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
                     </div>
                   </div>
                 </div>
@@ -210,6 +240,7 @@ export default function QuickCheckTabs() {
               {/* ---- Card 01: Nhập thông số đầu vào ---- */}
               <div className={styles.bigCard}>
                 <div className={styles.bigCardHeader}>
+                  <IconSliders className={styles.bigCardHeaderIcon} />
                   <span className={styles.bigCardHeaderNum}>01</span>
                   <div className={styles.bigCardHeaderText}>
                     <div className={styles.bigCardHeaderTitle}>NHẬP THÔNG SỐ ĐẦU VÀO</div>
@@ -286,6 +317,7 @@ export default function QuickCheckTabs() {
               {/* ---- Card 02: Kết quả ---- */}
               <div className={`${styles.bigCard} ${styles.bigCardResult}`}>
                 <div className={`${styles.bigCardHeader} ${styles.bigCardHeaderResult}`}>
+                  <IconCheckCircle className={styles.bigCardHeaderIcon} />
                   <span className={styles.bigCardHeaderNum}>02</span>
                   <div className={styles.bigCardHeaderText}>
                     <div className={styles.bigCardHeaderTitle}>KẾT QUẢ</div>
@@ -299,24 +331,37 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldLabel}>Tốc độ đồng bộ từ trường</span>
                       <span className={styles.resFieldUnit}>(RPM)</span>
                     </div>
-                    <div className={styles.resFieldValueBox}>{p2_ntd}</div>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={styles.resFieldValueBox}>{p2_ntd}</div>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                    </div>
                   </div>
 
                   <div className={styles.resField}>
                     <div className={styles.resFieldTop}>
                       <span className={styles.resFieldBadge}>τ</span>
                       <span className={styles.resFieldLabel}>Bước cực từ</span>
-                      <span className={styles.resFieldUnit}>(rãnh/cực)</span>
+                      <span className={styles.resFieldUnit}>(rãnh/1 pha/cực)</span>
                     </div>
-                    <div className={styles.resFieldValueBox}>{p2_tau}</div>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={styles.resFieldValueBox}>{p2_tau}</div>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                    </div>
                   </div>
 
                   <div className={styles.resField}>
                     <div className={styles.resFieldTop}>
                       <span className={styles.resFieldBadge}>q</span>
                       <span className={styles.resFieldLabel}>Số rãnh phân bố mỗi pha</span>
+                      <span className={styles.resFieldUnit}>(rãnh/pha/cực)</span>
                     </div>
-                    <div className={styles.resFieldValueBox}>{p2_q}</div>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={styles.resFieldValueBox}>{p2_q}</div>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                    </div>
                   </div>
 
                   <div className={styles.resField}>
@@ -324,7 +369,11 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldBadge}>PL</span>
                       <span className={styles.resFieldLabel}>Phân loại dây quấn</span>
                     </div>
-                    <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText}`}>{p2_classification}</div>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>{p2_classification}</div>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -342,6 +391,7 @@ export default function QuickCheckTabs() {
               {/* ---- Card 01: Nhập thông số đầu vào ---- */}
               <div className={styles.bigCard}>
                 <div className={styles.bigCardHeader}>
+                  <IconSliders className={styles.bigCardHeaderIcon} />
                   <span className={styles.bigCardHeaderNum}>01</span>
                   <div className={styles.bigCardHeaderText}>
                     <div className={styles.bigCardHeaderTitle}>NHẬP THÔNG SỐ ĐẦU VÀO</div>
@@ -418,6 +468,7 @@ export default function QuickCheckTabs() {
               {/* ---- Card 02: Kết quả ---- */}
               <div className={`${styles.bigCard} ${styles.bigCardResult}`}>
                 <div className={`${styles.bigCardHeader} ${styles.bigCardHeaderResult}`}>
+                  <IconCheckCircle className={styles.bigCardHeaderIcon} />
                   <span className={styles.bigCardHeaderNum}>02</span>
                   <div className={styles.bigCardHeaderText}>
                     <div className={styles.bigCardHeaderTitle}>KẾT QUẢ</div>
@@ -431,7 +482,11 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldLabel}>Tốc độ đồng bộ</span>
                       <span className={styles.resFieldUnit}>(RPM)</span>
                     </div>
-                    <div className={styles.resFieldValueBox}>{p3_ntd}</div>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={styles.resFieldValueBox}>{p3_ntd}</div>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                    </div>
                   </div>
 
                   <div className={styles.resField}>
@@ -440,7 +495,11 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldLabel}>Bước cực từ</span>
                       <span className={styles.resFieldUnit}>(rãnh/cực)</span>
                     </div>
-                    <div className={styles.resFieldValueBox}>{p3_tau}</div>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={styles.resFieldValueBox}>{p3_tau}</div>
+                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                    </div>
                   </div>
 
                   <div className={styles.resField}>
@@ -448,7 +507,52 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldBadge}>PL</span>
                       <span className={styles.resFieldLabel}>Phân loại dây quấn</span>
                     </div>
-                    <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText}`}>{p3_classification}</div>
+
+                    {!p3_tauIsInteger && (
+                      <div className={styles.resFieldRow}>
+                        <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
+                          Z không chia hết cho 2p (τ lẻ) — cần kiểm tra lại thông số đầu vào
+                        </div>
+                      </div>
+                    )}
+
+                    {p3_div2 && (
+                      <div className={styles.resFieldRow}>
+                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
+                          Phân bố QA = QB (τ là bội số của 2)
+                        </div>
+                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      </div>
+                    )}
+
+                    {p3_div3 && (
+                      <div className={styles.resFieldRow}>
+                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
+                          Phân bố QA = 2.QB (τ là bội số của 3)
+                        </div>
+                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      </div>
+                    )}
+
+                    {p3_div4 && (
+                      <div className={styles.resFieldRow}>
+                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
+                          Phân bố QA = 3.QB (τ là bội số của 4)
+                        </div>
+                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      </div>
+                    )}
+
+                    {p3_noneMatch && (
+                      <div className={styles.resFieldRow}>
+                        <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
+                          Không thuộc loại nào được định nghĩa
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
