@@ -14,19 +14,17 @@
   text-decoration: underline;
 }
 
-/* ===== Khối mở đầu: nhãn trang bên trái + infobox bên phải ===== */
-.introGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  gap: 30px;
-  align-items: start;
-  margin-bottom: 42px;
-}
+/* ===== Nhãn trang, nằm full-width phía trên article ===== */
 .introLabel {
   padding-top: 6px;
+  margin-bottom: 24px;
 }
 
+/* ===== Infobox: float bên phải, chữ trong .article tự bao quanh ===== */
 .infobox {
+  float: right;
+  width: 360px;
+  margin: 0 0 24px 30px;
   background: #ffffff;
   border: 1px solid #e3d9a8;
   border-radius: 18px;
@@ -84,7 +82,13 @@
 
 /* ===== Bài viết chính ===== */
 .article {
-  max-width: 780px;
+  max-width: 100%;
+}
+/* Clearfix: đảm bảo article "chứa" được infobox đang float bên trong */
+.article::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 .article p {
   color: var(--text2);
@@ -161,10 +165,10 @@
 }
 
 @media (max-width: 900px) {
-  .introGrid {
-    grid-template-columns: 1fr;
-  }
   .infobox {
+    float: none;
+    width: 100%;
     max-width: 420px;
+    margin: 0 0 24px;
   }
 }

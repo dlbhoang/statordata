@@ -61,12 +61,16 @@ export default function NikolaTesla() {
           <span>Nikola Tesla</span>
         </div>
 
-        {/* ===== Khối mở đầu: nhãn trang + bảng thông tin (infobox), giống bố cục 2 cột của tài liệu ===== */}
-        <div className={styles.introGrid}>
+        {/* ===== Bài viết chính. Infobox được float sang phải, chữ tự bao quanh, ===== */}
+        {/* ===== hết chiều cao infobox thì chữ tự full-width — không còn khoảng trống. ===== */}
+        <article className={styles.article}>
           <div className={styles.introLabel}>
-            <span className="sec-label">Kỹ thuật – Công nghệ</span>
             <h2 className="sec-title">Nikola <span className="accent">Tesla</span></h2>
           </div>
+
+          <h3 className={styles.articleTitle}>
+            Những phát minh đi trước thời đại của Nikola Tesla
+          </h3>
 
           <aside className={styles.infobox}>
             <img
@@ -96,13 +100,6 @@ export default function NikolaTesla() {
               ))}
             </dl>
           </aside>
-        </div>
-
-        {/* ===== Bài viết chính, theo đúng thứ tự mục của tài liệu ===== */}
-        <article className={styles.article}>
-          <h3 className={styles.articleTitle}>
-            Những phát minh đi trước thời đại của Nikola Tesla
-          </h3>
 
           <p>
             Trong suốt cuộc đời mình, nhà phát minh thiên tài Nikola Tesla đã tạo ra hàng trăm thiết bị
