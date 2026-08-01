@@ -28,14 +28,7 @@ function IconCheckCircle({ className }) {
   );
 }
 
-// Icon trang trí (Kết quả") — dùng cho 2 ô cạnh giá trị kết quả nổi bật
-function IconSpark({ className }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" />
-    </svg>
-  );
-}
+// (Icon tia sáng cũ đã được thay bằng ký hiệu "‖" trực tiếp trong ô kết quả)
 
 export default function QuickCheckTabs() {
   const [activeTab, setActiveTab] = useState(0);
@@ -214,11 +207,12 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldUnit}>Cực</span>
                     </div>
                     <div className={styles.resFieldRow}>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldBtn}>K</span>
                       <div className={styles.resFieldValueBox}>
-                        <strong style={{ color: '#d92531', fontSize: 20 }}>{p1_2p_corrected}</strong>
+                        <strong style={{ color: '#b3461a', fontSize: 20 }}>{p1_2p_corrected}</strong>
                       </div>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldDoubleBar}>‖</span>
+                      <span className={styles.resFieldBtn}>Q</span>
                     </div>
                   </div>
 
@@ -362,9 +356,10 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldUnit}>RPM</span>
                     </div>
                     <div className={styles.resFieldRow}>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldBtn}>K</span>
                       <div className={styles.resFieldValueBox}>{p2_ntd}</div>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldDoubleBar}>‖</span>
+                      <span className={styles.resFieldBtn}>Q</span>
                     </div>
                   </div>
 
@@ -375,9 +370,10 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldUnit}>Rãnh/Cực</span>
                     </div>
                     <div className={styles.resFieldRow}>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldBtn}>K</span>
                       <div className={styles.resFieldValueBox}>{p2_tau}</div>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldDoubleBar}>‖</span>
+                      <span className={styles.resFieldBtn}>Q</span>
                     </div>
                   </div>
 
@@ -390,9 +386,10 @@ export default function QuickCheckTabs() {
                           <span className={styles.resFieldUnit}>Rãnh/pha/cực</span>
                         </div>
                         <div className={styles.resFieldRow}>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <span className={styles.resFieldBtn}>K</span>
                           <div className={styles.resFieldValueBox}>{p2_q}</div>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <span className={styles.resFieldDoubleBar}>‖</span>
+                          <span className={styles.resFieldBtn}>Q</span>
                         </div>
                       </div>
 
@@ -402,10 +399,11 @@ export default function QuickCheckTabs() {
                           <span className={styles.resFieldLabel}>Phân loại dây dây quấn</span>
                           <span className={styles.resFieldUnit}>SN</span>
                         </div>
-                        <div className={styles.resFieldRow}>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                          <span className={styles.resFieldBtn}>K</span>
                           <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Số Nguyên</div>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <span className={styles.resFieldDoubleBar}>‖</span>
+                          <span className={styles.resFieldBtn}>Q</span>
                         </div>
                       </div>
                     </>
@@ -417,10 +415,11 @@ export default function QuickCheckTabs() {
                           <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
                           <span className={styles.resFieldUnit}>Loại 1</span>
                         </div>
-                        <div className={styles.resFieldRow}>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                          <span className={styles.resFieldBtn}>K</span>
                           <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = Q<sub>B</sub></div>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <span className={styles.resFieldDoubleBar}>‖</span>
+                          <span className={styles.resFieldBtn}>Q</span>
                         </div>
                       </div>
 
@@ -430,10 +429,11 @@ export default function QuickCheckTabs() {
                           <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
                           <span className={styles.resFieldUnit}>Loại 2</span>
                         </div>
-                        <div className={styles.resFieldRow}>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                          <span className={styles.resFieldBtn}>K</span>
                           <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = 2.Q<sub>B</sub></div>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <span className={styles.resFieldDoubleBar}>‖</span>
+                          <span className={styles.resFieldBtn}>Q</span>
                         </div>
                       </div>
 
@@ -443,10 +443,11 @@ export default function QuickCheckTabs() {
                           <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
                           <span className={styles.resFieldUnit}>Loại 3</span>
                         </div>
-                        <div className={styles.resFieldRow}>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                          <span className={styles.resFieldBtn}>K</span>
                           <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = 3.Q<sub>B</sub></div>
-                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <span className={styles.resFieldDoubleBar}>‖</span>
+                          <span className={styles.resFieldBtn}>Q</span>
                         </div>
                       </div>
                     </>
@@ -559,9 +560,10 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldUnit}>(RPM)</span>
                     </div>
                     <div className={styles.resFieldRow}>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldBtn}>K</span>
                       <div className={styles.resFieldValueBox}>{p3_ntd}</div>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldDoubleBar}>‖</span>
+                      <span className={styles.resFieldBtn}>Q</span>
                     </div>
                   </div>
 
@@ -572,9 +574,10 @@ export default function QuickCheckTabs() {
                       <span className={styles.resFieldUnit}>(rãnh/cực)</span>
                     </div>
                     <div className={styles.resFieldRow}>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldBtn}>K</span>
                       <div className={styles.resFieldValueBox}>{p3_tau}</div>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <span className={styles.resFieldDoubleBar}>‖</span>
+                      <span className={styles.resFieldBtn}>Q</span>
                     </div>
                   </div>
 
@@ -585,48 +588,57 @@ export default function QuickCheckTabs() {
                     </div>
 
                     {!p3_tauIsInteger && (
-                      <div className={styles.resFieldRow}>
+                      <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                        <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
                           Z không chia hết cho 2p (τ lẻ) — cần kiểm tra lại thông số đầu vào
                         </div>
+                        <span className={styles.resFieldDoubleBar}>‖</span>
+                        <span className={styles.resFieldBtn}>Q</span>
                       </div>
                     )}
 
                     {p3_div2 && (
-                      <div className={styles.resFieldRow}>
-                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                        <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
                           Phân bố QA = QB (τ là bội số của 2)
                         </div>
-                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <span className={styles.resFieldDoubleBar}>‖</span>
+                        <span className={styles.resFieldBtn}>Q</span>
                       </div>
                     )}
 
                     {p3_div3 && (
-                      <div className={styles.resFieldRow}>
-                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                        <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
                           Phân bố QA = 2.QB (τ là bội số của 3)
                         </div>
-                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <span className={styles.resFieldDoubleBar}>‖</span>
+                        <span className={styles.resFieldBtn}>Q</span>
                       </div>
                     )}
 
                     {p3_div4 && (
-                      <div className={styles.resFieldRow}>
-                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                      <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                        <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
                           Phân bố QA = 3.QB (τ là bội số của 4)
                         </div>
-                        <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        <span className={styles.resFieldDoubleBar}>‖</span>
+                        <span className={styles.resFieldBtn}>Q</span>
                       </div>
                     )}
 
                     {p3_noneMatch && (
-                      <div className={styles.resFieldRow}>
+                      <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                        <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
                           Không thuộc loại nào được định nghĩa
                         </div>
+                        <span className={styles.resFieldDoubleBar}>‖</span>
+                        <span className={styles.resFieldBtn}>Q</span>
                       </div>
                     )}
                   </div>

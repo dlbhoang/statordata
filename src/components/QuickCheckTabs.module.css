@@ -398,24 +398,23 @@
 }
 
 /* ====================================================================
-   Ô KẾT QUẢ dạng thẻ 2 hàng — cùng cấu trúc với ô nhập (.field)
-   [badge + nhãn + đơn vị] rồi tới [ô giá trị], nhưng giữ tông olive
+   Ô KẾT QUẢ — 2 hàng: [badge+nhãn+đơn vị nền trắng] rồi [K][giá trị][‖][Q]
+   nền xanh (số liệu) hoặc vàng (phân loại), khớp ảnh chụp mẫu
    ==================================================================== */
 .resField {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px 18px;
   border-radius: 12px;
-  background: linear-gradient(180deg, #d8e6b8 0%, #eef3dc 100%);
-  box-shadow: 0 2px 10px rgba(91, 111, 31, 0.08);
-  border: 1px solid #c7d99e;
+  overflow: hidden;
+  border: 1px solid #1a1a1a;
 }
 
 .resFieldTop {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px 12px;
+  background: #ffffff;
 }
 
 .resFieldBadge {
@@ -423,82 +422,114 @@
   align-items: center;
   justify-content: center;
   min-width: 36px;
-  height: 28px;
+  height: 30px;
   padding: 0 8px;
-  border-radius: 8px;
+  border-radius: 6px;
   background: #ffffff;
   border: 1.5px solid #1a1a1a;
-  color: #111111;
+  color: #5623eb;
   font-weight: 800;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1;
   white-space: nowrap;
 }
 
 .resFieldLabel {
-  font-size: 14px;
-  font-weight: 600;
-  color: #101010;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5623eb;
   flex: 1;
 }
 
 .resFieldUnit {
   margin-left: auto;
-  font-size: 12px;
-  color: #101010;
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: #ffffff;
+  border: 1.5px solid #1a1a1a;
+  font-size: 14px;
+  color: #5623eb;
+  font-weight: 800;
   white-space: nowrap;
+}
+
+/* hàng chứa [K] [ô giá trị] [‖] [Q] — nền xanh olive (mặc định, dùng cho số liệu) */
+.resFieldRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 12px;
+  background: linear-gradient(180deg, #d3e2b3 0%, #e7efd2 100%);
+}
+
+/* biến thể nền vàng — dùng cho hàng phân loại (PL) */
+.resFieldRowYellow {
+  background: linear-gradient(180deg, #f2efc8 0%, #faf8e4 100%);
 }
 
 .resFieldValueBox {
   flex: 1;
-  min-height: 38px;
+  min-height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   text-align: center;
-  border: 1px solid #cddca3;
-  border-radius: 8px;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 6px;
   background: #ffffff;
   font-size: 16px;
   font-weight: 800;
-  color: #d92531;
+  color: #b3461a;
   padding: 8px 14px;
   line-height: 1.4;
 }
 
-/* Ô phân loại (PL) — đồng bộ cùng tông đỏ/trắng với các ô kết quả số khác */
+/* Ô phân loại (PL) — cùng tông cam/nâu như các ô giá trị số khác */
 .resFieldValuePL {
   background: #ffffff;
-  border-color: #cddca3;
-  color: #d92531;
+  border-color: #1a1a1a;
+  color: #b3461a;
 }
 
-/* hàng chứa 2 ô icon trang trí + ô giá trị ở giữa — khớp bố cục [-][value][+] bên input */
-.resFieldRow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
+/* ô chữ K / Q hai bên — trắng viền đen, chữ đen đậm */
 .resFieldBtn {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 40px;
   flex-shrink: 0;
   border: 1.5px solid #1a1a1a;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #111111;
+  font-size: 20px;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
 }
 
-.resFieldBtnIcon {
-  width: 18px;
-  height: 18px;
+/* ô "‖" nhỏ nằm sát bên phải ô giá trị — nền xám nhạt */
+.resFieldDoubleBar {
+  width: 30px;
+  height: 34px;
+  flex-shrink: 0;
+  border: 1.5px solid #1a1a1a;
+  background: #efefef;
+  border-radius: 4px;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
+
 
 /* biến thể cho kết quả dạng văn bản dài (vd. phân loại dây quấn) */
 .resFieldValueText {
