@@ -1,0 +1,170 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text2);
+  margin-bottom: 20px;
+}
+.breadcrumb a {
+  color: #1a5cd8;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Khối mở đầu: nhãn trang bên trái + infobox bên phải ===== */
+.introGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 30px;
+  align-items: start;
+  margin-bottom: 42px;
+}
+.introLabel {
+  padding-top: 6px;
+}
+
+.infobox {
+  background: #ffffff;
+  border: 1px solid #e3d9a8;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 16px 40px rgba(15, 30, 90, 0.08);
+}
+.infoboxPhoto {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  background: #eef2fb;
+}
+.infoboxCaption {
+  text-align: center;
+  margin: 10px 0 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.infoboxList {
+  margin: 0;
+  border-top: 1px solid #eee6c8;
+}
+.infoboxRow {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee6c8;
+}
+.infoboxRow dt {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.infoboxRow dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text2);
+}
+
+.infoboxSubhead {
+  margin: 18px 0 4px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #102a56;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ===== Bài viết chính ===== */
+.article {
+  max-width: 780px;
+}
+.article p {
+  color: var(--text2);
+  font-size: 15px;
+  line-height: 1.85;
+  margin: 0 0 16px;
+}
+
+.articleTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #c0392b;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+.sectionHeading {
+  font-size: 17px;
+  font-weight: 800;
+  color: #c0392b;
+  margin: 32px 0 14px;
+}
+
+.figure {
+  margin: 20px 0 28px;
+  text-align: center;
+}
+.figure img {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(15, 30, 90, 0.12);
+  background: #0b1220;
+}
+.figure figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* ===== Dòng thời gian ===== */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+.timelineItem {
+  position: relative;
+  padding: 18px 20px 18px 22px;
+  border-left: 3px solid #1a5cd8;
+  background: #f9fbff;
+  border-radius: 0 16px 16px 0;
+}
+.timelinePeriod {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #1a5cd8;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.timelineText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text2);
+}
+
+.footerNav {
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .introGrid {
+    grid-template-columns: 1fr;
+  }
+  .infobox {
+    max-width: 420px;
+  }
+}
