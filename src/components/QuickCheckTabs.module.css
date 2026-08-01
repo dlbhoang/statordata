@@ -289,9 +289,9 @@
   gap: 10px;
   padding: 16px 18px;
   border-radius: 12px;
-  background: #f4f7fc;
+  background: linear-gradient(180deg, #c9e8ee 0%, #eaf7f9 100%);
   box-shadow: 0 2px 10px rgba(15, 33, 84, 0.07);
-  border: 1px solid rgba(219, 227, 245, 0.7);
+  border: 1px solid #aed9e2;
 }
 
 .fieldTop {
@@ -303,11 +303,11 @@
 .fieldLabel {
   font-size: 14px;
   font-weight: 600;
-  color: #2a3550;
+  color: #101010;
   flex: 1;
 }
 
-/* badge nhỏ trước label, ví dụ "Z", "2p", "F" */
+/* badge nhỏ trước label, ví dụ "Z", "2p", "F" — trắng viền đen, chữ đen đậm giống ảnh mẫu */
 .fieldBadge {
   display: inline-flex;
   align-items: center;
@@ -316,8 +316,9 @@
   height: 28px;
   padding: 0 8px;
   border-radius: 8px;
-  background: #eaf1ff;
-  color: #1450c4;
+  background: #ffffff;
+  border: 1.5px solid #1a1a1a;
+  color: #111111;
   font-weight: 800;
   font-size: 13px;
   line-height: 1;
@@ -332,12 +333,12 @@
   transform: translateY(0.45em);
 }
 
-/* Đơn vị — xanh nhạt, căn phải giống ảnh mẫu */
+/* Đơn vị — chữ đen đậm căn phải giống ảnh mẫu */
 .unit {
   margin-left: auto;
   font-size: 12px;
-  color: #a8bdd8;
-  font-weight: 500;
+  color: #101010;
+  font-weight: 700;
 }
 
 /* hàng nhập số: [ − ] [ input ] [ + ] */
@@ -351,10 +352,10 @@
   width: 38px;
   height: 38px;
   flex-shrink: 0;
-  border: 1px solid #dbe3f5;
+  border: 1.5px solid #1a1a1a;
   background: #ffffff;
   border-radius: 8px;
-  color: #1d4fd8;
+  color: #111111;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
@@ -367,7 +368,8 @@
 
 .fieldBtn:hover {
   background: #eaf1ff;
-  border-color: #1d4fd8;
+  border-color: #1450c4;
+  color: #1450c4;
 }
 
 .fieldBtn:active {
@@ -379,11 +381,11 @@
   flex: 1;
   height: 38px;
   text-align: center;
-  border: 1px solid #dbe3f5;
+  border: 1px solid #aed9e2;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 700;
-  color: #1b2440;
+  font-weight: 800;
+  color: #1450c4;
   background: #ffffff;
   outline: none;
   font-family: inherit;
@@ -391,8 +393,8 @@
 }
 
 .inp:focus {
-  border-color: #1d4fd8;
-  box-shadow: 0 0 0 3px rgba(29, 79, 216, 0.12);
+  border-color: #1450c4;
+  box-shadow: 0 0 0 3px rgba(20, 80, 196, 0.12);
 }
 
 /* ====================================================================
@@ -405,9 +407,9 @@
   gap: 10px;
   padding: 16px 18px;
   border-radius: 12px;
-  background: #f6f8ec;
+  background: linear-gradient(180deg, #d8e6b8 0%, #eef3dc 100%);
   box-shadow: 0 2px 10px rgba(91, 111, 31, 0.08);
-  border: 1px solid rgba(224, 230, 196, 0.85);
+  border: 1px solid #c7d99e;
 }
 
 .resFieldTop {
@@ -424,8 +426,9 @@
   height: 28px;
   padding: 0 8px;
   border-radius: 8px;
-  background: #eaf1d4;
-  color: #5b6f1f;
+  background: #ffffff;
+  border: 1.5px solid #1a1a1a;
+  color: #111111;
   font-weight: 800;
   font-size: 13px;
   line-height: 1;
@@ -435,15 +438,15 @@
 .resFieldLabel {
   font-size: 14px;
   font-weight: 600;
-  color: #2a3550;
+  color: #101010;
   flex: 1;
 }
 
 .resFieldUnit {
   margin-left: auto;
   font-size: 12px;
-  color: #9aab7a;
-  font-weight: 500;
+  color: #101010;
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -455,7 +458,7 @@
   justify-content: center;
   gap: 6px;
   text-align: center;
-  border: 1px solid #dce6c4;
+  border: 1px solid #cddca3;
   border-radius: 8px;
   background: #ffffff;
   font-size: 16px;
@@ -465,11 +468,11 @@
   line-height: 1.4;
 }
 
-/* Ô phân loại (PL) — tô màu riêng để nổi bật, khác với ô số bình thường */
+/* Ô phân loại (PL) — đồng bộ cùng tông đỏ/trắng với các ô kết quả số khác */
 .resFieldValuePL {
-  background: #fff8e3;
-  border-color: #f0d999;
-  color: #92660b;
+  background: #ffffff;
+  border-color: #cddca3;
+  color: #d92531;
 }
 
 /* hàng chứa 2 ô icon trang trí + ô giá trị ở giữa — khớp bố cục [-][value][+] bên input */
@@ -483,10 +486,10 @@
   width: 38px;
   height: 38px;
   flex-shrink: 0;
-  border: 1px solid #dce6c4;
-  background: #f6f8ec;
+  border: 1.5px solid #1a1a1a;
+  background: #ffffff;
   border-radius: 8px;
-  color: #8a9c2e;
+  color: #111111;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -595,6 +598,30 @@
   color: #1d4fd8;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+/* ====================================================================
+   KHỐI GHI CHÚ "Chú ý" — nền xám nhạt, giống ảnh mẫu
+   ==================================================================== */
+.noteBox {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #101010;
+  font-weight: 600;
+}
+
+.noteRed {
+  color: #d92531;
+  font-weight: 700;
+}
+
+.noteBlue {
+  color: #1450c4;
+  font-weight: 700;
 }
 
 /* ====================================================================

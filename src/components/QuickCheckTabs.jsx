@@ -71,9 +71,7 @@ export default function QuickCheckTabs() {
   const p2_qIsInteger = Number.isInteger(p2_qRaw);
   const p2_q = p2_qIsInteger ? p2_qRaw : Math.round(p2_qRaw * 100) / 100;
 
-  const p2_classification = p2_qIsInteger
-    ? 'Dây quấn số nguyên (q là số nguyên)'
-    : 'Dây quấn phân số tối giản (q là phân số)';
+
   // ==================== TAB 03: KIỂM TRA & PHÂN LOẠI 1 PHA ====================
   const [p3z, setP3z] = useState(36);
   const [p3_2p, setP3_2p] = useState(4);
@@ -156,7 +154,7 @@ export default function QuickCheckTabs() {
                     <div className={styles.fieldTop}>
                       <span className={styles.fieldBadge}>N<span className={styles.subscript}>db</span></span>
                       <span className={styles.fieldLabel}>Tốc độ từ trường</span>
-                      <span className={styles.unit}>(RPM)</span>
+                      <span className={styles.unit}>RPM</span>
                     </div>
                     <div className={styles.fieldRow}>
                       <button className={styles.fieldBtn} onClick={() => setP1ndb(Math.max(100, toNum(p1ndb, 100) - 100))}>−</button>
@@ -176,7 +174,7 @@ export default function QuickCheckTabs() {
                     <div className={styles.fieldTop}>
                       <span className={styles.fieldBadge}>F</span>
                       <span className={styles.fieldLabel}>Tần số</span>
-                      <span className={styles.unit}>(Hz)</span>
+                      <span className={styles.unit}>Hz</span>
                     </div>
                     <div className={styles.fieldRow}>
                       <button className={styles.fieldBtn} onClick={() => setP1f(Math.max(1, toNum(p1f, 1) - 10))}>−</button>
@@ -211,9 +209,9 @@ export default function QuickCheckTabs() {
                 <div className={styles.bigCardBody}>
                   <div className={styles.resField}>
                     <div className={styles.resFieldTop}>
-                      <span className={styles.resFieldBadge}>2p</span>
-                      <span className={styles.resFieldLabel}>Số cực động cơ</span>
-                      <span className={styles.resFieldUnit}>(Poles)</span>
+                      <span className={styles.resFieldBadge}>2P</span>
+                      <span className={styles.resFieldLabel}>Số cực</span>
+                      <span className={styles.resFieldUnit}>Cực</span>
                     </div>
                     <div className={styles.resFieldRow}>
                       <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
@@ -222,6 +220,18 @@ export default function QuickCheckTabs() {
                       </div>
                       <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
                     </div>
+                  </div>
+
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>Chú ý</span>
+                      <span className={styles.resFieldLabel}></span>
+                      <span className={styles.resFieldUnit}>Poles</span>
+                    </div>
+                  </div>
+                  <div className={styles.noteBox}>
+                    1: Số cực trong phần mềm được ký hiệu <span className={styles.noteRed}>2P</span>.<br />
+                    2: Trong một số tài liệu có thể ký hiêu số cực <span className={styles.noteRed}>P</span>, viết tắt từ tiếng anh là <span className={styles.noteBlue}>(Poles)</span>.
                   </div>
                 </div>
               </div>
@@ -252,7 +262,7 @@ export default function QuickCheckTabs() {
                     <div className={styles.fieldTop}>
                       <span className={styles.fieldBadge}>Z</span>
                       <span className={styles.fieldLabel}>Số rãnh stator</span>
-                      <span className={styles.unit}>(rãnh)</span>
+                      <span className={styles.unit}>Rãnh</span>
                     </div>
                     <div className={styles.fieldRow}>
                       <button className={styles.fieldBtn} onClick={() => setP2z(Math.max(1, toNum(p2z, 1) - 1))}>−</button>
@@ -272,7 +282,7 @@ export default function QuickCheckTabs() {
                     <div className={styles.fieldTop}>
                       <span className={styles.fieldBadge}>2p</span>
                       <span className={styles.fieldLabel}>Số cực</span>
-                      <span className={styles.unit}>(cực)</span>
+                      <span className={styles.unit}>Cực</span>
                     </div>
                     <div className={styles.fieldRow}>
                       <button className={styles.fieldBtn} onClick={() => setP2_2p(Math.max(1, toNum(p2_2p, 1) - 1))}>−</button>
@@ -292,7 +302,7 @@ export default function QuickCheckTabs() {
                     <div className={styles.fieldTop}>
                       <span className={styles.fieldBadge}>F</span>
                       <span className={styles.fieldLabel}>Tần số</span>
-                      <span className={styles.unit}>(Hz)</span>
+                      <span className={styles.unit}>Hz</span>
                     </div>
                     <div className={styles.fieldRow}>
                       <button className={styles.fieldBtn} onClick={() => setP2f(Math.max(1, toNum(p2f, 1) - 1))}>−</button>
@@ -307,6 +317,26 @@ export default function QuickCheckTabs() {
                       <button className={styles.fieldBtn} onClick={() => setP2f(toNum(p2f, 1) + 1)}>+</button>
                     </div>
                   </div>
+
+                  <div className={styles.field}>
+                    <div className={styles.fieldTop}>
+                      <span className={styles.fieldBadge}>Chú ý</span>
+                      <span className={styles.fieldLabel}></span>
+                      <span className={styles.unit}>{p2_qIsInteger ? '-' : 'Số bối/pha'}</span>
+                    </div>
+                  </div>
+                  {p2_qIsInteger ? (
+                    <div className={styles.noteBox}>
+                      Các thông số trên dùng cho xây dựng sơ đồ khai triển dây quấn động cơ 3 pha 1 tốc độ, Xem kết quả.
+                    </div>
+                  ) : (
+                    <div className={styles.noteBox}>
+                      Các thông số trên dùng xác định số bối dây pha làm việc so với pha khởi động.<br />
+                      <span className={styles.noteBlue}>Loại 1:</span> Pha làm việc bằng pha khởi động.<br />
+                      <span className={styles.noteRed}>Loại 2:</span> Pha làm việc bằng 2 lần pha khởi động.<br />
+                      <span className={styles.noteBlue}>Loại 3:</span> Pha làm việc bằng 3 lần pha khởi động.
+                    </div>
+                  )}
 
                   <button className={styles.btnCheck}>
                     ✓ KIỂM TRA NGAY
@@ -327,9 +357,9 @@ export default function QuickCheckTabs() {
                 <div className={styles.bigCardBody}>
                   <div className={styles.resField}>
                     <div className={styles.resFieldTop}>
-                      <span className={styles.resFieldBadge}>N<span className={styles.subscript}>td</span></span>
-                      <span className={styles.resFieldLabel}>Tốc độ đồng bộ từ trường</span>
-                      <span className={styles.resFieldUnit}>(RPM)</span>
+                      <span className={styles.resFieldBadge}>N<span className={styles.subscript}>db</span></span>
+                      <span className={styles.resFieldLabel}>Tốc độ từ trường</span>
+                      <span className={styles.resFieldUnit}>RPM</span>
                     </div>
                     <div className={styles.resFieldRow}>
                       <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
@@ -342,7 +372,7 @@ export default function QuickCheckTabs() {
                     <div className={styles.resFieldTop}>
                       <span className={styles.resFieldBadge}>τ</span>
                       <span className={styles.resFieldLabel}>Bước cực từ</span>
-                      <span className={styles.resFieldUnit}>(rãnh/1 pha/cực)</span>
+                      <span className={styles.resFieldUnit}>Rãnh/Cực</span>
                     </div>
                     <div className={styles.resFieldRow}>
                       <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
@@ -351,30 +381,76 @@ export default function QuickCheckTabs() {
                     </div>
                   </div>
 
-                  <div className={styles.resField}>
-                    <div className={styles.resFieldTop}>
-                      <span className={styles.resFieldBadge}>q</span>
-                      <span className={styles.resFieldLabel}>Số rãnh phân bố mỗi pha</span>
-                      <span className={styles.resFieldUnit}>(rãnh/pha/cực)</span>
-                    </div>
-                    <div className={styles.resFieldRow}>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
-                      <div className={styles.resFieldValueBox}>{p2_q}</div>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
-                    </div>
-                  </div>
+                  {p2_qIsInteger ? (
+                    <>
+                      <div className={styles.resField}>
+                        <div className={styles.resFieldTop}>
+                          <span className={styles.resFieldBadge}>q</span>
+                          <span className={styles.resFieldLabel}>Số rãnh phân bố</span>
+                          <span className={styles.resFieldUnit}>Rãnh/pha/cực</span>
+                        </div>
+                        <div className={styles.resFieldRow}>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <div className={styles.resFieldValueBox}>{p2_q}</div>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        </div>
+                      </div>
 
-                  <div className={styles.resField}>
-                    <div className={styles.resFieldTop}>
-                      <span className={styles.resFieldBadge}>PL</span>
-                      <span className={styles.resFieldLabel}>Phân loại dây quấn</span>
-                    </div>
-                    <div className={styles.resFieldRow}>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
-                      <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>{p2_classification}</div>
-                      <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
-                    </div>
-                  </div>
+                      <div className={styles.resField}>
+                        <div className={styles.resFieldTop}>
+                          <span className={styles.resFieldBadge}>PL</span>
+                          <span className={styles.resFieldLabel}>Phân loại dây dây quấn</span>
+                          <span className={styles.resFieldUnit}>SN</span>
+                        </div>
+                        <div className={styles.resFieldRow}>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Số Nguyên</div>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className={styles.resField}>
+                        <div className={styles.resFieldTop}>
+                          <span className={styles.resFieldBadge}>PL</span>
+                          <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
+                          <span className={styles.resFieldUnit}>Loại 1</span>
+                        </div>
+                        <div className={styles.resFieldRow}>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = Q<sub>B</sub></div>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        </div>
+                      </div>
+
+                      <div className={styles.resField}>
+                        <div className={styles.resFieldTop}>
+                          <span className={styles.resFieldBadge}>PL</span>
+                          <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
+                          <span className={styles.resFieldUnit}>Loại 2</span>
+                        </div>
+                        <div className={styles.resFieldRow}>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = 2.Q<sub>B</sub></div>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        </div>
+                      </div>
+
+                      <div className={styles.resField}>
+                        <div className={styles.resFieldTop}>
+                          <span className={styles.resFieldBadge}>PL</span>
+                          <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
+                          <span className={styles.resFieldUnit}>Loại 3</span>
+                        </div>
+                        <div className={styles.resFieldRow}>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = 3.Q<sub>B</sub></div>
+                          <span className={styles.resFieldBtn}><IconSpark className={styles.resFieldBtnIcon} /></span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
