@@ -118,7 +118,7 @@ function AppContent() {
       <main id="main-content" aria-label="Nội dung chính" style={{ minHeight: 'calc(100vh - 200px)' }}>
         <Routes>
           <Route path="/"                          element={<Home />} />
-          <Route path="/ky-thuat"                  element={<KyThuat />} />
+          <Route path="/ky-thuat"                  element={<NikolaTesla />} />
           <Route path="/dieu-khoan"                element={<DieuKhoan />} />
           <Route path="/hoc-tap/:loai"             element={<HocTap />} />
           <Route path="/hoc-tap/*"                 element={<PdfContentPage />} />
