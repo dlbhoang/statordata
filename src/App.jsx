@@ -21,8 +21,7 @@ import ThuocTinhNhanhHeThong from './pages/ThuocTinhNhanhHeThong';
 import LienHe           from './pages/LienHe';
 import Group            from './pages/Group';
 import NotFound         from './pages/NotFound';
-import MapModal         from './components/MapModal';
-   import LyThuyet3Pha1Toc from './pages/LyThuyet3Pha1Toc';
+import LyThuyet3Pha1Toc from './pages/LyThuyet3Pha1Toc';
 import NikolaTesla from './pages/NikolaTesla';
 function AppContent() {
   const { pathname } = useLocation();

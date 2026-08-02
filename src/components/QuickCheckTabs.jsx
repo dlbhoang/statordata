@@ -184,7 +184,7 @@ export default function QuickCheckTabs() {
                   </div>
 
                   <button className={styles.btnCheck}>
-                    ✓ KIỂM TRA NGAY
+                    XEM NGAY
                   </button>
                 </div>
               </div>
@@ -209,7 +209,7 @@ export default function QuickCheckTabs() {
                     <div className={styles.resFieldRow}>
                       <span className={styles.resFieldBtn}>K</span>
                       <div className={styles.resFieldValueBox}>
-                        <strong style={{ color: '#b3461a', fontSize: 20 }}>{p1_2p_corrected}</strong>
+                        <strong className={styles.resFieldValueStrong}>{p1_2p_corrected}</strong>
                       </div>
                       <span className={styles.resFieldDoubleBar}>‖</span>
                       <span className={styles.resFieldBtn}>Q</span>
@@ -330,7 +330,7 @@ export default function QuickCheckTabs() {
                   )}
 
                   <button className={styles.btnCheck}>
-                    ✓ KIỂM TRA NGAY
+                    XEM NGAY
                   </button>
                 </div>
               </div>
@@ -488,7 +488,7 @@ export default function QuickCheckTabs() {
                   </div>
 
                   <button className={styles.btnCheck}>
-                    ✓ KIỂM TRA NGAY
+                    XEM NGAY
                   </button>
                 </div>
               </div>
