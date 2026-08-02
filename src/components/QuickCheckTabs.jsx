@@ -316,19 +316,16 @@ export default function QuickCheckTabs() {
                     <div className={styles.fieldTop}>
                       <span className={styles.fieldBadge}>Chú ý</span>
                       <span className={styles.fieldLabel}></span>
-                      <span className={styles.unit}>{p2_qIsInteger ? '-' : 'Số bối/pha'}</span>
+                      <span className={styles.unit}>{p2_qIsInteger ? 'SN' : 'PS'}</span>
                     </div>
                   </div>
                   {p2_qIsInteger ? (
                     <div className={styles.noteBox}>
-                      Các thông số trên dùng cho xây dựng sơ đồ khai triển dây quấn động cơ 3 pha 1 tốc độ, Xem kết quả.
+                      Số rãnh phân bố <strong>q</strong> là <span className={styles.noteBlue}>số nguyên</span> → dây quấn thuộc loại số nguyên. Các thông số trên dùng cho xây dựng sơ đồ khai triển dây quấn động cơ 3 pha 1 tốc độ, xem kết quả bên dưới.
                     </div>
                   ) : (
                     <div className={styles.noteBox}>
-                      Các thông số trên dùng xác định số bối dây pha làm việc so với pha khởi động.<br />
-                      <span className={styles.noteBlue}>Loại 1:</span> Pha làm việc bằng pha khởi động.<br />
-                      <span className={styles.noteRed}>Loại 2:</span> Pha làm việc bằng 2 lần pha khởi động.<br />
-                      <span className={styles.noteBlue}>Loại 3:</span> Pha làm việc bằng 3 lần pha khởi động.
+                      Số rãnh phân bố <strong>q</strong> là <span className={styles.noteRed}>phân số tối giản</span> → dây quấn thuộc loại phân số. Các thông số trên dùng cho xây dựng sơ đồ khai triển dây quấn động cơ 3 pha 1 tốc độ, xem kết quả bên dưới.
                     </div>
                   )}
 
@@ -377,81 +374,35 @@ export default function QuickCheckTabs() {
                     </div>
                   </div>
 
-                  {p2_qIsInteger ? (
-                    <>
-                      <div className={styles.resField}>
-                        <div className={styles.resFieldTop}>
-                          <span className={styles.resFieldBadge}>q</span>
-                          <span className={styles.resFieldLabel}>Số rãnh phân bố</span>
-                          <span className={styles.resFieldUnit}>Rãnh/pha/cực</span>
-                        </div>
-                        <div className={styles.resFieldRow}>
-                          <span className={styles.resFieldBtn}>K</span>
-                          <div className={styles.resFieldValueBox}>{p2_q}</div>
-                          <span className={styles.resFieldDoubleBar}>‖</span>
-                          <span className={styles.resFieldBtn}>Q</span>
-                        </div>
-                      </div>
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>q</span>
+                      <span className={styles.resFieldLabel}>Số rãnh phân bố</span>
+                      <span className={styles.resFieldUnit}>Rãnh/pha/cực</span>
+                    </div>
+                    <div className={styles.resFieldRow}>
+                      <span className={styles.resFieldBtn}>K</span>
+                      <div className={styles.resFieldValueBox}>{p2_q}</div>
+                      <span className={styles.resFieldDoubleBar}>‖</span>
+                      <span className={styles.resFieldBtn}>Q</span>
+                    </div>
+                  </div>
 
-                      <div className={styles.resField}>
-                        <div className={styles.resFieldTop}>
-                          <span className={styles.resFieldBadge}>PL</span>
-                          <span className={styles.resFieldLabel}>Phân loại dây dây quấn</span>
-                          <span className={styles.resFieldUnit}>SN</span>
-                        </div>
-                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
-                          <span className={styles.resFieldBtn}>K</span>
-                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Số Nguyên</div>
-                          <span className={styles.resFieldDoubleBar}>‖</span>
-                          <span className={styles.resFieldBtn}>Q</span>
-                        </div>
+                  <div className={styles.resField}>
+                    <div className={styles.resFieldTop}>
+                      <span className={styles.resFieldBadge}>PL</span>
+                      <span className={styles.resFieldLabel}>Phân loại dây quấn</span>
+                      <span className={styles.resFieldUnit}>{p2_qIsInteger ? 'SN' : 'PS'}</span>
+                    </div>
+                    <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
+                      <span className={styles.resFieldBtn}>K</span>
+                      <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>
+                        {p2_qIsInteger ? 'Số Nguyên' : 'Phân số tối giản'}
                       </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className={styles.resField}>
-                        <div className={styles.resFieldTop}>
-                          <span className={styles.resFieldBadge}>PL</span>
-                          <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
-                          <span className={styles.resFieldUnit}>Loại 1</span>
-                        </div>
-                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
-                          <span className={styles.resFieldBtn}>K</span>
-                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = Q<sub>B</sub></div>
-                          <span className={styles.resFieldDoubleBar}>‖</span>
-                          <span className={styles.resFieldBtn}>Q</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.resField}>
-                        <div className={styles.resFieldTop}>
-                          <span className={styles.resFieldBadge}>PL</span>
-                          <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
-                          <span className={styles.resFieldUnit}>Loại 2</span>
-                        </div>
-                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
-                          <span className={styles.resFieldBtn}>K</span>
-                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = 2.Q<sub>B</sub></div>
-                          <span className={styles.resFieldDoubleBar}>‖</span>
-                          <span className={styles.resFieldBtn}>Q</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.resField}>
-                        <div className={styles.resFieldTop}>
-                          <span className={styles.resFieldBadge}>PL</span>
-                          <span className={styles.resFieldLabel}>Số rãnh phân bố/ cực</span>
-                          <span className={styles.resFieldUnit}>Loại 3</span>
-                        </div>
-                        <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
-                          <span className={styles.resFieldBtn}>K</span>
-                          <div className={`${styles.resFieldValueBox} ${styles.resFieldValuePL}`}>Q<sub>A</sub> = 3.Q<sub>B</sub></div>
-                          <span className={styles.resFieldDoubleBar}>‖</span>
-                          <span className={styles.resFieldBtn}>Q</span>
-                        </div>
-                      </div>
-                    </>
-                  )}
+                      <span className={styles.resFieldDoubleBar}>‖</span>
+                      <span className={styles.resFieldBtn}>Q</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -602,7 +553,7 @@ export default function QuickCheckTabs() {
                       <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
                         <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
-                          Phân bố QA = QB (τ là bội số của 2)
+                          Phân bố Q<span className={styles.subscript}>A</span> = Q<span className={styles.subscript}>B</span> (τ là bội số của 2)
                         </div>
                         <span className={styles.resFieldDoubleBar}>‖</span>
                         <span className={styles.resFieldBtn}>Q</span>
@@ -613,7 +564,7 @@ export default function QuickCheckTabs() {
                       <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
                         <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
-                          Phân bố QA = 2.QB (τ là bội số của 3)
+                          Phân bố Q<span className={styles.subscript}>A</span> = 2.Q<span className={styles.subscript}>B</span> (τ là bội số của 3)
                         </div>
                         <span className={styles.resFieldDoubleBar}>‖</span>
                         <span className={styles.resFieldBtn}>Q</span>
@@ -624,7 +575,7 @@ export default function QuickCheckTabs() {
                       <div className={`${styles.resFieldRow} ${styles.resFieldRowYellow}`}>
                         <span className={styles.resFieldBtn}>K</span>
                         <div className={`${styles.resFieldValueBox} ${styles.resFieldValueText} ${styles.resFieldValuePL}`}>
-                          Phân bố QA = 3.QB (τ là bội số của 4)
+                          Phân bố Q<span className={styles.subscript}>A</span> = 3.Q<span className={styles.subscript}>B</span> (τ là bội số của 4)
                         </div>
                         <span className={styles.resFieldDoubleBar}>‖</span>
                         <span className={styles.resFieldBtn}>Q</span>

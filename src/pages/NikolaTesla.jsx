@@ -61,8 +61,6 @@ export default function NikolaTesla() {
           <span>Nikola Tesla</span>
         </div>
 
-        {/* ===== Bài viết chính. Infobox được float sang phải, chữ tự bao quanh, ===== */}
-        {/* ===== hết chiều cao infobox thì chữ tự full-width — không còn khoảng trống. ===== */}
         <article className={styles.article}>
           <div className={styles.introLabel}>
             <h2 className="sec-title">Nikola <span className="accent">Tesla</span></h2>
