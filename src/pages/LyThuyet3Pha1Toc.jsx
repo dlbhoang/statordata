@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { InlineMath, BlockMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 import Subnav from '../components/Subnav';
 import styles from './LyThuyet3Pha1Toc.module.css';
 
@@ -17,6 +19,14 @@ function Figure({ src, caption, maxWidth }) {
 
 function FigRow({ children }) {
   return <div className={styles.figRow}>{children}</div>;
+}
+
+function Formula({ children }) {
+  return (
+    <div className={styles.formulaBox}>
+      <BlockMath math={children} />
+    </div>
+  );
 }
 
 /* Khối nội dung có nhiều Tab con — bám theo đúng các mục được đánh nhãn "Tab:" trong
@@ -127,15 +137,15 @@ export default function LyThuyet3Pha1Toc() {
                   <Figure src="h1-2_buoc-boi-day.png" caption="Hình 1.2: Bước bối dây (Coil pitch y), y = 8 rãnh." maxWidth={420} />
 
                   <h4 className={styles.subTitle}>1.1. Các quan hệ cơ bản áp dụng trong kỹ thuật dây quấn</h4>
-                  <p>Ký hiệu: <strong>F</strong> — tần số nguồn áp cấp vào dây quấn stator; <strong>2p</strong> — số
-                    cực từ của động cơ (p: số đôi cực); <strong>N<sub>tđ</sub></strong> — tốc độ đồng bộ của từ
+                  <p>Ký hiệu: <strong>f</strong> — tần số nguồn áp cấp vào dây quấn stator; <strong>2p</strong> — số
+                    cực từ của động cơ (p: số đôi cực); <strong>N_{"{tđ}"}</strong> — tốc độ đồng bộ của từ
                     trường quay; <strong>τ</strong> — bước cực từ (khoảng không gian trải rộng của mỗi cực từ trên
                     stator); <strong>Z</strong> — tổng số rãnh của stator (hay rotor); <strong>q</strong> — số rãnh
                     phân bố cho mỗi pha trên một bước cực từ.</p>
 
-                  <div className={styles.formulaBox}>f = P·N<sub>tđ</sub> / 60 &nbsp;hay&nbsp; f = 2p·N<sub>tđ</sub> / 120</div>
-                  <div className={styles.formulaBox}>τ = Z / 2p &nbsp;(rãnh/cực)</div>
-                  <div className={styles.formulaBox}>q = τ / (3 pha) &nbsp;(rãnh/pha/cực)</div>
+                  <Formula>{"f = \\frac{p \\cdot N_{tđ}}{60} = \\frac{2p \\cdot N_{tđ}}{120}"}</Formula>
+                  <Formula>{"\\tau = \\frac{Z}{2p} \\text{ (rãnh/cực)}"}</Formula>
+                  <Formula>{"q = \\frac{\\tau}{3} \\text{ (rãnh/pha/cực)}"}</Formula>
                   <p style={{ fontSize: 13, color: 'var(--text2)' }}>
                     Đơn vị: [f] = Hz; [N<sub>tđ</sub>] = vòng/phút; [Z] = [τ] = rãnh.
                   </p>
@@ -260,9 +270,15 @@ export default function LyThuyet3Pha1Toc() {
                   <p><strong>Liên kết hình tam giác Δ:</strong> dựng 3 đỉnh, mỗi đỉnh là giao điểm của 2 đầu khác tính
                     chất của 2 bộ dây quấn (nối CUỐI pha này với ĐẦU pha kế tiếp, hoán vị vòng thứ tự để có đủ 3 đỉnh).</p>
 
-                  <div className={styles.formulaBox}>V<sub>dây Y</sub> = √3 · V<sub>pha</sub> &nbsp;(1.1)</div>
-                  <div className={styles.formulaBox}>V<sub>dây Δ</sub> = V<sub>pha</sub> &nbsp;(1.2)</div>
-                  <div className={styles.formulaBox}>V<sub>dây Y</sub> = √3 · V<sub>dây Δ</sub> &nbsp;(1.3)</div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây Y}} = \\sqrt{3} \\cdot U_{\\text{pha}} \\quad \\text{(1.1)}`} />
+                  </div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây Δ}} = U_{\\text{pha}} \\quad \\text{(1.2)}`} />
+                  </div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây Y}} = \\sqrt{3} \\cdot U_{\\text{dây Δ}} \\quad \\text{(1.3)}`} />
+                  </div>
                   <div className={styles.highlight}>
                     Tóm lại: với động cơ 3 pha ra 6 đầu, thay đổi sơ đồ liên kết khi vận hành là để tạo sự tương
                     thích giữa điện áp quy định của nhà sản xuất cho mỗi sơ đồ đấu dây với điện áp nguồn cung cấp.
@@ -276,17 +292,29 @@ export default function LyThuyet3Pha1Toc() {
                     <Figure src="h9dau-3_sao-noitiep-Y.png" caption="Hình 3: Sơ đồ đầu dây 9 đầu, liên kết sao (Y) nối tiếp." />
                     <Figure src="h9dau-4_sao-songsong-2Y.png" caption="Hình 4: Sơ đồ đầu dây 9 đầu, liên kết sao (2Y) song song." />
                   </FigRow>
-                  <div className={styles.formulaBox}>V<sub>dây Y</sub> = √3 · V<sub>pha</sub> &nbsp;(1.1)</div>
-                  <div className={styles.formulaBox}>V<sub>dây 2Y</sub> = V<sub>pha</sub> / 2 &nbsp;(1.4)</div>
-                  <div className={styles.formulaBox}>V<sub>dây Y</sub> = 2 · V<sub>dây 2Y</sub> &nbsp;(1.5)</div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây Y}} = \\sqrt{3} \\cdot U_{\\text{pha}} \\quad \\text{(1.1)}`} />
+                  </div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây 2Y}} = \\frac{U_{\\text{pha}}}{2} \\quad \\text{(1.4)}`} />
+                  </div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây Y}} = 2 \\cdot U_{\\text{dây 2Y}} \\quad \\text{(1.5)}`} />
+                  </div>
 
                   <FigRow>
                     <Figure src="h9dau-5_tamgiac-noitiep.png" caption="Hình 5: Sơ đồ đầu dây 9 đầu, liên kết tam giác (Δ) nối tiếp." />
                     <Figure src="h9dau-6_tamgiac-songsong-2D.png" caption="Hình 6: Sơ đồ đầu dây 9 đầu, liên kết tam giác (2Δ) song song." />
                   </FigRow>
-                  <div className={styles.formulaBox}>V<sub>dây Δ</sub> = V<sub>pha</sub> &nbsp;(1.2)</div>
-                  <div className={styles.formulaBox}>V<sub>dây 2Δ</sub> = V<sub>pha</sub> / 2 &nbsp;(1.6)</div>
-                  <div className={styles.formulaBox}>V<sub>dây Δ</sub> = 2 · V<sub>dây 2Δ</sub> &nbsp;(1.7)</div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây Δ}} = U_{\\text{pha}} \\quad \\text{(1.2)}`} />
+                  </div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây 2Δ}} = \\frac{U_{\\text{pha}}}{2} \\quad \\text{(1.6)}`} />
+                  </div>
+                  <div className={styles.formulaBox}>
+                    <BlockMath math={`U_{\\text{dây Δ}} = 2 \\cdot U_{\\text{dây 2Δ}} \\quad \\text{(1.7)}`} />
+                  </div>
 
                   <h4 className={styles.subTitle}>1.1.3. Động cơ 3 pha ra 12 đầu dây</h4>
                   <p>Có thể liên kết vận hành theo 1 trong 4 sơ đồ, tương ứng 4 cấp điện áp nguồn khác nhau. Mỗi pha
@@ -326,8 +354,8 @@ export default function LyThuyet3Pha1Toc() {
 
                   <div className={styles.exampleCard}>
                     <div className={styles.exampleTitle}>Mẫu 1 — Z = 36 rãnh, 2p = 4 cực (1450 vòng/phút, f = 50 Hz) — dây quấn 1 lớp</div>
-                    <div className={styles.formulaBox}>τ = Z/2p = 36/4 = 9 (rãnh/cực)</div>
-                    <div className={styles.formulaBox}>q = τ/3 = 9/3 = 3 (rãnh/1cực/1pha)</div>
+                    <Formula>{"\\tau = \\frac{Z}{2p} = \\frac{36}{4} = 9 \\text{ (rãnh/cực)}"}</Formula>
+                    <Formula>{"q = \\frac{\\tau}{3} = \\frac{9}{3} = 3 \\text{ (rãnh/1cực/1pha)}"}</Formula>
                     <p>τ = 9 (rãnh) nghĩa là mỗi cực từ chiếm 9 rãnh trong tổng số 36 rãnh của stator. q = 3 (rãnh)
                       nghĩa là mỗi pha (A, B, C) chiếm 3 rãnh trong mỗi bước cực từ.</p>
 
@@ -339,9 +367,9 @@ export default function LyThuyet3Pha1Toc() {
 
                     <p><strong>Trình tự xác định các đầu dây pha:</strong> vị trí đầu ĐẦU của pha A tiêu biểu là rãnh
                       số 1. Nếu chọn các pha lệch nhau 120°:</p>
-                    <div className={styles.formulaBox}>Khoảng cách 2 đầu vào 2 pha liên tiếp = 120°/α<sub>đ</sub> = (2/3)·τ = (2/3)·9 = 6 (rãnh)</div>
-                    <div className={styles.formulaBox}>Đầu dây pha B = (2/3)·τ + A = 6 + 1 = 7 (rãnh)</div>
-                    <div className={styles.formulaBox}>Đầu dây pha C = (2/3)·τ + B = 6 + 7 = 13 (rãnh)</div>
+                    <Formula>{"\\text{Khoảng cách} = \\frac{120°}{\\alpha_đ} = \\frac{2}{3}\\tau = \\frac{2}{3} \\times 9 = 6 \\text{ (rãnh)}"}</Formula>
+                    <Formula>{"\\text{Đầu dây pha B} = \\frac{2}{3}\\tau + A = 6 + 1 = 7 \\text{ (rãnh)}"}</Formula>
+                    <Formula>{"\\text{Đầu dây pha C} = \\frac{2}{3}\\tau + B = 6 + 7 = 13 \\text{ (rãnh)}"}</Formula>
 
                     <Figure src="h1lop-1-2_khaitrien-3pha-cucgia-120do.png" caption="Hình 1.2: Sơ đồ khai triển dây quấn 1 lớp, đầy đủ 3 pha (đồng khuôn tập trung, cực giả; Z = 36, 2p = 4; lệch pha 120° điện)." />
                     <Figure src="h1lop-1-3_khaitrien-3pha-cucthat-120do.png" caption="Hình 1.3: Sơ đồ khai triển dây quấn 3 pha, hai pha liên tiếp lệch nhau 120° (dạng đồng khuôn phân tán, cực thật; Z = 36, 2p = 4)." />
@@ -362,7 +390,7 @@ export default function LyThuyet3Pha1Toc() {
                   <div className={styles.exampleCard}>
                     <div className={styles.exampleTitle}>Mẫu 2 — Z = 36 rãnh, 2p = 4 cực — dây quấn 2 lớp</div>
                     <p>Phạm vi khoảng bước bối dây Y (Coil Pitch Y):</p>
-                    <div className={styles.formulaBox}>y = (2/3)·τ ≤ Y ≤ (τ − 1) &nbsp;⇔&nbsp; 6 ≤ Y ≤ 8 (rãnh)</div>
+                    <Formula>{"\\frac{2}{3}\\tau \\leq Y \\leq (\\tau - 1) \\Longleftrightarrow 6 \\leq Y \\leq 8 \\text{ (rãnh)}"}</Formula>
                     <p>Chọn bước bối dây Y = 8 (rãnh) để khai triển sơ đồ dây quấn 2 lớp. q = τ/3 = 3 (rãnh/1cực/1pha).</p>
 
                     <Figure src="h2lop-1_phanbo-ranh-qnguyen.png" caption="Hình 1: Phân bố rãnh cho các pha dây quấn trên tổng số rãnh của stator (2 lớp)." />
@@ -412,8 +440,8 @@ export default function LyThuyet3Pha1Toc() {
 
                   <div className={styles.exampleCard}>
                     <div className={styles.exampleTitle}>Mẫu 1 — Z = 30 rãnh, 2p = 4 cực (1450 vòng/phút, f = 50 Hz) — dây quấn 1 lớp</div>
-                    <div className={styles.formulaBox}>τ = Z/2p = 30/4 = 7,5 (rãnh/cực)</div>
-                    <div className={styles.formulaBox}>q = τ/3 = 7,5/3 = 2,5 = 2 + 1/2 &nbsp;⇒&nbsp; b = 2; c = 1; d = 2</div>
+                    <Formula>{"\\tau = \\frac{Z}{2p} = \\frac{30}{4} = 7.5 \\text{ (rãnh/cực)}"}</Formula>
+                    <Formula>{"q = \\frac{\\tau}{3} = \\frac{7.5}{3} = 2.5 = 2 + \\frac{1}{2} \\Rightarrow b = 2; c = 1; d = 2"}</Formula>
 
                     <p><strong>Bảng phân bố ban đầu</strong> (vì c/d = 0,5 nên chọn ghi mỗi ô = b = 2):</p>
                     <div className={styles.tableWrap}>
@@ -484,10 +512,10 @@ export default function LyThuyet3Pha1Toc() {
 
                   <div className={styles.exampleCard}>
                     <div className={styles.exampleTitle}>Mẫu 2 — Z = 30 rãnh, 2p = 4 cực (1450 vòng/phút, f = 50 Hz) — dây quấn 2 lớp</div>
-                    <div className={styles.formulaBox}>τ = Z/2p = 30/4 = 7,5 (rãnh/cực)</div>
-                    <div className={styles.formulaBox}>q = τ/3 = 7,5/3 = 2,5 = 2 + 1/2 &nbsp;⇒&nbsp; b = 2; c = 1; d = 2</div>
+                    <Formula>{"\\tau = \\frac{Z}{2p} = \\frac{30}{4} = 7.5 \\text{ (rãnh/cực)}"}</Formula>
+                    <Formula>{"q = \\frac{\\tau}{3} = \\frac{7.5}{3} = 2.5 = 2 + \\frac{1}{2} \\Rightarrow b = 2; c = 1; d = 2"}</Formula>
                     <p>Nhóm số thứ tự: giá trị (b+1) = 3 viết c = 1 lần; giá trị b = 2 viết (d − c) = 1 lần → nhóm: <strong>3, 2</strong>.</p>
-                    <div className={styles.formulaBox}>Số lần lặp lại = 2p·m / d = 4·3 / 2 = 6 (lần)</div>
+                    <Formula>{"\\text{Số lần lặp lại} = \\frac{2p \\cdot m}{d} = \\frac{4 \\cdot 3}{2} = 6 \\text{ (lần)}"}</Formula>
 
                     <div className={styles.tableWrap}>
                       <table className={styles.table}>
@@ -508,9 +536,9 @@ export default function LyThuyet3Pha1Toc() {
                     <Figure src="hqps2lop-1_phanbo-ranh-yo.png" caption="Hình 1: Phân bố rãnh stator cho 3 pha dây quấn theo Pyδo, Z = 30 rãnh; 2p = 4 cực." />
 
                     <p><strong>Bước 03</strong> — phạm vi bước bối dây:</p>
-                    <div className={styles.formulaBox}>(2τ/3) ≤ Y ≤ (6τ/7) &nbsp;⇒&nbsp; 5 ≤ y ≤ 6,4 &nbsp;(rãnh)</div>
+                    <Formula>{"\\frac{2\\tau}{3} \\leq Y \\leq \\frac{6\\tau}{7} \\Rightarrow 5 \\leq y \\leq 6.4 \\text{ (rãnh)}"}</Formula>
                     <p>Chọn bước bối dây Y = 6 (rãnh). Chọn góc lệch pha 120° điện — khoảng lệch giữa 2 đầu dây pha liên tiếp:</p>
-                    <div className={styles.formulaBox}>120° / α<sub>đ</sub> = 120° / 24° = 5 (rãnh)</div>
+                    <Formula>{"\\frac{120°}{\\alpha_đ} = \\frac{120°}{24°} = 5 \\text{ (rãnh)}"}</Formula>
 
                     <Figure src="hqps2lop-2_khaitrien-phaAX-yo.png" caption="Hình 2: Sơ đồ khai triển dây quấn cho pha AX, động cơ 3 pha (Z = 30; 2p = 4), dạng dây quấn 2 lớp, bước cuộn dây y = 6." />
                     <Figure src="hqps2lop-3_khaitrien-3pha-yo-120do.png" caption="Hình 3: Sơ đồ khai triển ba dây quấn dạng đồng khuôn 2 lớp của động cơ ba pha theo Pyδo, Z = 30; 2p = 4; góc lệch giữa hai pha liên tiếp 120°." />
