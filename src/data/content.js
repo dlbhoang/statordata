@@ -4,7 +4,7 @@ export const NAV_ITEMS = [
   { label: 'Điều khoản dịch vụ', path: '/dieu-khoan' },
   {
   label: 'Trung tâm học tập 3 pha, 1 Tốc độ.',
-  path: '/hoc-tap/3pha-1tocdo',
+  path: 'ly-thuyet/3pha-1tocdo',
   children: [
     {
       label: 'LÝ THUYẾT 3 PHA, 1 TỐC ĐỘ.',
@@ -23,7 +23,7 @@ export const NAV_ITEMS = [
 
     { 
       label: 'KỸ THUẬT DÂY QUẤN ĐỘNG CƠ CẢM ỨNG 3 PHA, 1 TỐC ĐỘ.',
-      path: '/hoc-tap/3pha-1tocdo',
+      path: '/ly-thuyet/3pha-1tocdo',
       children: [
         { label: 'Ký hiệu và nguyên lý kỹ thuật dây quấn.', path: '/hoc-tap/3pha-1tocdo/kyhieu' },
         { label: 'Truyền động điện và sơ đồ liên kết tổng quát.', path: '/hoc-tap/3pha-1tocdo/truyen-dong' },
