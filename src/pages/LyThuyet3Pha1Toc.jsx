@@ -111,8 +111,24 @@ export default function LyThuyet3Pha1Toc() {
         {/* ================= NHÓM 1: KỸ THUẬT DÂY QUẤN ĐỘNG CƠ CẢM ỨNG 3 PHA, 1 TỐC ĐỘ ================= */}
         <TabGroup
           id="ky-thuat-day-quan"
-          title="Kỹ thuật dây quấn động cơ cảm ứng 3 pha, 1 tốc độ"
+          title="Lý thuyết dây quấn 3 pha 1 tốc độ"
           tabs={[
+            {
+              label: 'Kỹ thuật dây quấn động cơ cảm ứng 3 pha, 1 tốc độ',
+              content: (
+                <>
+                  <h4 className={styles.subTitle}>Tổng quan</h4>
+                  <p>Kỹ thuật dây quấn động cơ cảm ứng 3 pha, 1 tốc độ là một trong những kiến thức nền tảng quan trọng trong thiết kế và phân tích động cơ không đồng bộ. Phần này trình bày chi tiết về cấu trúc, nguyên lý hoạt động và các phương pháp xây dựng sơ đồ khai triển dây quấn cho các loại động cơ khác nhau.</p>
+                  <p><strong>Nội dung chính bao gồm:</strong></p>
+                  <ul>
+                    <li>Ký hiệu và nguyên lý cơ bản của dây quấn</li>
+                    <li>Các quy tắc liên kết và xác định đầu dây pha</li>
+                    <li>Phương pháp xây dựng sơ đồ khai triển cho dây quấn 1 lớp và 2 lớp</li>
+                    <li>Phân tích sơ đồ hình tia sức điện động rãnh</li>
+                  </ul>
+                </>
+              ),
+            },
             {
               label: 'Ký hiệu và nguyên lý kỹ thuật dây quấn',
               content: (
@@ -332,6 +348,200 @@ export default function LyThuyet3Pha1Toc() {
                     <Figure src="h12dau-9_tamgiac-noitiep.png" caption="Hình 9: 12 đầu dây, liên kết tam giác (Δ) nối tiếp." />
                     <Figure src="h12dau-10_tamgiac-songsong-2D.png" caption="Hình 10: 12 đầu dây, liên kết tam giác (2Δ) song song." />
                   </FigRow>
+                </>
+              ),
+            },
+            {
+              label: 'Sơ đồ hình tia sức điện động rãnh',
+              content: (
+                <>
+                  <h4 className={styles.subTitle}>1.1. Các khái niệm và định nghĩa</h4>
+                  <p>Khi xây dựng sơ đồ khai triển cho dây quấn stato máy điện ba pha, vấn đề quan trọng là cách phân
+                    bố rãnh stator cho ba pha dây quấn. Khi từ trường quay quét qua các thanh dẫn của stato, trên mỗi
+                    thanh dẫn xuất hiện sức điện động cảm ứng; sức điện động sinh ra trong các cạnh tác dụng của cùng
+                    một rãnh gọi là <strong>sức điện động rãnh</strong>.</p>
+                  <p>Một bối dây tạo thành từ hai cạnh tác dụng thuộc hai cực từ lân cận đối tính, tạo ra hai sức
+                    điện động rãnh tức thời trái dấu nhau. Hai cạnh tác dụng thuộc hai rãnh kề nhau lệch pha theo
+                    thời gian một góc bằng góc lệch điện <strong>α<sub>đ</sub></strong> giữa hai rãnh liên tiếp. Tập
+                    hợp các vectơ sức điện động rãnh của một pha gọi là <strong>vùng pha</strong>, với trục đối xứng
+                    gọi là <strong>trục pha</strong>. Ba trục pha lệch nhau từng đôi một một góc <strong>120° điện</strong>.</p>
+                  <div className={styles.highlight}>
+                    Dây quấn 1 lớp (bước đủ) luôn có vùng pha <strong>60° điện</strong>; dây quấn 2 lớp bước ngắn có
+                    vùng pha tối đa <strong>120° điện</strong>.
+                  </div>
+
+                  <h4 className={styles.subTitle} style={{ fontSize: 14 }}>1.2. Trình tự xác định vùng pha</h4>
+                  <p><span className={styles.stepBadge}>1</span><strong>Bước 01:</strong> từ số liệu stator, xây
+                    dựng sơ đồ khai triển dây quấn 3 pha; cho dòng 3 pha vào để kiểm chứng số cực từ tạo thành.</p>
+                  <p><span className={styles.stepBadge}>2</span><strong>Bước 02:</strong> từ sơ đồ khai triển mỗi
+                    pha, xác định các cạnh tác dụng có dòng cùng hướng; lập bảng tổng kết cho 3 pha; vẽ sơ đồ sức
+                    điện động rãnh theo góc lệch α<sub>đ</sub> (các vectơ xếp đều trên vòng tròn 360° điện ứng một
+                    cặp cực từ).</p>
+                  <p><span className={styles.stepBadge}>3</span><strong>Bước 03:</strong> từ các vectơ SĐĐ rãnh mỗi
+                    pha suy ra vùng pha; xác định trục đối xứng; kiểm chứng góc lệch 120° giữa các trục pha.</p>
+
+                  <div className={styles.exampleCard}>
+                    <div className={styles.exampleTitle}>Mẫu 1 — Z = 36 rãnh, 2p = 4 cực — xác định vùng pha cho dây quấn 1 lớp và 2 lớp</div>
+
+                    <p><strong>Bước 01 —</strong> tìm các thông số cơ bản τ; q; α<sub>đ</sub>:</p>
+                    <Formula>{"\\tau = \\frac{Z}{2p} = \\frac{36}{4} = 9 \\text{ (rãnh/cực)}"}</Formula>
+                    <Formula>{"q = \\frac{\\tau}{3} = \\frac{9}{3} = 3 \\text{ (rãnh/cực/pha)}"}</Formula>
+                    <Formula>{"\\alpha_đ = \\frac{180°}{\\tau} = \\frac{180°}{9} = 20°"}</Formula>
+                    <p><strong>Đối với dây quấn 2 lớp</strong> — phạm vi bước bối dây y:</p>
+                    <Formula>{"\\frac{2\\tau}{3} \\leq y \\leq (\\tau - 1) \\Longleftrightarrow 6 \\leq y \\leq 8 \\text{ (rãnh)}"}</Formula>
+                    <p>Chọn bước bối dây y = 6 (rãnh) để xây dựng sơ đồ khai triển dây quấn trên stator.</p>
+
+                    <p><strong>Bước 02 —</strong> tất cả các dạng sơ đồ dây quấn 1 lớp có phân bố rãnh cho 3 pha trên
+                      stator hoàn toàn giống nhau. Khi cho dòng 3 pha vào bộ dây quấn ta có 4 cực từ hình thành trên
+                      stator (Hình 1). Từ α<sub>đ</sub> = 20° suy ra sơ đồ hình tia sức điện động rãnh (Hình 2): xem
+                      không gian trải rộng của một cặp cực từ ứng với 360° điện thì trong khoảng một cặp cực từ chứa
+                      18 rãnh — toàn bộ vector sức điện động của 36 rãnh xếp thành hai tầng, mỗi tầng ứng một cặp cực
+                      từ.</p>
+                    <div className={styles.note}>
+                      Quy ước: nếu cạnh tác dụng có dòng đi lên được biểu diễn bằng đúng vector sức điện động rãnh vẽ
+                      trong Hình 2, thì cạnh tác dụng có dòng hướng xuống được biểu diễn bằng vector đảo của vector
+                      sức điện động rãnh tương ứng (và ngược lại).
+                    </div>
+
+                    <FigRow>
+                      <Figure src="htia-1_cuctinh-1lop.png" caption="Hình 1: Khảo xác cực tính tạo thành trên sơ đồ khai triển dây quấn 1 lớp, động cơ Z = 36 rãnh, 2p = 4 cực." />
+                      <Figure src="htia-2_hinhtia-sddranh.png" caption="Hình 2: Hình tia sức điện động rãnh." />
+                    </FigRow>
+
+                    <p><strong>Bảng tổng kết các cạnh tác dụng của ba pha dây quấn — sơ đồ dây quấn 1 lớp:</strong></p>
+                    <div className={styles.tableWrap}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr><th>PHA</th><th>Cạnh tác dụng có dòng điện hướng lên</th><th>Cạnh tác dụng có dòng điện hướng xuống</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td className={styles.cellA}>AX</td><td className={styles.left}>1, 2, 3, 19, 20, 21</td><td className={styles.left}>10, 11, 12, 28, 29, 30</td></tr>
+                          <tr><td className={styles.cellB}>BY</td><td className={styles.left}>16, 17, 18, 34, 35, 36</td><td className={styles.left}>7, 8, 9, 25, 26, 27</td></tr>
+                          <tr><td className={styles.cellC}>CZ</td><td className={styles.left}>13, 14, 15, 31, 32, 33</td><td className={styles.left}>22, 23, 24, 4, 5, 6</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <Figure src="htia-3_vungpha-60do.png" caption="Hình 3: Vùng pha 60° và sơ đồ hình tia sức điện động rãnh trên stator động cơ Z = 36 rãnh; 2p = 4 cực." />
+
+                    <p><strong>Bước 03 —</strong> xác định vùng cho dây quấn 2 lớp (bước bối dây y = 6 rãnh):</p>
+                    <Figure src="htia-4_cuctinh-2lop.png" caption="Hình 4: Khảo xác cực tính tạo thành trên sơ đồ khai triển dây quấn 2 lớp, động cơ Z = 36 rãnh, 2p = 4 cực, bước bối dây y = 6 rãnh." />
+
+                    <p><strong>Bảng tổng kết các cạnh tác dụng của ba pha dây quấn — sơ đồ dây quấn 2 lớp:</strong></p>
+                    <div className={styles.tableWrap}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th rowSpan={2}>PHA</th>
+                            <th colSpan={2}>Các cạnh tác dụng trên</th>
+                            <th colSpan={2}>Các cạnh tác dụng dưới</th>
+                          </tr>
+                          <tr>
+                            <th>Dòng điện đi lên</th><th>Dòng điện đi xuống</th>
+                            <th>Dòng điện đi lên</th><th>Dòng điện đi xuống</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td className={styles.cellA}>AX</td>
+                            <td className={styles.left}>1, 2, 3, 19, 20, 21</td>
+                            <td className={styles.left}>10, 11, 12, 28, 29, 30</td>
+                            <td className={styles.left}>16', 17', 18', 34', 35', 36'</td>
+                            <td className={styles.left}>7', 8', 9', 25', 26', 27'</td>
+                          </tr>
+                          <tr>
+                            <td className={styles.cellB}>BY</td>
+                            <td className={styles.left}>16, 17, 18, 34, 35, 36</td>
+                            <td className={styles.left}>7, 8, 9, 25, 26, 27</td>
+                            <td className={styles.left}>13', 14', 15', 31', 32', 33'</td>
+                            <td className={styles.left}>22', 23', 24', 4', 5', 6'</td>
+                          </tr>
+                          <tr>
+                            <td className={styles.cellC}>CZ</td>
+                            <td className={styles.left}>13, 14, 15, 31, 32, 33</td>
+                            <td className={styles.left}>22, 22, 24, 5, 6</td>
+                            <td className={styles.left}>28', 29', 30', 10', 11', 12'</td>
+                            <td className={styles.left}>19', 20', 21', 1', 2', 3'</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p style={{ fontSize: 12.5, color: 'var(--text2)' }}>* Số liệu hàng CZ giữ nguyên theo bảng gốc của tài liệu (trang 5).</p>
+
+                    <Figure src="htia-5_vungpha-120do.png" caption="Hình 5: Vùng pha 120° và sơ đồ hình tia sức điện động cạnh tác dụng dây quấn 2 lớp trên stator động cơ Z = 36 rãnh; 2p = 4 cực. Bước bối dây y = 6 (rãnh)." />
+                  </div>
+
+                  <h4 className={styles.subTitle}>Xác định hệ số dây quấn từ sơ đồ hình tia sức điện động</h4>
+
+                  <p><strong>Hệ số dây quấn 1 lớp:</strong> dây quấn 1 lớp luôn có phân bố các tia sức điện động rãnh
+                    cho mỗi pha trong vùng pha <strong>60°</strong>, bất chấp kiểu dây quấn — sự thay đổi hình dạng
+                    nhóm bối dây chỉ ảnh hưởng đến điện trở dây quấn stato và điện kháng tản từ của bối dây quấn,
+                    không có tác dụng khử sóng hài bậc cao hình thành trong sức từ động do dây quấn stato tạo ra.
+                    Dây quấn 1 lớp được xem là loại dây quấn bước đủ (tính chất căn cứ vào hình dạng sức từ động tạo
+                    bởi pha dây quấn phân bố trên một cặp cực từ, không căn cứ vào bước dây quấn thực tế đang thực
+                    hiện).</p>
+                  <div className={styles.highlight}>
+                    Hệ số bước ngắn K<sub>n</sub> của dây quấn một lớp luôn bằng 1. Do đó, hệ số dây quấn của dây
+                    quấn 1 lớp bằng với hệ số quấn rải. Tất cả các dạng dây quấn 1 lớp xây dựng trên cùng số liệu
+                    stato sẽ có cùng một giá trị hệ số dây quấn.
+                  </div>
+
+                  <p><strong>Hệ số dây quấn 2 lớp:</strong> ngược lại, dây quấn 2 lớp luôn có phân bố các tia sức
+                    điện động rãnh cho mỗi pha trong vùng pha <strong>120°</strong>. Sơ đồ tia sức điện động rãnh sẽ
+                    thay đổi khi thay đổi bước dây quấn, nhưng vùng pha luôn có giá trị lớn hơn 60° và tối đa bằng
+                    120°. Đối với dây quấn 2 lớp, nếu chọn bước bối dây y = τ thì dây quấn thuộc loại bước đủ; nếu
+                    chọn 2τ/3 ≤ y ≤ (τ − 1) thì dây quấn thuộc loại bước ngắn. Hệ số bước ngắn tỉ lệ thuận theo bước
+                    bối dây — nếu bước bối dây càng rút ngắn thì hệ số quấn rải càng giảm thấp.</p>
+
+                  <p>Ngoài quan hệ tính toán hệ số dây quấn bằng phương pháp đại số, hệ số dây quấn còn có thể được
+                    xác định thông qua sơ đồ hình tia sức điện động rãnh. Nếu gọi <strong>n</strong> là tổng số vector
+                    sức điện động rãnh chứa trong 1 pha, <strong>E<sub>r</sub></strong> là suất của một vector sức
+                    điện động rãnh, <strong>E<sub>pha</sub></strong> là độ lớn của hình chiếu thẳng góc của tổng
+                    vector sức điện động rãnh trong 1 pha xuống trục pha, hệ số dây quấn được xác định theo quan hệ
+                    sau:</p>
+                  <Formula>{"K_{dq} = \\frac{E_{pha}}{n \\cdot E_r}"}</Formula>
+
+                  <div className={styles.exampleCard}>
+                    <div className={styles.exampleTitle}>Mẫu 2 — Khảo sát hệ số dây quấn 1 lớp (Z = 36 rãnh, 2p = 4 cực)</div>
+                    <p>Cho stator động cơ không đồng bộ 3 pha có Z = 36 rãnh, 2p = 4, dây quấn stator dạng dây quấn 1
+                      lớp, có sơ đồ hình tia tìm được trong Hình 3. Xác định hệ số dây quấn 1 lớp trên sơ đồ hình tia
+                      sức điện động rãnh.</p>
+                    <p><strong>Giải:</strong> từ sơ đồ hình tia sức điện động rãnh phân bố trên 1 pha, vẽ thu gọn lại
+                      sơ đồ (Hình 6), tìm vectơ tổng của toàn bộ các vectơ sức điện động rãnh trên 1 pha, xác định
+                      hình chiếu của vectơ tổng trên trục pha, suy ra biểu thức tính hệ số dây quấn:</p>
+                    <Formula>{"E_{pha} = 4E_r\\cos\\alpha_đ + 4E_r + 4E_r\\cos\\alpha_đ = 4E_r\\left(1 + 2\\cos\\alpha_đ\\right)"}</Formula>
+                    <p>Hệ số dây quấn tính theo phương pháp hình tia sức điện động như sau:</p>
+                    <Formula>{"K_{dq} = \\frac{E_{pha}}{12E_r} = \\frac{4\\left(1 + 2\\cos20°\\right)}{12} = 0.967371"}</Formula>
+                    <p>Nếu áp dụng theo phương pháp đại số như sau:</p>
+                    <Formula>{"K_{dq} = \\frac{\\sin\\left(q\\cdot\\frac{\\alpha_đ}{2}\\right)}{q\\cdot\\sin\\left(\\frac{\\alpha_đ}{2}\\right)} = \\frac{\\sin\\left(3\\cdot\\frac{20°}{2}\\right)}{3\\cdot\\sin\\left(\\frac{20°}{2}\\right)} = 0.967371"}</Formula>
+                    <div className={styles.note}>Áp dụng theo 2 phương pháp ta có thể thấy kết quả tìm thấy trùng khớp nhau.</div>
+                    <Figure src="htia-6_thugon-phaA.png" caption="Hình 6: Hình vẽ thu gọn sức điện động của pha A, trong mẫu 1." maxWidth={520} />
+                  </div>
+
+                  <div className={styles.exampleCard}>
+                    <div className={styles.exampleTitle}>Mẫu 3 — Khảo sát hệ số dây quấn 2 lớp (Z = 36 rãnh, 2p = 4 cực, y = 6)</div>
+                    <p>Cho stator động cơ không đồng bộ 3 pha có Z = 36 rãnh, 2p = 4, có sơ đồ hình tia tìm được
+                      trong Hình 5. Bước bối dây y = 6.</p>
+                    <p><strong>Giải:</strong> từ sơ đồ hình tia sức điện động, vẽ lại phân bố sức điện động rãnh cho
+                      pha B (Hình 7). Thu gọn các vector sức điện động rãnh: 24 vector sức điện động rãnh được thay
+                      thế bằng 6 vector sức điện động rãnh đối xứng từng đôi qua trục pha. Chọn một cặp vector đối
+                      xứng qua trục pha để tìm hình chiếu của cặp vector này xuống trục pha; gọi β là góc hợp bởi
+                      vector sức điện động tương đương với trục pha và E<sub>tp</sub> là suất của hình chiếu thẳng
+                      góc của cặp vector sức điện động tương đương xuống trục pha, ta có:</p>
+                    <Formula>{"E_{tp} = 2\\cdot\\left(4E_r\\right) = 8E_r\\cos\\beta"}</Formula>
+                    <p>Vì có 3 cặp vector sức điện động rãnh cách trục pha lần lượt các góc α<sub>đ</sub>/2;
+                      3α<sub>đ</sub>/2; 5α<sub>đ</sub>/2 nên hệ số dây quấn tính theo phương pháp hình tia sức điện
+                      động như sau:</p>
+                    <Formula>{"K_{dq} = \\frac{8E_r\\left(\\cos\\frac{\\alpha_đ}{2} + \\cos\\frac{3\\alpha_đ}{2} + \\cos\\frac{5\\alpha_đ}{2}\\right)}{24E_r} = \\frac{8\\left(\\cos10° + \\cos30° + \\cos50°\\right)}{24} = 0.831206"}</Formula>
+                    <p>Nếu áp dụng theo phương pháp đại số như sau:</p>
+                    <Formula>{"K_{dq} = \\frac{\\sin\\left(q\\cdot\\frac{\\alpha_đ}{2}\\right)}{q\\cdot\\sin\\left(\\frac{\\alpha_đ}{2}\\right)}\\cdot\\sin\\left(\\frac{y}{\\tau}\\cdot90°\\right) = \\frac{\\sin\\left(3\\cdot\\frac{20°}{2}\\right)}{3\\cdot\\sin\\left(\\frac{20°}{2}\\right)}\\cdot\\sin\\left(\\frac{6}{9}\\cdot90°\\right) = 0.831206"}</Formula>
+                    <div className={styles.note}>
+                      Trong đó, hệ số bước ngắn K<sub>n</sub> của dây quấn 2 lớp:{' '}
+                      <InlineMath math={"K_N = \\sin\\left(\\frac{y}{\\tau}\\cdot90°\\right)"} />. Áp dụng theo 2
+                      phương pháp ta có thể thấy kết quả tìm thấy trùng khớp nhau.
+                    </div>
+                    <Figure src="htia-7_thugon-phaB.png" caption="Hình 7: Hình vẽ thu gọn sức điện động của pha B, trong mẫu 1." maxWidth={520} />
+                  </div>
                 </>
               ),
             },
