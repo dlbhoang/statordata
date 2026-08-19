@@ -199,6 +199,52 @@
 }
 .pillNav a:hover { background: var(--blue2); color: #fff; }
 
+/* ===== Xem thêm / Thu gọn nội dung dài ===== */
+.readMoreOuter {
+  position: relative;
+}
+
+.readMoreInner {
+  position: relative;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.readMoreFade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 96px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 82%);
+  pointer-events: none;
+}
+
+.readMoreBtnWrap {
+  text-align: center;
+  margin-top: 14px;
+}
+
+.readMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid #dbe2ef;
+  background: #f4f6fb;
+  color: var(--blue2);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.readMoreBtn:hover {
+  background: var(--blue2);
+  border-color: var(--blue2);
+  color: #fff;
+}
+
 /* ===== Tab groups (theo cấu trúc Tab: trong tài liệu gốc) ===== */
 .groupIntro {
   font-size: 13.5px;

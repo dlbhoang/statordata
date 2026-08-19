@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { InlineMath, BlockMath } from 'react-katex';
 import 'katex/dist/katex.min.css';
 import Subnav from '../components/Subnav';
@@ -25,6 +25,50 @@ function Formula({ children }) {
   return (
     <div className={styles.formulaBox}>
       <BlockMath math={children} />
+    </div>
+  );
+}
+
+/* Bọc nội dung dài: mặc định chỉ hiện tối đa `collapsedHeight` (px), phía dưới có lớp
+   phủ mờ dần + nút "Xem thêm / Thu gọn". Tự đo chiều cao thật của nội dung — nếu nội
+   dung ngắn hơn collapsedHeight thì không hiện nút (không giới hạn, không phủ mờ). */
+function ReadMore({ children, collapsedHeight = 620 }) {
+  const [expanded, setExpanded] = useState(false);
+  const [overflowing, setOverflowing] = useState(false);
+  const innerRef = useRef(null);
+
+  useEffect(() => {
+    const el = innerRef.current;
+    if (!el) return;
+    const check = () => setOverflowing(el.scrollHeight > collapsedHeight + 32);
+    check();
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [children, collapsedHeight]);
+
+  return (
+    <div className={styles.readMoreOuter}>
+      <div
+        ref={innerRef}
+        className={styles.readMoreInner}
+        style={{ maxHeight: expanded || !overflowing ? 'none' : collapsedHeight }}
+      >
+        {children}
+        {!expanded && overflowing && <div className={styles.readMoreFade} />}
+      </div>
+      {overflowing && (
+        <div className={styles.readMoreBtnWrap}>
+          <button
+            type="button"
+            className={styles.readMoreBtn}
+            onClick={() => setExpanded((v) => !v)}
+            aria-expanded={expanded}
+          >
+            {expanded ? 'Thu gọn ▲' : 'Xem thêm ▾'}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -57,7 +101,7 @@ function TabGroup({ id, title, intro, tabs }) {
           {selectedTab ? (
             <div className={styles.body}>
               <h4 className={styles.tabPanelTitle}>{selectedTab.label}</h4>
-              {selectedTab.content}
+              <ReadMore key={active}>{selectedTab.content}</ReadMore>
             </div>
           ) : (
             <div className={styles.emptyState}>
