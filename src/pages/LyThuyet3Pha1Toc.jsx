@@ -448,8 +448,8 @@ export default function LyThuyet3Pha1Toc() {
                     </div>
 
                     <FigRow>
-                      <Figure src="htia-1_cuctinh-1lop.png" caption="Hình 1: Khảo xác cực tính tạo thành trên sơ đồ khai triển dây quấn 1 lớp, động cơ Z = 36 rãnh, 2p = 4 cực." />
-                      <Figure src="htia-2_hinhtia-sddranh.png" caption="Hình 2: Hình tia sức điện động rãnh." />
+                      <Figure src="h01_khao-sat-cuc-tinh-1lop.png" caption="Hình 1: Khảo xác cực tính tạo thành trên sơ đồ khai triển dây quấn 1 lớp, động cơ Z = 36 rãnh, 2p = 4 cực." />
+                      <Figure src="h02_hinh-tia-suc-dien-dong-ranh.png" caption="Hình 2: Hình tia sức điện động rãnh." />
                     </FigRow>
 
                     <p><strong>Bảng tổng kết các cạnh tác dụng của ba pha dây quấn — sơ đồ dây quấn 1 lớp:</strong></p>
@@ -466,10 +466,10 @@ export default function LyThuyet3Pha1Toc() {
                       </table>
                     </div>
 
-                    <Figure src="htia-3_vungpha-60do.png" caption="Hình 3: Vùng pha 60° và sơ đồ hình tia sức điện động rãnh trên stator động cơ Z = 36 rãnh; 2p = 4 cực." />
+                    <Figure src="h03_vung-pha-60do.png" caption="Hình 3: Vùng pha 60° và sơ đồ hình tia sức điện động rãnh trên stator động cơ Z = 36 rãnh; 2p = 4 cực." />
 
                     <p><strong>Bước 03 —</strong> xác định vùng cho dây quấn 2 lớp (bước bối dây y = 6 rãnh):</p>
-                    <Figure src="htia-4_cuctinh-2lop.png" caption="Hình 4: Khảo xác cực tính tạo thành trên sơ đồ khai triển dây quấn 2 lớp, động cơ Z = 36 rãnh, 2p = 4 cực, bước bối dây y = 6 rãnh." />
+                    <Figure src="h04_khao-sat-cuc-tinh-2lop.png" caption="Hình 4: Khảo xác cực tính tạo thành trên sơ đồ khai triển dây quấn 2 lớp, động cơ Z = 36 rãnh, 2p = 4 cực, bước bối dây y = 6 rãnh." />
 
                     <p><strong>Bảng tổng kết các cạnh tác dụng của ba pha dây quấn — sơ đồ dây quấn 2 lớp:</strong></p>
                     <div className={styles.tableWrap}>
@@ -512,7 +512,7 @@ export default function LyThuyet3Pha1Toc() {
                     </div>
                     <p style={{ fontSize: 12.5, color: 'var(--text2)' }}>* Số liệu hàng CZ giữ nguyên theo bảng gốc của tài liệu (trang 5).</p>
 
-                    <Figure src="htia-5_vungpha-120do.png" caption="Hình 5: Vùng pha 120° và sơ đồ hình tia sức điện động cạnh tác dụng dây quấn 2 lớp trên stator động cơ Z = 36 rãnh; 2p = 4 cực. Bước bối dây y = 6 (rãnh)." />
+                    <Figure src="h05_vung-pha-120do.png" caption="Hình 5: Vùng pha 120° và sơ đồ hình tia sức điện động cạnh tác dụng dây quấn 2 lớp trên stator động cơ Z = 36 rãnh; 2p = 4 cực. Bước bối dây y = 6 (rãnh)." />
                   </div>
 
                   <h4 className={styles.subTitle}>Xác định hệ số dây quấn từ sơ đồ hình tia sức điện động</h4>
@@ -559,7 +559,7 @@ export default function LyThuyet3Pha1Toc() {
                     <p>Nếu áp dụng theo phương pháp đại số như sau:</p>
                     <Formula>{"K_{dq} = \\frac{\\sin\\left(q\\cdot\\frac{\\alpha_đ}{2}\\right)}{q\\cdot\\sin\\left(\\frac{\\alpha_đ}{2}\\right)} = \\frac{\\sin\\left(3\\cdot\\frac{20°}{2}\\right)}{3\\cdot\\sin\\left(\\frac{20°}{2}\\right)} = 0.967371"}</Formula>
                     <div className={styles.note}>Áp dụng theo 2 phương pháp ta có thể thấy kết quả tìm thấy trùng khớp nhau.</div>
-                    <Figure src="htia-6_thugon-phaA.png" caption="Hình 6: Hình vẽ thu gọn sức điện động của pha A, trong mẫu 1." maxWidth={520} />
+                    <Figure src="h06_thu-gon-suc-dien-dong-pha-a.png" caption="Hình 6: Hình vẽ thu gọn sức điện động của pha A, trong mẫu 1." maxWidth={520} />
                   </div>
 
                   <div className={styles.exampleCard}>
@@ -584,7 +584,7 @@ export default function LyThuyet3Pha1Toc() {
                       <InlineMath math={"K_N = \\sin\\left(\\frac{y}{\\tau}\\cdot90°\\right)"} />. Áp dụng theo 2
                       phương pháp ta có thể thấy kết quả tìm thấy trùng khớp nhau.
                     </div>
-                    <Figure src="htia-7_thugon-phaB.png" caption="Hình 7: Hình vẽ thu gọn sức điện động của pha B, trong mẫu 1." maxWidth={520} />
+                    <Figure src="h07_thu-gon-suc-dien-dong-pha-b.png" caption="Hình 7: Hình vẽ thu gọn sức điện động của pha B, trong mẫu 1." maxWidth={520} />
                   </div>
                 </>
               ),
